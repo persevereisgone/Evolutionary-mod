@@ -1,0 +1,33 @@
+{
+  "cellSize": 18,
+  "gap": 4,
+  "pageWidth": 210,
+  "pageHeight": 214,
+  "showGrid": false,
+  "gridStep": 10,
+  "background": "textures/gui/accessory_gui_10.png",
+  "title": "饰品栏",
+  "slots": {
+    "HEAD": [8, 47],
+    "EARRING_1": [30, 47],
+    "EARRING_2": [52, 47],
+    "NECKLACE": [74, 47],
+    "GLOVE_1": [96, 47],
+    "GLOVE_2": [118, 47],
+    "BRACELET_1": [140, 47],
+    "BRACELET_2": [162, 47],
+    "RING_1": [184, 47],
+    "RING_2": [8, 69],
+    "RING_3": [30, 69],
+    "RING_4": [52, 69],
+    "BELT": [74, 69],
+    "BOOT_1": [96, 69],
+    "BOOT_2": [118, 69],
+    "ACCESSORY_1": [140, 69],
+    "ACCESSORY_2": [162, 69],
+    "ACCESSORY_3": [184, 69]
+  },
+  "inventoryStartX": 8,
+  "inventoryStartY": 117
+}
+

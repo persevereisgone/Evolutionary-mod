@@ -1,0 +1,325 @@
+{
+  "rings": {
+    "broken_life_essence_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "max_health": { "min": 1.0, "max": 3.0, "distribution": "uniform", "step": 0.5 }
+      }
+    },
+    "life_essence_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "max_health": { "min": 4.0, "max": 6.0, "distribution": "uniform", "step": 0.5 }
+      }
+    },
+    "excellent_life_essence_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "max_health": { "min": 6.0, "max": 10.0, "distribution": "uniform", "step": 0.5 },
+        "health_regen": { "min": 0.2, "max": 0.6, "distribution": "uniform", "per_second": true, "step": 0.05 }
+      }
+    },
+    "epic_life_essence_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "max_health": { "min": 10.0, "max": 14.0, "distribution": "uniform", "step": 0.5 },
+        "health_regen": { "min": 0.4, "max": 0.8, "distribution": "uniform", "per_second": true, "step": 0.05 }
+      }
+    },
+    "legendary_life_essence_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "max_health": { "min": 15.0, "max": 20.0, "distribution": "uniform", "step": 1.0 },
+        "health_regen": { "min": 0.6, "max": 1.0, "distribution": "uniform", "per_second": true, "step": 0.05 }
+      }
+    },
+    "mythic_life_essence_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "max_health": { "min": 20.0, "max": 30.0, "distribution": "uniform", "step": 1.0 },
+        "health_regen": { "min": 0.8, "max": 1.5, "distribution": "uniform", "per_second": true, "step": 0.05 }
+      }
+    },
+
+    "broken_battle_power_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "attack_damage": { "min": 0.1, "max": 0.5, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "battle_power_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "attack_damage": { "min": 0.5, "max": 1.5, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "excellent_battle_power_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "attack_damage": { "min": 1.5, "max": 3.0, "distribution": "uniform", "step": 0.1 },
+        "crit_chance": { "min": 0.03, "max": 0.08, "distribution": "uniform", "step": 0.005 },
+        "crit_damage": { "min": 0.10, "max": 0.20, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "epic_battle_power_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "attack_damage": { "min": 2.5, "max": 4.0, "distribution": "uniform", "step": 0.1 },
+        "crit_chance": { "min": 0.05, "max": 0.12, "distribution": "uniform", "step": 0.005 },
+        "crit_damage": { "min": 0.20, "max": 0.35, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "legendary_battle_power_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "attack_damage": { "min": 4.0, "max": 6.0, "distribution": "uniform", "step": 0.1 },
+        "crit_chance": { "min": 0.08, "max": 0.18, "distribution": "uniform", "step": 0.005 },
+        "crit_damage": { "min": 0.30, "max": 0.50, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "mythic_battle_power_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "attack_damage": { "min": 6.0, "max": 9.0, "distribution": "uniform", "step": 0.1 },
+        "crit_chance": { "min": 0.15, "max": 0.35, "distribution": "uniform", "step": 0.005 },
+        "crit_damage": { "min": 0.40, "max": 0.75, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+
+    "broken_iron_shield_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "armor": { "min": 0.1, "max": 0.5, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.005, "max": 0.01, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "iron_shield_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "armor": { "min": 0.5, "max": 1.0, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.01, "max": 0.02, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "excellent_iron_shield_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "armor": { "min": 1.5, "max": 2.5, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.02, "max": 0.04, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "epic_iron_shield_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "armor": { "min": 2.5, "max": 3.5, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.04, "max": 0.06, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "legendary_iron_shield_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "armor": { "min": 4.0, "max": 6.0, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.06, "max": 0.09, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "mythic_iron_shield_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "armor": { "min": 6.0, "max": 8.0, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.10, "max": 0.15, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+
+    "broken_gale_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "movement_speed": { "min": 0.01, "max": 0.02, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "gale_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "movement_speed": { "min": 0.03, "max": 0.05, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "excellent_gale_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "movement_speed": { "min": 0.08, "max": 0.12, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "epic_gale_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "movement_speed": { "min": 0.12, "max": 0.18, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "legendary_gale_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "movement_speed": { "min": 0.18, "max": 0.25, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+    "mythic_gale_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "movement_speed": { "min": 0.25, "max": 0.40, "distribution": "uniform", "step": 0.001 }
+      }
+    },
+
+    "broken_good_fortune_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "luck": { "min": 0.05, "max": 0.15, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "good_fortune_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "luck": { "min": 0.25, "max": 0.50, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "excellent_good_fortune_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "luck": { "min": 0.6, "max": 1.0, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "epic_good_fortune_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "luck": { "min": 1.0, "max": 1.8, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "legendary_good_fortune_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "luck": { "min": 2.0, "max": 3.5, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "mythic_good_fortune_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "luck": { "min": 3.0, "max": 5.0, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+
+    "broken_healing_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "health_regen": { "min": 0.05, "max": 0.12, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+    "healing_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "health_regen": { "min": 0.2, "max": 0.3, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+    "excellent_healing_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "health_regen": { "min": 0.3, "max": 0.5, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+    "epic_healing_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "health_regen": { "min": 0.5, "max": 0.8, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+    "legendary_healing_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "health_regen": { "min": 0.8, "max": 1.0, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+    "mythic_healing_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "health_regen": { "min": 1.0, "max": 1.5, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+
+    "broken_sharp_edge_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "crit_chance": { "min": 0.005, "max": 0.015, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.01, "max": 0.05, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "normal_sharp_edge_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "crit_chance": { "min": 0.015, "max": 0.035, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.05, "max": 0.10, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "excellent_sharp_edge_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "crit_chance": { "min": 0.03, "max": 0.06, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.10, "max": 0.18, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "epic_sharp_edge_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "crit_chance": { "min": 0.05, "max": 0.10, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.18, "max": 0.28, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "legendary_sharp_edge_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "crit_chance": { "min": 0.08, "max": 0.14, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.28, "max": 0.40, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "mythic_sharp_edge_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "crit_chance": { "min": 0.12, "max": 0.20, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.40, "max": 0.55, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+
+    "broken_armor_breaker_ring": {
+      "rarity": "BROKEN",
+      "attributes": {
+        "armor_penetration": { "min": 0.1, "max": 0.3, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "armor_breaker_ring": {
+      "rarity": "NORMAL",
+      "attributes": {
+        "armor_penetration": { "min": 0.3, "max": 0.7, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "excellent_armor_breaker_ring": {
+      "rarity": "EXCELLENT",
+      "attributes": {
+        "armor_penetration": { "min": 0.7, "max": 1.2, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "epic_armor_breaker_ring": {
+      "rarity": "EPIC",
+      "attributes": {
+        "armor_penetration": { "min": 1.0, "max": 1.8, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "legendary_armor_breaker_ring": {
+      "rarity": "LEGENDARY",
+      "attributes": {
+        "armor_penetration": { "min": 2.0, "max": 2.5, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "mythic_armor_breaker_ring": {
+      "rarity": "MYTHIC",
+      "attributes": {
+        "armor_penetration": { "min": 2.5, "max": 4.0, "distribution": "uniform", "step": 0.1 }
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,37 @@
+{
+  "pools": [
+    {
+      "name": "accessory_mid_pool",
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        },
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 1.0
+        }
+      ],
+      "entries": [
+        { "type": "minecraft:item", "name": "evolutionary_mod:life_essence_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:battle_power_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:iron_shield_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:gale_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:good_fortune_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:healing_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:normal_sharp_edge_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:armor_breaker_ring", "weight": 20, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_life_essence_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_sharp_edge_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_iron_shield_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_gale_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_good_fortune_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_healing_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] },
+        { "type": "minecraft:item", "name": "evolutionary_mod:excellent_armor_breaker_ring", "weight": 2, "functions": [ { "function": "minecraft:set_count", "count": 1 }, { "function": "minecraft:looting_enchant", "count": { "min": 0, "max": 1 } }, { "function": "evolutionary_mod:roll_attributes" } ] }
+      ]
+    }
+  ]
+}
+
+

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "default": {
+      "model": "evolutionary_mod:block/bracelet_table"
+    }
+  }
+}
