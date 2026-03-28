@@ -103,7 +103,7 @@ public class ClientHandlers {
             Minecraft mc = Minecraft.getInstance();
             Player player = mc.player;
             if (player == null || mc.options.hideGui) return;
-            // 旁观者模式/创意模式无生命消耗，遵循原版设定隐藏血条
+            // 旁观者模式/创造模式无生命消耗，遵循原版设定隐藏血条
             if (mc.gameMode != null && mc.gameMode.getPlayerMode() == GameType.SPECTATOR) return;
 
             event.setCanceled(true);
