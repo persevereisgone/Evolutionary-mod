@@ -6,79 +6,67 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 
-import net.neoforged.neoforge.registries.DeferredHolder;
-
+import com.muyun.evolutionary_mod.EvolutionaryMod;
 import com.muyun.evolutionary_mod.item.base.GeneralAccessoryItem;
 
 /**
  * 饰品规则 - Accessory Rules
- * 
+ *
  * 定义饰品槽位的验证规则，判断物品是否可以放入指定槽位。
- * 
- * Defines validation rules for accessory slots, determining whether items can be placed in specific slots.
+ * 所有槽位判断均使用枚举直接比较，不依赖字符串匹配或反射。
  */
 public class AccessoryRules {
+
     public static boolean isValidForSlot(AccessorySlot slot, ItemStack stack) {
-        if (stack == null) return false;
-        if (stack.isEmpty()) return false;
+        if (stack == null || stack.isEmpty()) return false;
 
-        // HEAD: accept helmet armor or headwear accessories
-        if (slot == AccessorySlot.HEAD) {
-            // First check if it's a helmet armor
-            if (stack.getItem() instanceof ArmorItem armor) {
-                try {
-                    // Use reflection to support different mappings
-                    try {
-                        java.lang.reflect.Method m = ArmorItem.class.getMethod("getEquipmentSlot");
-                        Object res = m.invoke(armor);
-                        if (res instanceof EquipmentSlot) return res == EquipmentSlot.HEAD;
-                    } catch (NoSuchMethodException ignored) {}
-
-                    try {
-                        java.lang.reflect.Method m2 = ArmorItem.class.getMethod("getSlot");
-                        Object res2 = m2.invoke(armor);
-                        if (res2 instanceof EquipmentSlot) return res2 == EquipmentSlot.HEAD;
-                    } catch (NoSuchMethodException ignored) {}
-                } catch (Exception ignored) {}
-            }
-            // Also accept headwear accessories (items with "headwear" in their name)
-            ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-            if (id != null) {
-                String name = id.getPath().toLowerCase();
-                if (name.contains("headwear") && "evolutionary_mod".equals(id.getNamespace())) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // For ring/bracelet/glove/earring slots, accept items whose registry name contains matching keywords
+        // 获取注册名（仅本 Mod 物品）
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-        if (id != null) {
-            String name = id.getPath().toLowerCase();
-            if (slot.name().startsWith("BRACELET")) {
-                if (name.endsWith("_bracelet") && "evolutionary_mod".equals(id.getNamespace())) return true;
-            } else if (slot.name().startsWith("RING")) {
-                // All registered rings from this mod are valid for ring slots
-                if (name.endsWith("_ring") && "evolutionary_mod".equals(id.getNamespace())) return true;
-            } else if (slot.name().startsWith("GLOVE")) {
-                if ((name.contains("glove") || name.contains("gauntlet")) && "evolutionary_mod".equals(id.getNamespace())) return true;
-            } else if (slot.name().startsWith("EARRING")) {
-                if (name.contains("earring") && "evolutionary_mod".equals(id.getNamespace())) return true;
-            } else if (slot.name().startsWith("BOOT")) {
-                if ((name.contains("shoe") || name.contains("boot")) && "evolutionary_mod".equals(id.getNamespace())) return true;
-            } else if (slot.name().startsWith("ACCESSORY")) {
-                // 配饰槽位只接受类型为配饰的物品
-                if (stack.getItem() instanceof GeneralAccessoryItem) return true;
-            } else {
-                // for other unique slots, accept if name contains slot id
-                if (name.contains("necklace") && slot == AccessorySlot.NECKLACE && "evolutionary_mod".equals(id.getNamespace())) return true;
-                if (name.contains("belt") && slot == AccessorySlot.BELT && "evolutionary_mod".equals(id.getNamespace())) return true;
-            }
-        }
+        boolean isOurMod = id != null && EvolutionaryMod.MODID.equals(id.getNamespace());
+        String path = isOurMod ? id.getPath() : "";
 
-        // No fallback - strict type matching only
-        return false;
+        return switch (slot) {
+            // ---- 头饰槽 ----
+            // 接受本 Mod 含 "headwear" 的饰品，或原版头盔（EquipmentSlot.HEAD）
+            case HEAD -> {
+                if (isOurMod && path.contains("headwear")) yield true;
+                if (stack.getItem() instanceof ArmorItem armor) {
+                    yield armor.getEquipmentSlot() == EquipmentSlot.HEAD;
+                }
+                yield false;
+            }
+
+            // ---- 戒指槽（4个）----
+            case RING_1, RING_2, RING_3, RING_4 ->
+                    isOurMod && path.endsWith("_ring");
+
+            // ---- 手镯槽（2个）----
+            case BRACELET_1, BRACELET_2 ->
+                    isOurMod && path.endsWith("_bracelet");
+
+            // ---- 耳环槽（2个）----
+            case EARRING_1, EARRING_2 ->
+                    isOurMod && path.contains("earring");
+
+            // ---- 手套槽（2个）----
+            case GLOVE_1, GLOVE_2 ->
+                    isOurMod && (path.contains("glove") || path.contains("gauntlet"));
+
+            // ---- 靴子槽（2个）----
+            case BOOT_1, BOOT_2 ->
+                    isOurMod && (path.contains("boot") || path.contains("shoe") || path.contains("anklet"));
+
+            // ---- 项链槽 ----
+            case NECKLACE ->
+                    isOurMod && path.contains("necklace");
+
+            // ---- 腰带槽 ----
+            case BELT ->
+                    isOurMod && path.contains("belt");
+
+            // ---- 配饰槽（3个）----
+            case ACCESSORY_1, ACCESSORY_2, ACCESSORY_3 ->
+                    stack.getItem() instanceof GeneralAccessoryItem;
+        };
     }
 }
-

@@ -183,5 +183,20 @@
   "Block.evolutionary_mod.accessories_table": "饰品锻造台",
   "Block.evolutionary_mod.accessories_table.description": "使用饰品锻造台可以锻造饰品，消耗对应材料。",
   "screen.accessories.title": "饰品栏",
-  "screen.evolutionary_mod.player_attributes": "属性面板"
+  "screen.evolutionary_mod.player_attributes": "属性面板",
+
+  "entity.evolutionary_mod.cinder_skeleton": "烬焰骷髅",
+  "entity.evolutionary_mod.thunder_spider": "雷霆蜘蛛",
+  "entity.evolutionary_mod.shadow_stalker": "暗影潜行者",
+  "entity.evolutionary_mod.frost_ghoul": "冰霜尸鬼",
+  "entity.evolutionary_mod.ironclad_warrior": "土甲战士",
+  "entity.evolutionary_mod.lava_shooter": "熔岩射手",
+  "entity.evolutionary_mod.storm_mage": "雷云术士",
+  "entity.evolutionary_mod.abyss_lurker": "深渊潜伏者",
+  "entity.evolutionary_mod.holy_knight": "圣焰骑士",
+  "entity.evolutionary_mod.chaos_shifter": "混沌变形体",
+  "entity.evolutionary_mod.time_warper": "时间扭曲者",
+  "entity.evolutionary_mod.soul_necromancer": "亡魂法师",
+  "entity.evolutionary_mod.earth_guardian": "大地守卫",
+  "entity.evolutionary_mod.wind_blade_hunter": "风刃猎手"
 }

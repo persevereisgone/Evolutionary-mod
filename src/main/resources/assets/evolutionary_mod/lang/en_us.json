@@ -182,8 +182,11 @@
   "Block.evolutionary_mod.accessories_table": "Accessories Table",
   "Block.evolutionary_mod.accessories_table.description": "Use the Accessories Table to craft accessories using the required materials.",
   "screen.accessories.title": "Accessories",
-  "screen.evolutionary_mod.player_attributes": "Attributes Panel"
+  "screen.evolutionary_mod.player_attributes": "Attributes Panel",
 
-
-
+  "entity.evolutionary_mod.cinder_skeleton": "Cinder Skeleton",
+  "entity.evolutionary_mod.thunder_spider": "Thunder Spider",
+  "entity.evolutionary_mod.shadow_stalker": "Shadow Stalker",
+  "entity.evolutionary_mod.frost_ghoul": "Frost Ghoul",
+  "entity.evolutionary_mod.ironclad_warrior": "Ironclad Warrior"
 }

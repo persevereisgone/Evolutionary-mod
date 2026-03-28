@@ -1,28 +1,39 @@
 package com.muyun.evolutionary_mod.client;
 
+import com.muyun.evolutionary_mod.EvolutionaryMod;
+import com.muyun.evolutionary_mod.network.AccessoryOpenMenuC2SPayload;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.InputEvent;
-
-import com.muyun.evolutionary_mod.EvolutionaryMod;
-import com.muyun.evolutionary_mod.ModMenus;
-import com.muyun.evolutionary_mod.capability.PlayerAccessories;
-import com.muyun.evolutionary_mod.menu.AccessoryMenu;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
- * 客户端输入事件（旧实现占位）
+ * 客户端输入事件 - Client Input Events
  *
- * 原本这里通过 ClientTick 事件轮询按键状态并发送网络包。
- * 目前键位注册和界面打开逻辑主要集中在 ClientHandlers / EvolutionaryModClient 中，
- * 为避免依赖 NeoForge 1.21.1 中尚未完全确认的 TickEvent 客户端事件签名，
- * 暂时移除旧实现，只保留空类占位。
+ * NeoForge 1.21.1:
+ * - TickEvent.ClientTickEvent (Phase.END) -> ClientTickEvent.Post
+ * - NetworkHandler.CHANNEL.sendToServer() -> PacketDistributor.sendToServer()
  */
+@EventBusSubscriber(modid = EvolutionaryMod.MODID, value = Dist.CLIENT)
 public class ClientInputEvents {
-    // TODO: 如果未来需要在客户端 tick 中做额外逻辑，可按新事件 API 单独添加。
+
+    @SubscribeEvent
+    public static void onClientTickPost(ClientTickEvent.Post event) {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null) return;
+
+        // 打开饰品容器界面
+        if (ClientHandlers.OPEN_ACCESSORIES != null && ClientHandlers.OPEN_ACCESSORIES.consumeClick()) {
+            PacketDistributor.sendToServer(new AccessoryOpenMenuC2SPayload());
+        }
+
+        // 打开玩家属性面板（纯客户端界面）
+        if (ClientHandlers.OPEN_PLAYER_ATTRIBUTES != null && ClientHandlers.OPEN_PLAYER_ATTRIBUTES.consumeClick()) {
+            mc.setScreen(new PlayerAttributesScreen());
+        }
+    }
 }

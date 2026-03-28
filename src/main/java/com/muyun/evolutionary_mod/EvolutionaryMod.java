@@ -3,135 +3,152 @@ package com.muyun.evolutionary_mod;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
+import com.mojang.serialization.MapCodec;
 import com.muyun.evolutionary_mod.block.ModBlocks;
-import com.muyun.evolutionary_mod.common.LootTableInjector;
+import com.muyun.evolutionary_mod.entity.ModEntities;
+import com.muyun.evolutionary_mod.capability.PlayerAccessories;
+import com.muyun.evolutionary_mod.item.base.AccessoryAttributes;
 import com.muyun.evolutionary_mod.item.registry.ModItems;
 import com.muyun.evolutionary_mod.item.tabs.ModCreativeModelTabs;
+import com.muyun.evolutionary_mod.loot.AccessoryGlobalLootModifier;
+import com.muyun.evolutionary_mod.network.NetworkHandler;
+import com.muyun.evolutionary_mod.system.effects.AnkletEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.BeltEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.BraceletEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.EarringEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.GloveEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.HeadwearEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.NecklaceEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.RingEffectsHandler;
+import com.muyun.evolutionary_mod.system.effects.ShoulderEffectsHandler;
 import com.muyun.evolutionary_mod.system.sets.SetSystem;
 
+import java.util.function.Supplier;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(EvolutionaryMod.MODID)
 public class EvolutionaryMod {
-    // Define mod id in a common place for everything to reference
+
     public static final String MODID = "evolutionary_mod";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "evolutionary_mod" namespace
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "evolutionary_mod" namespace
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "evolutionary_mod" namespace
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Creates a new Block with the id "evolutionary_mod:example_block", combining the namespace and path
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "evolutionary_mod:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
+    // -----------------------------------------------------------------------
+    // AttachmentType 注册（替代旧版 Capability）
+    // -----------------------------------------------------------------------
+    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
+            DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, MODID);
 
-    // Creates a new food item with the id "evolutionary_mod:example_id", nutrition 1 and saturation 2
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", new Item.Properties().food(new FoodProperties.Builder()
-            .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
+    /**
+     * 玩家饰品数据 Attachment。
+     * 使用 serializable() 确保数据持久化到玩家 NBT 中（跨存档保留）。
+     */
+    public static final Supplier<AttachmentType<PlayerAccessories>> PLAYER_ACCESSORIES =
+            ATTACHMENT_TYPES.register("player_accessories",
+                    () -> AttachmentType.serializable(PlayerAccessories::new).build());
 
-    // Creates a creative tab with the id "evolutionary_mod:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.evolutionary_mod")) //The language key for the title of your CreativeModeTab
-            .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
-            .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
-            }).build());
+    // -----------------------------------------------------------------------
+    // DataComponentType 注册（替代旧版 ItemStack NBT）
+    // -----------------------------------------------------------------------
+    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS =
+            DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, MODID);
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
+    /**
+     * 饰品随机词条 DataComponent。
+     * 存储掉落时随机滚动的属性值，持久化到 ItemStack 的 DataComponents 中。
+     */
+    public static final Supplier<DataComponentType<AccessoryAttributes>> ACCESSORY_ATTRIBUTES =
+            DATA_COMPONENTS.register("accessory_attributes",
+                    () -> DataComponentType.<AccessoryAttributes>builder()
+                            .persistent(AccessoryAttributes.CODEC)
+                            .networkSynchronized(AccessoryAttributes.STREAM_CODEC)
+                            .build());
+
+    // -----------------------------------------------------------------------
+    // GlobalLootModifierSerializer 注册
+    // -----------------------------------------------------------------------
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
+            DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MODID);
+
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<AccessoryGlobalLootModifier>>
+            ACCESSORY_DROPS_MODIFIER = LOOT_MODIFIER_SERIALIZERS.register(
+                    "accessory_drops", () -> AccessoryGlobalLootModifier.CODEC);
+
+    // -----------------------------------------------------------------------
+    // 其他 DeferredRegister
+    // -----------------------------------------------------------------------
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+
+    // -----------------------------------------------------------------------
+    // 构造函数
+    // -----------------------------------------------------------------------
     public EvolutionaryMod(IEventBus modEventBus, ModContainer modContainer) {
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
+        // 注册 AttachmentType
+        ATTACHMENT_TYPES.register(modEventBus);
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
-        BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
-        ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
-        CREATIVE_MODE_TABS.register(modEventBus);
+        // 注册 DataComponentType
+        DATA_COMPONENTS.register(modEventBus);
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (EvolutionaryMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
+        // 注册 GlobalLootModifierSerializer
+        LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
+
+        // 注册网络 Payload
+        modEventBus.addListener(NetworkHandler::registerPayloads);
+
+        // 注册各子系统
         ModItems.register(modEventBus);
         ModCreativeModelTabs.register(modEventBus);
-        //ModMenus.register(modEventBus);
+        ModMenus.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
+        CREATIVE_MODE_TABS.register(modEventBus);
 
-        // 手动触发 LootTableInjector 类的加载，确保 @EventBusSubscriber 注解生效
-        // 通过引用类来触发静态初始化块的执行
-        Class<?> lootInjectorClass = LootTableInjector.class;
-        LOGGER.info("已触发 LootTableInjector 类加载: {}", lootInjectorClass.getName());
+        // 注册通用 Setup
+        modEventBus.addListener(this::commonSetup);
 
+        // 注册 NeoForge 游戏事件总线
+        NeoForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
+        // 注册 Mod 配置
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // initialize set system
         SetSystem.initialize();
-        
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
 
-        if (Config.logDirtBlock) {
-            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-        }
+        // 强制触发所有效果处理器单例初始化，确保 handlers 列表在登录前已填充
+        RingEffectsHandler.getInstance();
+        NecklaceEffectsHandler.getInstance();
+        BraceletEffectsHandler.getInstance();
+        EarringEffectsHandler.getInstance();
+        HeadwearEffectsHandler.getInstance();
+        BeltEffectsHandler.getInstance();
+        GloveEffectsHandler.getInstance();
+        ShoulderEffectsHandler.getInstance();
+        AnkletEffectsHandler.getInstance();
 
-        LOGGER.info("{}{}", Config.magicNumberIntroduction, Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item));
+        LOGGER.info("[EvolutionaryMod] Common setup complete.");
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
-        }
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("[EvolutionaryMod] Server starting.");
     }
 }

@@ -12,10 +12,12 @@ import net.minecraft.world.item.ItemStack;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import com.muyun.evolutionary_mod.capability.PlayerAccessories;
 import com.muyun.evolutionary_mod.core.AccessorySlot;
+import com.muyun.evolutionary_mod.system.effects.AccessoryEffectCalculator;
 import com.muyun.evolutionary_mod.system.effects.AnkletEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.BeltEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.BraceletEffectsHandler;
@@ -79,8 +81,9 @@ public class AccessoryAttributeHandler {
      */
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        Player player = event.getEntity();
-        applyAllAccessoryEffects(player);
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        // 延迟到下一 tick 执行，确保 Attachment 数据已从 NBT 反序列化完毕
+        serverPlayer.getServer().execute(() -> applyAllAccessoryEffects(serverPlayer));
     }
 
     /**
@@ -88,15 +91,16 @@ public class AccessoryAttributeHandler {
      */
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
-        Player player = event.getEntity();
-        applyAllAccessoryEffects(player);
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        serverPlayer.getServer().execute(() -> applyAllAccessoryEffects(serverPlayer));
     }
 
     /**
      * 应用所有已装备饰品的属性效果 - Apply all equipped accessory effects
      */
     private static void applyAllAccessoryEffects(Player player) {
-
+        if (player.level().isClientSide) return;
+        AccessoryEffectCalculator.calculateAndApplyAllEffects(player);
     }
 
     /**

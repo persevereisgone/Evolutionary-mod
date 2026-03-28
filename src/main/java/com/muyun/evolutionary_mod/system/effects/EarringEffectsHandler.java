@@ -2,192 +2,100 @@ package com.muyun.evolutionary_mod.system.effects;
 
 import com.muyun.evolutionary_mod.capability.PlayerAccessories;
 import com.muyun.evolutionary_mod.core.AccessorySlot;
-import com.muyun.evolutionary_mod.item.sets.DragonItems;
-import com.muyun.evolutionary_mod.system.combat.CritSystem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import com.muyun.evolutionary_mod.item.base.AccessoryAttributes;
 
 /**
  * 耳环饰品特效处理器 - Earring Accessory Effects Handler
- * 继承自基础饰品效果处理器，减少重复代码
  */
 public class EarringEffectsHandler extends AbstractAccessoryEffectHandler<EarringEffectsHandler.EarringEffect> {
 
-    // 使用 ResourceLocation 代替 UUID 来标识属性修饰符
-    private static final ResourceLocation EARRING_MAX_HEALTH_ID = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_max_health");
-    private static final ResourceLocation EARRING_ATTACK_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_attack_damage");
+    private static final ResourceLocation EARRING_MAX_HEALTH_ID     = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_max_health");
+    private static final ResourceLocation EARRING_ATTACK_DAMAGE_ID  = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_attack_damage");
     private static final ResourceLocation EARRING_MOVEMENT_SPEED_ID = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_movement_speed");
-    private static final ResourceLocation EARRING_LUCK_ID = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_luck");
-    
-    // 单例实例
+    private static final ResourceLocation EARRING_LUCK_ID           = ResourceLocation.fromNamespaceAndPath("evolutionary_mod", "earring_luck");
+
     private static final EarringEffectsHandler INSTANCE = new EarringEffectsHandler();
-    
-    /**
-     * 获取单例实例
-     * @return 耳环效果处理器实例
-     */
-    public static EarringEffectsHandler getInstance() {
-        return INSTANCE;
-    }
-    
-    /**
-     * 私有构造函数
-     */
+    public static EarringEffectsHandler getInstance() { return INSTANCE; }
+
     private EarringEffectsHandler() {
-        // 注册耳环效果
-        registerEarringEffects();
-        // 注册到效果计算器
         AccessoryEffectCalculator.registerHandler(this);
     }
-    
-    /**
-     * 注册耳环效果
-     */
-    private void registerEarringEffects() {
-        // 龙族套装 - Dragon Set
-        // 龙族耳环：幸运+3，生命恢复+0.8/秒，生命+10，暴击率+3%
-        registerEffect(DragonItems.DRAGON_EARRING.get(), createEffect()
-            .luck(3)
-            .healthRegen(0.04) // 每秒恢复0.8点 (0.8/20)
-            .maxHealth(10));
 
-        // 龙族耳环：暴击率+3%
-        CritSystem.registerCritStats(DragonItems.DRAGON_EARRING.get(), new CritSystem.CritStats()
-            .critChance(0.03));
-    }
-    
-    @Override
-    protected String getSlotPrefix() {
-        return "EARRING";
-    }
-    
-    @Override
-    protected EarringEffect createEffect() {
-        return new EarringEffect();
-    }
-    
+    @Override protected String getSlotPrefix() { return "EARRING"; }
+    @Override protected EarringEffect createEffect() { return new EarringEffect(); }
+
     @Override
     protected void calculateAndApplyEffects(Player player, PlayerAccessories cap) {
-        // 计算所有耳环的总效果
-        double totalMaxHealth = 0;
-        double totalAttackDamage = 0;
-        double totalMovementSpeed = 0;
-        double totalLuck = 0;
-        
+        double totalMaxHealth = 0, totalAttackDamage = 0, totalMovementSpeed = 0, totalLuck = 0;
         for (AccessorySlot slot : AccessorySlot.values()) {
-            if (slot.name().startsWith("EARRING")) {
-                ItemStack stack = cap.getStack(slot);
-                if (!stack.isEmpty()) {
-                    // 如果耳环有随机属性，跳过默认效果
-
-                }
+            if (!slot.name().startsWith("EARRING")) continue;
+            ItemStack stack = cap.getStack(slot);
+            if (stack.isEmpty()) continue;
+            // 仅叠加随机词条
+            AccessoryAttributes rolled = getRolledAttributes(stack);
+            if (!rolled.isEmpty()) {
+                totalMaxHealth     += rolled.maxHealth();
+                totalAttackDamage  += rolled.attackDamage();
+                totalMovementSpeed += rolled.movementSpeed();
+                totalLuck          += rolled.luck();
             }
         }
-        
-        // 应用生命值修饰符
-        if (totalMaxHealth > 0) {
-
-        }
-
-        // 应用攻击伤害修饰符
-        if (totalAttackDamage > 0) {
-
-        }
-
-        // 应用移动速度修饰符
-        if (totalMovementSpeed > 0) {
-
-        }
-
-        // 应用幸运修饰符
-        if (totalLuck > 0) {
-
-        }
+        float currentHealth = player.getHealth();
+        applyMod(player, Attributes.MAX_HEALTH,     EARRING_MAX_HEALTH_ID,     totalMaxHealth,     AttributeModifier.Operation.ADD_VALUE);
+        applyMod(player, Attributes.ATTACK_DAMAGE,  EARRING_ATTACK_DAMAGE_ID,  totalAttackDamage,  AttributeModifier.Operation.ADD_VALUE);
+        applyMod(player, Attributes.MOVEMENT_SPEED, EARRING_MOVEMENT_SPEED_ID, totalMovementSpeed, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        applyMod(player, Attributes.LUCK,           EARRING_LUCK_ID,           totalLuck,          AttributeModifier.Operation.ADD_VALUE);
+        if (currentHealth < player.getMaxHealth()) player.setHealth(Math.min(currentHealth, player.getMaxHealth()));
     }
-    
+
+    private static void applyMod(Player player, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attr,
+                                  ResourceLocation id, double value, AttributeModifier.Operation op) {
+        AttributeInstance inst = player.getAttribute(attr);
+        if (inst == null) return;
+        inst.removeModifier(id);
+        if (value != 0) inst.addTransientModifier(new AttributeModifier(id, value, op));
+    }
+
     @Override
     protected void resetModifiersWithoutHealthAdjust(Player player) {
-        // 重置生命值修饰符
         AttributeInstance maxHealth = player.getAttribute(Attributes.MAX_HEALTH);
-        if (maxHealth != null && maxHealth.getModifier(EARRING_MAX_HEALTH_ID) != null) {
-            maxHealth.removeModifier(EARRING_MAX_HEALTH_ID);
-        }
-
-        // 重置攻击伤害修饰符
+        if (maxHealth != null) maxHealth.removeModifier(EARRING_MAX_HEALTH_ID);
         AttributeInstance attackDamage = player.getAttribute(Attributes.ATTACK_DAMAGE);
-        if (attackDamage != null && attackDamage.getModifier(EARRING_ATTACK_DAMAGE_ID) != null) {
-            attackDamage.removeModifier(EARRING_ATTACK_DAMAGE_ID);
-        }
-
-        // 重置移动速度修饰符
+        if (attackDamage != null) attackDamage.removeModifier(EARRING_ATTACK_DAMAGE_ID);
         AttributeInstance moveSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
-        if (moveSpeed != null && moveSpeed.getModifier(EARRING_MOVEMENT_SPEED_ID) != null) {
-            moveSpeed.removeModifier(EARRING_MOVEMENT_SPEED_ID);
-        }
-
-        // 重置幸运修饰符
+        if (moveSpeed != null) moveSpeed.removeModifier(EARRING_MOVEMENT_SPEED_ID);
         AttributeInstance luck = player.getAttribute(Attributes.LUCK);
-        if (luck != null && luck.getModifier(EARRING_LUCK_ID) != null) {
-            luck.removeModifier(EARRING_LUCK_ID);
-        }
+        if (luck != null) luck.removeModifier(EARRING_LUCK_ID);
     }
-    
+
     @Override
     protected void handlePerTickEffects(Player player, PlayerAccessories cap) {
-        // 处理生命恢复效果
         double totalHealthRegen = 0;
-
         for (AccessorySlot slot : AccessorySlot.values()) {
-            if (slot.name().startsWith("EARRING")) {
-                ItemStack stack = cap.getStack(slot);
-                if (!stack.isEmpty()) {
-                    // 如果耳环有随机属性，跳过默认效果
-
-                            // 优先从NBT读取随机属性值
-
-
-                }
-            }
+            if (!slot.name().startsWith("EARRING")) continue;
+            ItemStack stack = cap.getStack(slot);
+            if (stack.isEmpty()) continue;
+            totalHealthRegen += getRolledAttributes(stack).healthRegen();
         }
-
-        // 应用生命恢复效果
-        if (totalHealthRegen > 0) {
-            float currentHealth = player.getHealth();
-            float maxHealth = player.getMaxHealth();
-            if (currentHealth < maxHealth) {
-                player.heal((float)totalHealthRegen);
-            }
+        if (totalHealthRegen > 0 && player.getHealth() < player.getMaxHealth()) {
+            player.heal((float) totalHealthRegen);
         }
     }
-    
-    /**
-     * 耳环效果数据类
-     */
+
     public static class EarringEffect {
-        public double maxHealth = 0;
-        public double attackDamage = 0;
-        public double movementSpeed = 0;
-        public double luck = 0;
-        public double healthRegen = 0; // per tick (每秒值需要除以20)
+        public double maxHealth = 0, attackDamage = 0, movementSpeed = 0, luck = 0, healthRegen = 0;
+        public EarringEffect maxHealth(double v)     { maxHealth = v;     return this; }
+        public EarringEffect attackDamage(double v)  { attackDamage = v;  return this; }
+        public EarringEffect movementSpeed(double v) { movementSpeed = v; return this; }
+        public EarringEffect luck(double v)          { luck = v;          return this; }
+        public EarringEffect healthRegen(double v)   { healthRegen = v;   return this; }
+    }
 
-        public EarringEffect maxHealth(double value) { this.maxHealth = value; return this; }
-        public EarringEffect attackDamage(double value) { this.attackDamage = value; return this; }
-        public EarringEffect movementSpeed(double value) { this.movementSpeed = value; return this; }
-        public EarringEffect luck(double value) { this.luck = value; return this; }
-        public EarringEffect healthRegen(double value) { this.healthRegen = value; return this; }
-    }
-    
-    /**
-     * 应用耳环效果（静态方法，兼容旧代码）
-     * @param player 玩家
-     */
-    public static void applyEarringEffects(Player player) {
-        getInstance().applyEffects(player);
-    }
+    public static void applyEarringEffects(Player player) { getInstance().applyEffects(player); }
 }
