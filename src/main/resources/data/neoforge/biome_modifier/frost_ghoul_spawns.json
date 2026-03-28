@@ -1,0 +1,17 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "#minecraft:is_overworld",
+    "#minecraft:is_mountain",
+    "#minecraft:is_ocean"
+  ],
+  "spawners": [
+    {
+      "type": "evolutionary_mod:frost_ghoul",
+      "weight": 8,
+      "minCount": 1,
+      "maxCount": 2
+    }
+  ]
+}
+

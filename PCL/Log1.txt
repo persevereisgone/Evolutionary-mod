@@ -1,0 +1,278 @@
+[20:37:55.814] <主线程> [Start] 程序版本：Release 2.12.3 (383)
+[20:37:55.818] <主线程> [Start] 识别码：D24A-90FB-45D3-309D，已解锁反馈主题
+[20:37:55.818] <主线程> [Start] 程序路径：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\Plain Craft Launcher 2.exe
+[20:37:55.818] <主线程> [Start] 系统编码：gb2312 (936, GBK=True)
+[20:37:55.818] <主线程> [Start] 管理员权限：False
+[20:37:55.841] <主线程> [Start] 第一阶段加载用时：290 ms
+[20:37:56.653] <主线程> [Start] 全新的 PCL，使用新的版本隔离默认值
+[20:37:56.678] <主线程> [UI] 刷新主题：0
+[20:37:56.802] <主线程> [Loader] 加载器 Minecraft Folder List 状态改变：Loading
+[20:37:56.802] <主线程> [Start] 第二阶段加载用时：871 ms
+[20:37:56.820] <L/Minecraft Folder List> [Minecraft] 已创建 launcher_profiles.json：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\.minecraft\
+[20:37:56.820] <L/Minecraft Folder List> [Loader] 加载器 Minecraft Folder List 状态改变：Finished
+[20:37:57.995] <主线程> [System] 窗口已置顶，位置：(510, 241), 900 x 550
+[20:37:58.001] <Animation> [Animation] 动画线程开始
+[20:37:58.001] <主线程> [Start] 第三阶段加载用时：164 ms
+[20:37:58.002] <初始化> [Start] 加载 DLL：Newtonsoft.Json
+[20:37:58.003] <初始化> [System] 获取资源：Newtonsoft.Json
+[20:37:58.019] <Version Check> [Launch] 没有已储存的 Minecraft 文件夹
+[20:37:58.019] <Version Check> [Loader] 加载器 Minecraft Folder List 状态改变：Loading
+[20:37:58.020] <L/Minecraft Folder List> [Loader] 加载器 Minecraft Folder List 状态改变：Finished
+[20:37:58.037] <Version Check> [Setup] 当前选择的 Minecraft 文件夹：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\.minecraft\
+[20:37:58.037] <Version Check> [Launch] Minecraft 文件夹：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\.minecraft\
+[20:37:58.037] <Version Check> [Launch] 当前选择的 Minecraft 版本无效：null
+[20:37:58.044] <Version Check> [Loader] 加载器 Minecraft Instance List 状态改变：Loading
+[20:37:58.058] <L/Minecraft Instance List> [Setup] 当前选择的 Minecraft 版本：
+[20:37:58.059] <L/Minecraft Instance List> [Minecraft] 未找到可用 Minecraft 版本
+[20:37:58.059] <L/Minecraft Instance List> [Loader] 加载器 Minecraft Instance List 状态改变：Finished
+[20:37:58.068] <Version Check> [Launch] 无可用 Minecraft 版本
+[20:37:58.124] <初始化> [Java] 缓存中有 8 个可用的 Java：
+[20:37:58.125] <初始化> [Java]  - JDK 21 (21.0.6)：E:\Release 2.3.0\graalvm JDK\graalvm-jdk-21_windows-x64_bin\graalvm-jdk-21.0.6+8.1\bin\
+[20:37:58.125] <初始化> [Java]  - JRE 8 (8.0.51)：C:\Users\*************\AppData\Roaming\.minecraft\runtime\jre-legacy\bin\
+[20:37:58.200] <初始化> [Java]  - JRE 8 (8.0.421)：C:\Program Files\Java\jre1.8.0_421\bin\
+[20:37:58.200] <初始化> [Java]  - JRE 8 (8.0.421)：C:\Program Files\Java\jdk-1.8\jre\bin\
+[20:37:58.200] <初始化> [Java]  - JDK 17 (17.0.12)：C:\Program Files\Java\jdk-17\bin\
+[20:37:58.200] <初始化> [Java]  - JDK 8 (8.0.421)：C:\Program Files\Java\jdk-1.8\bin\
+[20:37:58.200] <初始化> [Java]  - JDK 21 (21.0.4)：C:\Program Files\Java\jdk-21\bin\
+[20:37:58.200] <初始化> [Java]  - JDK 23 (23.0.0)：C:\Program Files\Java\jdk-23\bin\
+[20:37:58.210] <主线程> [Loader] 加载器 Loader Skin Ms 状态改变：Loading
+[20:37:58.217] <L/Loader Skin Ms> [Loader] 加载器 Loader Skin Ms 状态改变：Finished
+[20:37:58.253] <主线程> [Page] 实例化：清空主页 UI，来源为空
+[20:37:58.254] <主线程> [Minecraft] 启动按钮：无 Minecraft 版本，要求下载
+[20:37:58.257] <主线程> [Loader] 加载器 登录 状态改变：Loading
+[20:37:58.259] <L/登录> [Launch] 登录加载已开始
+[20:37:58.260] <L/登录> [Loader] 加载器 Loader Login Ms 状态改变：Loading
+[20:37:58.262] <L/Loader Login Ms> [Launch] 登录方式：正版（Generalyy）
+[20:37:58.263] <L/Loader Login Ms> [Launch] 开始微软登录步骤 1/6（刷新登录）
+[20:37:58.269] <主线程> [Net] 发起网络请求（POST，https://login.live.com/oauth20_token.srf），最大超时 25000
+[20:37:58.271] <主线程> [Start] 加载 DLL：CacheCow.Client.FileStore
+[20:37:58.271] <主线程> [System] 获取资源：CacheCow.Client.FileStore
+[20:37:58.272] <主线程> [Start] 加载 DLL：CacheCow.Common
+[20:37:58.272] <主线程> [System] 获取资源：CacheCow.Common
+[20:37:58.273] <主线程> [Start] 加载 DLL：CacheCow.Client
+[20:37:58.273] <主线程> [System] 获取资源：CacheCow.Client
+[20:37:58.277] <主线程> [Skin] 载入头像成功：Loader Skin Ms
+[20:37:58.277] <主线程> [Animation] 两个动画帧间隔 261 ms
+[20:37:58.315] <初始化> [Loader] 加载器 DlClientList Mojang 状态改变：Loading
+[20:37:58.316] <初始化> [Loader] 加载器 PCL 配置更新 状态改变：Loading
+[20:37:58.317] <TryClearTaskTemp> [System] 开始清理任务缓存文件夹
+[20:37:58.319] <TryClearTaskTemp> [System] 已清理任务缓存文件夹
+[20:37:58.319] <Telemetry> [System] 匿名数据上报：启动
+[20:37:58.321] <L/DlClientList Mojang> [Net] 发起网络请求（GET，https://launchermeta.mojang.com/mc/game/version_manifest.json），最大超时 10000
+[20:37:58.342] <L/PCL 配置更新> [Server] 已读取本地缓存的配置：29
+[20:37:58.343] <L/PCL 配置更新> [Net] 发起网络请求（GET，https://pcl2-server-1253424809.file.myqcloud.com/notice.cfg{CDN}），最大超时 10000
+[20:37:58.530] <主线程> [Net] 发起网络请求（POST，https://login.live.com/oauth20_token.srf），最大超时 25000
+[20:37:58.718] <主线程> [System] DPI：96，系统版本：Microsoft Windows NT 10.0.22621.0，PCL 位置：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\Plain Craft Launcher 2.exe
+[20:37:58.754] <L/PCL 配置更新> [Server] 本地公告编号：203，服务器公告：203|385|383|5|23，无需更新
+[20:37:58.761] <L/PCL 配置更新> [Loader] 加载器 PCL 配置更新 状态改变：Finished
+[20:37:59.256] <L/Loader Login Ms> [Launch] 开始微软登录步骤 2/6
+[20:37:59.256] <主线程> [Net] 发起网络请求（POST，https://user.auth.xboxlive.com/user/authenticate），最大超时 25000
+[20:37:59.270] <主线程> [Start] 加载 DLL：System.Net.Http.Formatting
+[20:37:59.270] <主线程> [System] 获取资源：System.Net.Http.Formatting
+[20:37:59.517] <主线程> [Net] 发起网络请求（POST，https://user.auth.xboxlive.com/user/authenticate），最大超时 25000
+[20:37:59.966] <L/DlClientList Mojang> [Download] Mojang 官方源加载耗时：1646ms，可优先使用官方源
+[20:37:59.970] <L/DlClientList Mojang> [Loader] 加载器 DlClientList Mojang 状态改变：Finished
+[20:38:00.027] <L/Loader Login Ms> [Launch] 开始微软登录步骤 3/6
+[20:38:00.027] <主线程> [Net] 发起网络请求（POST，https://xsts.auth.xboxlive.com/xsts/authorize），最大超时 25000
+[20:38:00.289] <主线程> [Net] 发起网络请求（POST，https://xsts.auth.xboxlive.com/xsts/authorize），最大超时 25000
+[20:38:00.761] <主线程> [Control] 按下单选按钮：下载
+[20:38:00.799] <主线程> [Net] 发起网络请求（POST，https://xsts.auth.xboxlive.com/xsts/authorize），最大超时 25000
+[20:38:00.932] <主线程> [Loader] 加载器 DlClientList Main 状态改变：Loading
+[20:38:00.942] <L/DlClientList Main> [Loader] 加载器 DlClientList Mojang 状态改变：Loading
+[20:38:00.942] <L/DlClientList Mojang> [Net] 发起网络请求（GET，https://launchermeta.mojang.com/mc/game/version_manifest.json），最大超时 10000
+[20:38:00.945] <主线程> [Control] 切换主要页面：Download, -1
+[20:38:00.955] <主线程> [Animation] 两个动画帧间隔 185 ms
+[20:38:00.981] <主线程> [Loader] 加载器 DlOptiFineList Main 状态改变：Loading
+[20:38:00.984] <主线程> [Loader] 加载器 DlLiteLoaderList Main 状态改变：Loading
+[20:38:00.998] <主线程> [Loader] 加载器 DlFabricList Main 状态改变：Loading
+[20:38:01.000] <L/DlOptiFineList Main> [Loader] 加载器 DlOptiFineList Official 状态改变：Loading
+[20:38:01.001] <主线程> [Loader] 加载器 DlNeoForgeList Main 状态改变：Loading
+[20:38:01.002] <L/DlClientList Mojang> [Loader] 加载器 DlClientList Mojang 状态改变：Finished
+[20:38:01.002] <L/DlLiteLoaderList Main> [Loader] 加载器 DlLiteLoaderList Official 状态改变：Loading
+[20:38:01.004] <L/DlOptiFineList Official> [Net] 发起网络请求（GET，https://optifine.net/downloads），最大超时 10000
+[20:38:01.005] <L/DlLiteLoaderList Official> [Net] 发起网络请求（GET，https://dl.liteloader.com/versions/versions.json），最大超时 10000
+[20:38:01.005] <L/DlFabricList Main> [Loader] 加载器 DlFabricList Official 状态改变：Loading
+[20:38:01.006] <L/DlFabricList Official> [Net] 发起网络请求（GET，https://meta.fabricmc.net/v2/versions），最大超时 10000
+[20:38:01.006] <L/DlNeoForgeList Main> [Loader] 加载器 DlNeoForgeList Official 状态改变：Loading
+[20:38:01.007] <L/DlNeoForgeList Official> [Net] 发起网络请求（GET，https://maven.neoforged.net/api/maven/versions/releases/net/neoforged/neoforge），最大超时 10000
+[20:38:01.014] <ForgeRecommendedRefresh> [Download] 刷新 Forge 推荐版本缓存开始
+[20:38:01.014] <ForgeRecommendedRefresh> [Net] 发起网络请求（GET，https://bmclapi2.bangbang93.com/forge/promos），最大超时 10000
+[20:38:01.108] <L/DlClientList Main> [Loader] 加载器 DlClientList Main 状态改变：Finished
+[20:38:01.253] <ForgeRecommendedRefresh> [Download] 刷新 Forge 推荐版本缓存成功
+[20:38:01.560] <L/Loader Login Ms> [Launch] 开始微软登录步骤 4/6
+[20:38:01.579] <L/Loader Login Ms> [Net] 发起网络请求（POST，https://api.minecraftservices.com/authentication/login_with_xbox），最大超时 10000
+[20:38:01.741] <L/Loader Login Ms> 网络请求失败：错误码 421 (421)，POST，https://api.minecraftservices.com/authentication/login_with_xbox，150.171.110.135
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <style type='text/css'>
+        body {
+            font-family: Arial;
+            margin-left: 40px;
+        }
+        img {
+            border: 0 none;
+        }
+        #content {
+            margin-left: auto;
+            margin-right: auto
+        }
+        #message h1 {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            margin: 34px 0px 0px 0px
+        }
+        #message h2 {
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            margin: 34px 0px 0px 0px
+        }
+        #message p {
+            font-size: 16px;
+            color: #000000;
+            margin: 8px 0px 0px 0px
+        }
+        #message hr {
+            margin: 15px 0px
+        }
+        #errorref {
+            font-size: 11px;
+            color: #737373;
+            margin-top: 41px
+        }
+    </style>
+    <title>Service unavailable</title>
+</head>
+<body>
+    <div id='content'>
+        <div id='message'>
+            <h1>421</h1>
+<h2><span>Azure Front Door was unable to process the request.</span>
+</h2>
+<hr />
+<p>It looks like the server is misdirected.</p>
+<p>Make sure you're using the correct URL. If you're not sure, try again another time or contact the site owner.</p>
+<br />
+<a href="https://learn.microsoft.com/en-us/azure/frontdoor/troubleshoot-issues" target="blank">Azure Documentation</a>
+<br />
+        </div>
+        <div id='errorref'>
+            <span>Error Info:</span><span>SSLMismatchedSNI</span><br />
+<span>x-azure-ref ID:</span><span>20260327T123749Z-16b5949b944nw8pvhC1SELrxwn0000000hbg00000000mdzm            </span>
+        </div>
+    </div>
+</body>
+</html>
+
+   在 PCL.ModNet.SendRequest(String Url, HttpMethod Method, Object Content, Dictionary`2 Headers, Boolean SimulateBrowserHeaders, Int32 Timeout, Encoding Encoding)
+   在 PCL.ModNet.NetRequestByClient(String Url, HttpMethod Method, Object Content, String ContentType, String Accept, Int32 Timeout, String[,] Headers, Boolean RequireJson, Encoding Encoding, Boolean SimulateBrowserHeaders, Boolean MakeLog)
+   错误类型：PCL.ModNet+ResponsedWebException
+[20:38:01.896] <主线程> [Control] 按下单选列表项：Mod
+[20:38:02.069] <L/DlNeoForgeList Official> [Net] 发起网络请求（GET，https://maven.neoforged.net/api/maven/versions/releases/net/neoforged/forge），最大超时 10000
+[20:38:02.184] <主线程> [Loader] 加载器 社区资源获取：Mod 状态改变：Loading
+[20:38:02.202] <L/社区资源获取：Mod> [Comp] 工程列表搜索原始文本：
+[20:38:02.210] <主线程> [Animation] 两个动画帧间隔 160 ms
+[20:38:02.212] <L/社区资源获取：Mod> [Comp] 工程列表搜索最终文本：
+[20:38:02.216] <CurseForge Project Request> [Comp] 开始从 CurseForge 获取工程列表：https://api.curseforge.com/v1/mods/search?gameId=432&sortField=2&sortOrder=desc&pageSize=40&classId=6
+[20:38:02.216] <Modrinth Project Request> [Comp] 开始从 Modrinth 获取工程列表：https://api.modrinth.com/v2/search?limit=40&index=relevance&facets=[["project_type:mod"]]
+[20:38:02.218] <L/DlFabricList Official> [Loader] 加载器 DlFabricList Official 状态改变：Finished
+[20:38:02.218] <CurseForge Project Request> [Net] 发起网络请求（GET，https://api.curseforge.com/v1/mods/search?gameId=432&sortField=2&sortOrder=desc&pageSize=40&classId=6），最大超时 10000
+[20:38:02.219] <Modrinth Project Request> [Net] 发起网络请求（GET，https://api.modrinth.com/v2/search?limit=40&index=relevance&facets=[["project_type:mod"]]），最大超时 20000
+[20:38:02.237] <L/DlFabricList Main> [Loader] 加载器 DlFabricList Main 状态改变：Finished
+[20:38:02.252] <L/Loader Login Ms> [Net] 发起网络请求（POST，https://api.minecraftservices.com/authentication/login_with_xbox），最大超时 30000
+[20:38:02.446] <L/DlNeoForgeList Official> [Loader] 加载器 DlNeoForgeList Official 状态改变：Finished
+[20:38:02.453] <L/DlNeoForgeList Main> [Loader] 加载器 DlNeoForgeList Main 状态改变：Finished
+[20:38:02.506] <L/DlOptiFineList Official> [Loader] 加载器 DlOptiFineList Official 状态改变：Finished
+[20:38:02.515] <L/DlOptiFineList Main> [Loader] 加载器 DlOptiFineList Main 状态改变：Finished
+[20:38:02.794] <L/DlLiteLoaderList Official> [Loader] 加载器 DlLiteLoaderList Official 状态改变：Finished
+[20:38:02.808] <L/DlLiteLoaderList Main> [Loader] 加载器 DlLiteLoaderList Main 状态改变：Finished
+[20:38:03.291] <L/Loader Login Ms> [Launch] 开始微软登录步骤 5/6
+[20:38:03.291] <主线程> [Net] 发起网络请求（GET，https://api.minecraftservices.com/entitlements/mcstore），最大超时 25000
+[20:38:03.444] <主线程> [Animation] 两个动画帧间隔 139 ms
+[20:38:03.514] <Modrinth Project Request> [Comp] 从 Modrinth 获取到了 40 个工程（已获取 40 个，共 55248 个）
+[20:38:03.550] <主线程> [Net] 发起网络请求（GET，https://api.minecraftservices.com/entitlements/mcstore），最大超时 25000
+[20:38:03.681] <CurseForge Project Request> [Comp] 从 CurseForge 获取到了 40 个工程（已获取 40 个，共 10000 个）
+[20:38:03.691] <L/社区资源获取：Mod> [System] 获取资源：ModData
+[20:38:03.738] <L/社区资源获取：Mod> [Comp] 将 GeckoLib (geckolib) 与 Geckolib (geckolib) 认定为相似工程
+[20:38:03.738] <L/社区资源获取：Mod> [Comp] 将 Just Enough Items (JEI) (jei) 与 Just Enough Items (JEI) (jei) 认定为相似工程
+[20:38:03.741] <L/社区资源获取：Mod> [Comp] 将 Cloth Config API (Fabric/Forge/NeoForge) (cloth-config) 与 Cloth Config API (cloth-config) 认定为相似工程
+[20:38:03.742] <L/社区资源获取：Mod> [Comp] 将 ModernFix (modernfix) 与 ModernFix (modernfix) 认定为相似工程
+[20:38:03.743] <L/社区资源获取：Mod> [Comp] 将 ImmediatelyFast (immediatelyfast) 与 ImmediatelyFast (immediatelyfast) 认定为相似工程
+[20:38:03.745] <L/社区资源获取：Mod> [Comp] 将 Fabric API (fabric-api) 与 Fabric API (fabric-api) 认定为相似工程
+[20:38:03.745] <L/社区资源获取：Mod> [Comp] 将 [ETF] Entity Texture Features - [Fabric & Forge] (entity-texture-features-fabric) 与 [ETF] Entity Texture Features (entitytexturefeatures) 认定为相似工程
+[20:38:03.745] <L/社区资源获取：Mod> [Comp] 将 [EMF] Entity Model Features [Fabric & Forge] (entity-model-features) 与 [EMF] Entity Model Features (entity-model-features) 认定为相似工程
+[20:38:03.746] <L/社区资源获取：Mod> [Comp] 去重、筛选后累计新增结果 72 个（目前已有结果 0 个）
+[20:38:03.755] <主线程> [Comp] 开始可视化 Mod 列表，已储藏 72 个结果，当前在第 1 页
+[20:38:03.781] <L/社区资源获取：Mod> [Loader] 加载器 社区资源获取：Mod 状态改变：Finished
+[20:38:03.871] <主线程> [Start] 加载 DLL：Imazen.WebP
+[20:38:03.871] <主线程> [System] 获取资源：Imazen.WebP
+[20:38:03.872] <主线程> [System] 获取资源：libwebp64
+[20:38:04.498] <L/Loader Login Ms> [Launch] 开始微软登录步骤 6/6
+[20:38:04.499] <主线程> [Net] 发起网络请求（GET，https://api.minecraftservices.com/minecraft/profile），最大超时 25000
+[20:38:04.749] <主线程> [Net] 发起网络请求（GET，https://api.minecraftservices.com/minecraft/profile），最大超时 25000
+[20:38:05.037] <主线程> [Loader] 加载器 社区资源获取：Mod 状态改变：Loading
+[20:38:05.038] <L/社区资源获取：Mod> [Comp] 工程列表搜索原始文本：neat
+[20:38:05.038] <L/社区资源获取：Mod> [Comp] 工程列表搜索最终文本：neat
+[20:38:05.038] <CurseForge Project Request> [Comp] 开始从 CurseForge 获取工程列表：https://api.curseforge.com/v1/mods/search?gameId=432&sortField=2&sortOrder=desc&pageSize=40&classId=6&searchFilter=neat
+[20:38:05.038] <CurseForge Project Request> [Net] 发起网络请求（GET，https://api.curseforge.com/v1/mods/search?gameId=432&sortField=2&sortOrder=desc&pageSize=40&classId=6&searchFilter=neat），最大超时 10000
+[20:38:05.038] <Modrinth Project Request> [Comp] 开始从 Modrinth 获取工程列表：https://api.modrinth.com/v2/search?limit=40&index=relevance&query=neat&facets=[["project_type:mod"]]
+[20:38:05.038] <Modrinth Project Request> [Net] 发起网络请求（GET，https://api.modrinth.com/v2/search?limit=40&index=relevance&query=neat&facets=[["project_type:mod"]]），最大超时 20000
+[20:38:05.254] <L/Loader Login Ms> [Launch] 微软登录完成
+[20:38:05.254] <L/Loader Login Ms> [Loader] 加载器 Loader Login Ms 状态改变：Finished
+[20:38:05.256] <L/登录> [Launch] 登录加载已结束
+[20:38:05.256] <L/登录> [Loader] 加载器 登录 状态改变：Finished
+[20:38:05.502] <CurseForge Project Request> [Comp] 从 CurseForge 获取到了 40 个工程（已获取 40 个，共 62 个）
+[20:38:05.588] <Modrinth Project Request> [Comp] 从 Modrinth 获取到了 38 个工程（已获取 38 个，共 38 个）
+[20:38:05.588] <L/社区资源获取：Mod> [Comp] 将 Thaumic Additions: Reconstructed (thaumic-additions) 与 Thaumic Additions: Reconstructed (thaumic-additions) 认定为相似工程
+[20:38:05.589] <L/社区资源获取：Mod> [Comp] 将 Mob Plaques (mob-plaques) 与 Mob Plaques (mob-plaques) 认定为相似工程
+[20:38:05.591] <L/社区资源获取：Mod> [Comp] 将 Cobblemon Confirm Let Go (cobblemon-confirm-release) 与 Cobblemon Confirm Release (cobblemon-confirm-release) 认定为相似工程
+[20:38:05.591] <L/社区资源获取：Mod> [Comp] 将 Odyssey Allies (odyssey-allies) 与 Odyssey Allies (odyssey-allies) 认定为相似工程
+[20:38:05.592] <L/社区资源获取：Mod> [Comp] 将 Shulker Enchantments (Forge) (shulker-enchantments) 与 Shulker Enchantments (shulker-enchantments) 认定为相似工程
+[20:38:05.593] <L/社区资源获取：Mod> [Comp] 将 Neat - Shaders-Fix (neat-shaders-fix) 与 Neat - Shaders-Fix (neat-shaders-fix) 认定为相似工程
+[20:38:05.594] <L/社区资源获取：Mod> [Comp] 将 Redstone Signal Visualizer (redstone-signal-visualizer) 与 Redstone Signal Visualizer (redstone_signal_visualizer) 认定为相似工程
+[20:38:05.596] <L/社区资源获取：Mod> [Comp] 将 SelectionGUI Crafting - Continued (selectiongui-crafting-continued) 与 Selection GUI Crafting - Continued (selection-gui-crafting-continued) 认定为相似工程
+[20:38:05.597] <L/社区资源获取：Mod> [Comp] 将 Memory Nodes (memory-nodes) 与 Memory Nodes (memory-nodes) 认定为相似工程
+[20:38:05.597] <L/社区资源获取：Mod> [Comp] 去重、筛选后累计新增结果 69 个（目前已有结果 0 个）
+[20:38:05.633] <主线程> [Comp] 开始可视化 Mod 列表，已储藏 69 个结果，当前在第 1 页
+[20:38:05.655] <L/社区资源获取：Mod> [Loader] 加载器 社区资源获取：Mod 状态改变：Finished
+[20:38:06.940] <主线程> [Loader] 加载器 Comp File 状态改变：Loading
+[20:38:06.941] <主线程> [Control] 切换主要页面：CompDetail, 0
+[20:38:06.941] <主线程> [Control] 按下资源工程列表项：极简血量显示
+[20:38:06.946] <L/Comp File> [Comp] 开始获取文件列表：238372
+[20:38:06.946] <L/Comp File> [Net] 发起网络请求（GET，https://api.curseforge.com/v1/mods/238372/files?pageSize=10000），最大超时 10000
+[20:38:07.213] <L/Comp File> [Loader] 加载器 Comp File 状态改变：Finished
+[20:38:09.544] <主线程> [Control] 按下单选按钮：1.21
+[20:38:10.344] <主线程> [Control] 展开卡片：NeoForge 1.21.1
+[20:38:10.846] <主线程> [Control] 按下单击列表项：Neat-1.21-47-NEOFORGE.jar
+[20:38:10.850] <Download CompDetail Save> [Comp] Mod 要求的加载器种类：NeoForge
+[20:38:10.851] <Download CompDetail Save> [Comp] 由于当前版本不兼容，使用当前的 MC 文件夹作为默认下载位置
+[20:38:11.066] <主线程> [Animation] 两个动画帧间隔 200 ms
+[20:38:11.330] <主线程> [Animation] 两个动画帧间隔 139 ms
+[20:38:11.353] <主线程> [Animation] 两个动画帧间隔 124 ms
+[20:38:29.247] <主线程> [UI] 选择文件返回：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\run\mods\[极简血量显示] Neat-1.21-47-NEOFORGE.jar
+[20:38:29.263] <主线程> [Loader] 加载器 Mod 下载：[极简血量显示] Neat-1.21-47-NEOFORGE  状态改变：Loading
+[20:38:29.265] <主线程> [Taskbar] Mod 下载：[极简血量显示] Neat-1.21-47-NEOFORGE  已加入任务列表
+[20:38:29.268] <Invoke 612> [Loader] 加载器 下载文件 状态改变：Loading
+[20:38:29.278] <主线程> [Animation] 两个动画帧间隔 156 ms
+[20:38:29.278] <L/下载 610> [Net] 开始清理下载缓存
+[20:38:29.278] <L/下载 610> [Net] 下载缓存已清理
+[20:38:29.292] <L/下载 610> [Loader] 加载器 下载文件 状态改变：Finished
+[20:38:29.292] <L/下载 610> [Loader] 加载器 Mod 下载：[极简血量显示] Neat-1.21-47-NEOFORGE  状态改变：Finished
+[20:38:29.325] <主线程> [UI] 弹出提示：Mod 下载：[极简血量显示] Neat-1.21-47-NEOFORGE 成功！
+[20:38:29.326] <主线程> [Taskbar] Mod 下载：[极简血量显示] Neat-1.21-47-NEOFORGE  已移出任务列表
+[20:38:33.123] <主线程> [Control] 按下单击列表项：Neat-1.21-47-NEOFORGE.jar
+[20:38:33.123] <Download CompDetail Save> [Comp] Mod 要求的加载器种类：NeoForge
+[20:38:33.124] <Download CompDetail Save> [Comp] 使用上次下载时的文件夹作为默认下载位置：D:\项目\Minecraft\1.21.1-neoforge\evolutionarymod-template-1.21.1\run\mods\
+[20:38:33.238] <主线程> [Animation] 两个动画帧间隔 108 ms
+[20:38:35.512] <主线程> [UI] 选择文件返回：
+[20:38:35.518] <主线程> [Animation] 两个动画帧间隔 201 ms
+[20:38:36.381] <主线程> [Control] 按下图标按钮：BtnTitleInner
+[20:38:36.382] <主线程> [Control] 切换主要页面：Download, -1
+[20:38:38.065] <主线程> [Control] 按下单选按钮：启动
+[20:38:38.065] <主线程> [Control] 切换主要页面：Launch, -1
+[20:38:41.989] <主线程> [Control] 按下图标按钮：BtnTitleClose
+[20:38:41.994] <主线程> [System] 收到关闭指令
+[20:38:42.239] <主线程> [System] 程序已退出，返回值：Success
