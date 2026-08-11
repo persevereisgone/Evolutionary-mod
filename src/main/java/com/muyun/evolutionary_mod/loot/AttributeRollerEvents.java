@@ -50,6 +50,13 @@ public class AttributeRollerEvents {
                 .getKey(stack.getItem()).getPath();
         String lower = path.toLowerCase();
 
+        // 优先使用 data/evolutionary_mod/attributes/ranges.json 的按物品配置；
+        // 若未命中则回退到原有代码常量区间逻辑。
+        AccessoryAttributes dataDriven = AttributeRollRanges.rollFromDataDriven(lower, RANDOM);
+        if (dataDriven != null && !dataDriven.isEmpty()) {
+            return dataDriven;
+        }
+
         double maxHealth = 0, attackDamage = 0, armor = 0;
         double movementSpeed = 0, luck = 0, healthRegen = 0;
         double armorPenetration = 0, critChance = 0, critDamage = 0, damageReduction = 0;

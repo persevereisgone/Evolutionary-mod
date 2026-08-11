@@ -37,10 +37,11 @@ public class DragonSetBonus {
             }
 
             float currentHealth = player.getHealth();
+            SetBalanceConfig.DragonConfig cfg = SetBalanceConfig.dragon();
 
             maxHealth.addTransientModifier(new AttributeModifier(
                     DRAGON_BLOODLINE_HEALTH_ID,
-                    0.20,
+                    cfg.twoPieceHealthBonus(),
                     AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ));
 
@@ -70,10 +71,11 @@ public class DragonSetBonus {
         @Override
         public void apply(Player player, int pieceCount) {
             AttributeInstance armor = player.getAttribute(Attributes.ARMOR);
+            SetBalanceConfig.DragonConfig cfg = SetBalanceConfig.dragon();
             if (armor != null && armor.getModifier(DRAGON_SCALE_ARMOR_ID) == null) {
                 armor.addTransientModifier(new AttributeModifier(
                         DRAGON_SCALE_ARMOR_ID,
-                        15.0,
+                        cfg.fourPieceArmorBonus(),
                         AttributeModifier.Operation.ADD_VALUE
                 ));
             }

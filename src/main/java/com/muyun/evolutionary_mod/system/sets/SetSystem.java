@@ -108,13 +108,13 @@ public class SetSystem {
             boolean hasDragonBloodline = currentActiveBonuses
                     .getOrDefault(SetType.DRAGON, Collections.emptyList())
                     .stream().anyMatch(b -> b instanceof DragonSetBonus.DragonBloodline);
-            if (hasDragonBloodline) HEALTH_REGEN_MULTIPLIERS.put(playerUUID, 1.5);
+            if (hasDragonBloodline) HEALTH_REGEN_MULTIPLIERS.put(playerUUID, SetBalanceConfig.dragon().twoPieceRegenMultiplier());
             else HEALTH_REGEN_MULTIPLIERS.remove(playerUUID);
 
             boolean hasDragonScale = currentActiveBonuses
                     .getOrDefault(SetType.DRAGON, Collections.emptyList())
                     .stream().anyMatch(b -> b instanceof DragonSetBonus.DragonScaleProtection);
-            if (hasDragonScale) SET_DAMAGE_REDUCTION.put(playerUUID, 0.15);
+            if (hasDragonScale) SET_DAMAGE_REDUCTION.put(playerUUID, SetBalanceConfig.dragon().fourPieceDamageReduction());
             else SET_DAMAGE_REDUCTION.remove(playerUUID);
         }
 

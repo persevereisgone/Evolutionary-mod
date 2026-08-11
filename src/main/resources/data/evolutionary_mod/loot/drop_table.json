@@ -1,0 +1,395 @@
+{
+  "entries": [
+    {
+      "loot_table_id": "minecraft:entities/zombie",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/zombie_villager",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/skeleton",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/creeper",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/spider",
+      "drop_chance": 0.02,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/cave_spider",
+      "drop_chance": 0.02,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/drowned",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/husk",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/stray",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/phantom",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/slime",
+      "drop_chance": 0.02,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/magma_cube",
+      "drop_chance": 0.02,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/ghast",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/zombified_piglin",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/hoglin",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/zoglin",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/silverfish",
+      "drop_chance": 0.01,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/endermite",
+      "drop_chance": 0.01,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/vex",
+      "drop_chance": 0.02,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/witch",
+      "drop_chance": 0.05,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/vindicator",
+      "drop_chance": 0.05,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/pillager",
+      "drop_chance": 0.04,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/ravager",
+      "drop_chance": 0.06,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/evoker",
+      "drop_chance": 0.08,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/blaze",
+      "drop_chance": 0.05,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/wither_skeleton",
+      "drop_chance": 0.08,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/piglin_brute",
+      "drop_chance": 0.06,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/piglin",
+      "drop_chance": 0.04,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/enderman",
+      "drop_chance": 0.04,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/guardian",
+      "drop_chance": 0.05,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/shulker",
+      "drop_chance": 0.06,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/bogged",
+      "drop_chance": 0.04,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/breeze",
+      "drop_chance": 0.07,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/iron_golem",
+      "drop_chance": 0.04,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/cinder_skeleton",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/thunder_spider",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/shadow_stalker",
+      "drop_chance": 0.15,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/frost_ghoul",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/ironclad_warrior",
+      "drop_chance": 0.15,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/lava_shooter",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/storm_mage",
+      "drop_chance": 0.15,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/abyss_lurker",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/holy_knight",
+      "drop_chance": 0.15,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/chaos_shifter",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/time_warper",
+      "drop_chance": 0.18,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/soul_necromancer",
+      "drop_chance": 0.18,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/earth_guardian",
+      "drop_chance": 0.15,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/wind_blade_hunter",
+      "drop_chance": 0.12,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "evolutionary_mod:entities/life_leecher",
+      "drop_chance": 0.15,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/elder_guardian",
+      "drop_chance": 0.8,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/wither",
+      "drop_chance": 1.0,
+      "allowed_rarities": ["EPIC", "LEGENDARY"]
+    },
+    {
+      "loot_table_id": "minecraft:entities/ender_dragon",
+      "drop_chance": 1.0,
+      "allowed_rarities": ["EPIC", "LEGENDARY", "MYTHIC"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/simple_dungeon",
+      "drop_chance": 0.3,
+      "allowed_rarities": ["BROKEN", "NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/abandoned_mineshaft",
+      "drop_chance": 0.25,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_armorer",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_butcher",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_cartographer",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_fisher",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_fletcher",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_mason",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_shepherd",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_tannery",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_temple",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_toolsmith",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/village/village_weaponsmith",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/igloo_chest",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/desert_pyramid",
+      "drop_chance": 0.35,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/jungle_temple",
+      "drop_chance": 0.35,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/buried_treasure",
+      "drop_chance": 0.4,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/pillager_outpost",
+      "drop_chance": 0.3,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/trial_chambers/reward",
+      "drop_chance": 0.3,
+      "allowed_rarities": ["NORMAL", "EXCELLENT"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/stronghold_corridor",
+      "drop_chance": 0.4,
+      "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/stronghold_library",
+      "drop_chance": 0.5,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/nether_bridge",
+      "drop_chance": 0.4,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/bastion_treasure",
+      "drop_chance": 0.6,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/woodland_mansion",
+      "drop_chance": 0.55,
+      "allowed_rarities": ["EPIC", "LEGENDARY"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/ancient_city",
+      "drop_chance": 0.2,
+      "allowed_rarities": ["EPIC", "LEGENDARY"]
+    },
+    {
+      "loot_table_id": "minecraft:chests/end_city_treasure",
+      "drop_chance": 0.5,
+      "allowed_rarities": ["EPIC", "LEGENDARY"]
+    }
+  ]
+}
+

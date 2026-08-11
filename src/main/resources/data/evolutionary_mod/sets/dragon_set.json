@@ -1,0 +1,14 @@
+{
+  "two_piece_health_bonus": 0.20,
+  "two_piece_regen_multiplier": 1.5,
+  "four_piece_armor_bonus": 15.0,
+  "four_piece_damage_reduction": 0.15,
+  "four_piece_shield_chance": 0.30,
+  "four_piece_shield_absorb_max": 10.0,
+  "four_piece_shield_cooldown_ticks": 200,
+  "six_piece_breath_chance": 0.25,
+  "six_piece_breath_range": 5.0,
+  "six_piece_breath_damage": 10.0,
+  "six_piece_burn_ticks": 100
+}
+

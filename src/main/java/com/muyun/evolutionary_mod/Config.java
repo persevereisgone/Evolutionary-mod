@@ -6,7 +6,6 @@ import net.minecraft.world.item.Item;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -29,6 +28,10 @@ public class Config
             .comment("A magic number")
             .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
 
+    private static final ModConfigSpec.BooleanValue STRICT_DATA_DRIVEN = BUILDER
+            .comment("If true, missing data-driven entries will throw instead of silently falling back.")
+            .define("strictDataDriven", false);
+
     public static final ModConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
             .comment("What you want the introduction message to be for the magic number")
             .define("magicNumberIntroduction", "The magic number is... ");
@@ -44,6 +47,7 @@ public class Config
     public static int magicNumber;
     public static String magicNumberIntroduction;
     public static Set<Item> items;
+    public static boolean strictDataDriven;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -56,10 +60,15 @@ public class Config
         logDirtBlock = LOG_DIRT_BLOCK.get();
         magicNumber = MAGIC_NUMBER.get();
         magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+        strictDataDriven = STRICT_DATA_DRIVEN.get();
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()
                 .map(itemName -> BuiltInRegistries.ITEM.get(ResourceLocation.tryParse(itemName)))
                 .collect(Collectors.toSet());
+    }
+
+    public static boolean isStrictDataDriven() {
+        return strictDataDriven;
     }
 }

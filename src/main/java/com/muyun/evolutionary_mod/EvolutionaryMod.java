@@ -40,6 +40,8 @@ import com.muyun.evolutionary_mod.system.effects.NecklaceEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.RingEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.ShoulderEffectsHandler;
 import com.muyun.evolutionary_mod.system.sets.SetSystem;
+import com.muyun.evolutionary_mod.system.weight.WeightConfig;
+import com.muyun.evolutionary_mod.system.weight.WeightEventHandler;
 
 import java.util.function.Supplier;
 
@@ -128,6 +130,7 @@ public class EvolutionaryMod {
 
         // 注册 Mod 配置
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, WeightConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

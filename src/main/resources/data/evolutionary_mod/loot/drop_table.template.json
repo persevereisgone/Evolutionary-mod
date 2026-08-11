@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "description": "drop_table.json 维护模板。复制为正式文件后按 entries 配置。",
+    "version": 1
+  },
+  "_change_log": [
+    {
+      "date": "2026-04-25",
+      "author": "your_name",
+      "reason": "示例：调整前期普通怪掉率",
+      "changes": [
+        "minecraft:entities/zombie drop_chance 0.03 -> 0.025"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "category": "common_mobs",
+      "loot_table_id": "minecraft:entities/zombie",
+      "drop_chance": 0.03,
+      "allowed_rarities": ["BROKEN", "NORMAL"]
+    },
+    {
+      "category": "elite_mobs",
+      "loot_table_id": "minecraft:entities/evoker",
+      "drop_chance": 0.08,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "category": "custom_elite_mobs",
+      "loot_table_id": "evolutionary_mod:entities/time_warper",
+      "drop_chance": 0.18,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "category": "boss_mobs",
+      "loot_table_id": "minecraft:entities/ender_dragon",
+      "drop_chance": 1.0,
+      "allowed_rarities": ["EPIC", "LEGENDARY", "MYTHIC"]
+    },
+    {
+      "category": "common_chests",
+      "loot_table_id": "minecraft:chests/simple_dungeon",
+      "drop_chance": 0.3,
+      "allowed_rarities": ["BROKEN", "NORMAL", "EXCELLENT"]
+    },
+    {
+      "category": "advanced_chests",
+      "loot_table_id": "minecraft:chests/bastion_treasure",
+      "drop_chance": 0.6,
+      "allowed_rarities": ["EXCELLENT", "EPIC"]
+    },
+    {
+      "category": "rare_chests",
+      "loot_table_id": "minecraft:chests/end_city_treasure",
+      "drop_chance": 0.5,
+      "allowed_rarities": ["EPIC", "LEGENDARY"]
+    }
+  ]
+}
+

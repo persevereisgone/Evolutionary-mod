@@ -1,5 +1,22 @@
 package com.muyun.evolutionary_mod.loot;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.muyun.evolutionary_mod.Config;
+import com.muyun.evolutionary_mod.EvolutionaryMod;
+import com.muyun.evolutionary_mod.item.base.AccessoryAttributes;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * 随机词条区间配置表 - Attribute Roll Ranges
  *
@@ -17,6 +34,11 @@ package com.muyun.evolutionary_mod.loot;
 public final class AttributeRollRanges {
 
     private AttributeRollRanges() {}
+    private static final String DATA_DRIVEN_PATH = "data/evolutionary_mod/attributes/ranges.json";
+    private static final AtomicInteger INVALID_ENTRY_COUNT = new AtomicInteger(0);
+    private static final AtomicInteger FALLBACK_HIT_COUNT = new AtomicInteger(0);
+    private static final Set<String> FALLBACK_ITEMS_LOGGED = ConcurrentHashMap.newKeySet();
+    private static final Map<String, Map<String, RangeSpec>> DATA_DRIVEN_RANGES = loadDataDrivenRanges();
 
     // =========================================================
     // 戒指 - Ring
@@ -180,5 +202,154 @@ public final class AttributeRollRanges {
     public static final double GENERIC_MAX_HEALTH_MAX    = 5;
     public static final double GENERIC_ATTACK_DAMAGE_MIN = 0.1;
     public static final double GENERIC_ATTACK_DAMAGE_MAX = 1;
+
+    /**
+     * 读取 data/evolutionary_mod/attributes/ranges.json 中的“按物品配置”词条。
+     * 若存在该物品配置，返回滚动后的属性；否则返回 null 交由代码常量回退。
+     */
+    public static AccessoryAttributes rollFromDataDriven(String itemPath, Random random) {
+        Map<String, RangeSpec> specs = DATA_DRIVEN_RANGES.get(itemPath);
+        if (specs == null || specs.isEmpty()) {
+            onFallback(itemPath);
+            return null;
+        }
+
+        double maxHealth = rollAttr(specs, "max_health", random);
+        double attackDamage = rollAttr(specs, "attack_damage", random);
+        double armor = rollAttr(specs, "armor", random);
+        double movementSpeed = rollAttr(specs, "movement_speed", random);
+        double luck = rollAttr(specs, "luck", random);
+        double healthRegen = rollAttr(specs, "health_regen", random);
+        double armorPenetration = rollAttr(specs, "armor_penetration", random);
+        double critChance = rollAttr(specs, "crit_chance", random);
+        double critDamage = rollAttr(specs, "crit_damage", random);
+        double damageReduction = rollAttr(specs, "damage_reduction", random);
+
+        return new AccessoryAttributes(
+                maxHealth, attackDamage, armor, movementSpeed, luck,
+                healthRegen, armorPenetration, critChance, critDamage, damageReduction
+        );
+    }
+
+    private static double rollAttr(Map<String, RangeSpec> specs, String attrName, Random random) {
+        RangeSpec spec = specs.get(attrName);
+        if (spec == null) return 0;
+
+        double raw = spec.min + random.nextDouble() * (spec.max - spec.min);
+        double value = spec.step > 0 ? quantize(raw, spec.step) : round3(raw);
+        return spec.perSecond ? round3(value / 20.0) : value;
+    }
+
+    private static double quantize(double value, double step) {
+        return round3(Math.round(value / step) * step);
+    }
+
+    private static double round3(double value) {
+        return Math.round(value * 1000.0) / 1000.0;
+    }
+
+    private static Map<String, Map<String, RangeSpec>> loadDataDrivenRanges() {
+        Map<String, Map<String, RangeSpec>> result = new HashMap<>();
+        try (InputStream is = AttributeRollRanges.class.getClassLoader().getResourceAsStream(DATA_DRIVEN_PATH)) {
+            if (is == null) {
+                EvolutionaryMod.LOGGER.warn("[AttributeRollRanges] 未找到数据配置: {}，将回退代码常量。", DATA_DRIVEN_PATH);
+                return result;
+            }
+
+            JsonObject root = JsonParser.parseReader(new InputStreamReader(is, StandardCharsets.UTF_8)).getAsJsonObject();
+            for (Map.Entry<String, JsonElement> categoryEntry : root.entrySet()) {
+                if (!categoryEntry.getValue().isJsonObject()) continue;
+                JsonObject categoryObj = categoryEntry.getValue().getAsJsonObject();
+                for (Map.Entry<String, JsonElement> itemEntry : categoryObj.entrySet()) {
+                    if (!itemEntry.getValue().isJsonObject()) continue;
+                    JsonObject itemObj = itemEntry.getValue().getAsJsonObject();
+                    JsonObject attrsObj = itemObj.has("attributes") && itemObj.get("attributes").isJsonObject()
+                            ? itemObj.getAsJsonObject("attributes")
+                            : null;
+                    if (attrsObj == null) {
+                        INVALID_ENTRY_COUNT.incrementAndGet();
+                        continue;
+                    }
+
+                    Map<String, RangeSpec> attrSpecs = new HashMap<>();
+                    for (Map.Entry<String, JsonElement> attrEntry : attrsObj.entrySet()) {
+                        if (!attrEntry.getValue().isJsonObject()) {
+                            INVALID_ENTRY_COUNT.incrementAndGet();
+                            continue;
+                        }
+                        RangeSpec spec = parseRangeSpec(itemEntry.getKey(), attrEntry.getKey(), attrEntry.getValue().getAsJsonObject());
+                        if (spec != null) attrSpecs.put(attrEntry.getKey(), spec);
+                    }
+                    if (!attrSpecs.isEmpty()) {
+                        result.put(itemEntry.getKey(), attrSpecs);
+                    } else {
+                        INVALID_ENTRY_COUNT.incrementAndGet();
+                    }
+                }
+            }
+            EvolutionaryMod.LOGGER.info("[AttributeRollRanges] 已加载数据驱动词条配置: {} 项物品，{} 项无效条目。",
+                    result.size(), INVALID_ENTRY_COUNT.get());
+        } catch (Exception e) {
+            EvolutionaryMod.LOGGER.error("[AttributeRollRanges] 加载数据驱动词条配置失败，将回退代码常量。", e);
+        }
+        return result;
+    }
+
+    private static RangeSpec parseRangeSpec(String itemName, String attrName, JsonObject obj) {
+        if (!obj.has("min") || !obj.has("max")) {
+            EvolutionaryMod.LOGGER.warn("[AttributeRollRanges] {}.{} 缺少 min/max，已忽略。", itemName, attrName);
+            INVALID_ENTRY_COUNT.incrementAndGet();
+            return null;
+        }
+
+        double min = obj.get("min").getAsDouble();
+        double max = obj.get("max").getAsDouble();
+        if (min > max) {
+            EvolutionaryMod.LOGGER.warn("[AttributeRollRanges] {}.{} 的 min > max，已忽略。", itemName, attrName);
+            INVALID_ENTRY_COUNT.incrementAndGet();
+            return null;
+        }
+
+        double step = obj.has("step") ? obj.get("step").getAsDouble() : 0.0;
+        if (step < 0) {
+            EvolutionaryMod.LOGGER.warn("[AttributeRollRanges] {}.{} 的 step < 0，按 0 处理。", itemName, attrName);
+            step = 0.0;
+        }
+        boolean perSecond = obj.has("per_second") && obj.get("per_second").getAsBoolean();
+        return new RangeSpec(min, max, step, perSecond);
+    }
+
+    private static void onFallback(String itemPath) {
+        FALLBACK_HIT_COUNT.incrementAndGet();
+        if (Config.isStrictDataDriven()) {
+            throw new IllegalStateException("[STRICT] Attribute data-driven missing for item: " + itemPath
+                    + " in " + DATA_DRIVEN_PATH);
+        }
+        if (FALLBACK_ITEMS_LOGGED.add(itemPath)) {
+            EvolutionaryMod.LOGGER.warn("[AttributeRollRanges] 数据未命中，使用代码回退: {}", itemPath);
+        }
+    }
+
+    public static int getLoadedEntryCount() {
+        return DATA_DRIVEN_RANGES.size();
+    }
+
+    public static int getInvalidEntryCount() {
+        return INVALID_ENTRY_COUNT.get();
+    }
+
+    public static int getFallbackHitCount() {
+        return FALLBACK_HIT_COUNT.get();
+    }
+
+    public static int getFallbackDistinctItemCount() {
+        return FALLBACK_ITEMS_LOGGED.size();
+    }
+
+    public static boolean hasDataEntry(String itemPath) {
+        return DATA_DRIVEN_RANGES.containsKey(itemPath);
+    }
+
+    private record RangeSpec(double min, double max, double step, boolean perSecond) {}
 }
 

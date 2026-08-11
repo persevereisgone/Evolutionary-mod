@@ -14,11 +14,13 @@ public enum SetType {
     /**
      * 龙族套装 - Dragon Set
      */
-    DRAGON("龙族套装", "Dragon Set", List.of(
+    DRAGON("dragon", "龙族套装", "Dragon Set", List.of(
         new DragonSetBonus.DragonBloodline(),      // 2件套
         new DragonSetBonus.DragonScaleProtection(), // 4件套
         new DragonSetBonus.DragonBreathBurst()      // 6件套
     ));
+
+    private final String configKey;
     
     /**
      * 套装中文名称
@@ -42,10 +44,22 @@ public enum SetType {
      * @param nameEN 英文名称
      * @param bonuses 套装效果列表
      */
-    SetType(String nameCN, String nameEN, List<SetBonus> bonuses) {
+    SetType(String configKey, String nameCN, String nameEN, List<SetBonus> bonuses) {
+        this.configKey = configKey;
         this.nameCN = nameCN;
         this.nameEN = nameEN;
         this.bonuses = new ArrayList<>(bonuses);
+    }
+
+    public String getConfigKey() {
+        return configKey;
+    }
+
+    public static SetType fromConfigKey(String key) {
+        for (SetType type : values()) {
+            if (type.configKey.equalsIgnoreCase(key)) return type;
+        }
+        return null;
     }
     
     /**

@@ -188,5 +188,11 @@
   "entity.evolutionary_mod.thunder_spider": "Thunder Spider",
   "entity.evolutionary_mod.shadow_stalker": "Shadow Stalker",
   "entity.evolutionary_mod.frost_ghoul": "Frost Ghoul",
-  "entity.evolutionary_mod.ironclad_warrior": "Ironclad Warrior"
+  "entity.evolutionary_mod.ironclad_warrior": "Ironclad Warrior",
+
+  "message.evolutionary_mod.weight.heavy": "[Weight Warning] Inventory is 70% full, movement speed is reduced!",
+  "message.evolutionary_mod.weight.overweight": "[Overweight Warning] Inventory is 90% full, hunger consumption increased!",
+  "message.evolutionary_mod.weight.overloaded": "[Overloaded] Inventory is full!",
+  "message.evolutionary_mod.weight.cannot_pickup": "Cannot pick up item: Inventory is overloaded!",
+  "message.evolutionary_mod.weight.would_overload": "Cannot pick up item: Would exceed weight limit!"
 }

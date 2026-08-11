@@ -1,0 +1,145 @@
+# ====================
+# Evolutionary Mod - 负重系统配置文件
+# 版本: V4.1
+# ====================
+
+# ====================
+# 基础设置
+# ====================
+
+# 玩家基础最大负重（重量单位）
+# 推荐值: 120 - 适度限制，明显感受负重
+# 可选值: 80（硬核）- 500（宽松）
+baseMaxWeight = 120.0
+
+# 安全负重阈值比例（0.0-1.0）
+# 超过此值开始减速
+safeThreshold = 0.6
+
+# 警戒负重阈值比例（0.0-1.0）
+# 超过此值开始加速消耗饱食
+warningThreshold = 0.85
+
+# 速度惩罚倍率（0.0-1.0）
+# 值越大惩罚越严重
+speedPenaltyMultiplier = 0.5
+
+# 饱食消耗倍率
+# 超过警戒阈值时生效
+hungerPenaltyMultiplier = 2.0
+
+# ====================
+# 等级加成设置
+# ====================
+
+# 每级增加的负重上限
+levelWeightBonusPerLevel = 2.0
+
+# ====================
+# 工具武器重量
+# ====================
+
+# 木质/石质工具
+woodenToolWeight = 1.5
+
+# 铁质工具
+ironToolWeight = 2.5
+
+# 钻石工具
+diamondToolWeight = 4.0
+
+# 下界合金工具
+netheriteToolWeight = 5.0
+
+# ====================
+# 护甲重量（单件）
+# ====================
+
+# 皮革护甲
+leatherArmorWeight = 2.0
+
+# 铁护甲
+ironArmorWeight = 4.0
+
+# 钻石护甲
+diamondArmorWeight = 6.0
+
+# 下界合金护甲
+netheriteArmorWeight = 8.0
+
+# ====================
+# 资源材料重量
+# ====================
+
+# 建筑材料（石头、木板等）
+buildingMaterialWeight = 0.3
+
+# 矿石（铁矿、煤矿等）
+oreWeight = 0.5
+
+# 珍贵材料（钻石、绿宝石等）
+preciousMaterialWeight = 1.0
+
+# ====================
+# 食物重量
+# ====================
+
+# 基础食物（面包、生肉等）
+basicFoodWeight = 0.2
+
+# 高级食物（熟肉、金苹果等）
+advancedFoodWeight = 0.4
+
+# ====================
+# 药水杂物重量
+# ====================
+
+# 药水
+potionWeight = 0.5
+
+# 箭矢/弹药
+arrowWeight = 0.05
+
+# 红石/荧石等小型材料
+redstoneWeight = 0.1
+
+# ====================
+# 家具机械重量
+# ====================
+
+# 基础家具（工作台、箱子等）
+furnitureWeight = 5.0
+
+# 重型机械（熔炉、铁砧等）
+machineWeight = 10.0
+
+# ====================
+# 自定义物品重量
+# 格式: 物品ID=重量
+# ====================
+
+customItemWeights = [
+    # 示例自定义重量
+    "minecraft:diamond=1.0",
+    "minecraft:iron_ingot=0.5",
+    "minecraft:stone=0.3",
+    "minecraft:gold_ingot=0.8",
+    "minecraft:emerald=1.0"
+]
+
+# ====================
+# 配置说明
+# ====================
+
+# 负重上限计算公式：
+# 总上限 = baseMaxWeight + (等级 × levelWeightBonusPerLevel)
+
+# 负重状态：
+# - NORMAL（正常）: < safeThreshold (60%)
+# - HEAVY（负重）: safeThreshold ~ warningThreshold (60%-85%)
+# - OVERWEIGHT（超重）: warningThreshold ~ 100% (85%-100%)
+# - OVERLOADED（超载）: ≥ 100%
+
+# 惩罚机制：
+# - 速度惩罚：超过安全阈值后开始减速，最大减速50%
+# - 饱食惩罚：超过安全阈值轻微加速(1.2x)，超过警戒阈值显著加速(2.0x)

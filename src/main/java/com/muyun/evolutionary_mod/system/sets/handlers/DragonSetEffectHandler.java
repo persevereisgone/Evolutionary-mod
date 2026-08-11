@@ -1,6 +1,7 @@
 package com.muyun.evolutionary_mod.system.sets.handlers;
 
 import com.muyun.evolutionary_mod.system.sets.SetEffectHandler;
+import com.muyun.evolutionary_mod.system.sets.SetBalanceConfig;
 import com.muyun.evolutionary_mod.system.sets.SetType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -21,7 +22,6 @@ import java.util.UUID;
 public class DragonSetEffectHandler implements SetEffectHandler {
 
     private static final Map<UUID, Integer> DRAGON_SCALE_SHIELD_COOLDOWN = new HashMap<>();
-    private static final int DRAGON_SCALE_SHIELD_COOLDOWN_TICKS = 200;
 
     @Override
     public SetType getSetType() {
@@ -37,13 +37,14 @@ public class DragonSetEffectHandler implements SetEffectHandler {
 
         UUID playerUUID = player.getUUID();
         int currentTick = (int) player.level().getGameTime();
+        SetBalanceConfig.DragonConfig cfg = SetBalanceConfig.dragon();
 
         Integer lastTrigger = DRAGON_SCALE_SHIELD_COOLDOWN.get(playerUUID);
-        if (lastTrigger != null && currentTick - lastTrigger < DRAGON_SCALE_SHIELD_COOLDOWN_TICKS) return;
+        if (lastTrigger != null && currentTick - lastTrigger < cfg.fourPieceShieldCooldownTicks()) return;
 
-        if (player.getRandom().nextFloat() < 0.30f) {
+        if (player.getRandom().nextFloat() < cfg.fourPieceShieldChance()) {
             float originalDamage = event.getAmount();
-            float shieldAbsorb = Math.min(10.0f, originalDamage);
+            float shieldAbsorb = Math.min(cfg.fourPieceShieldAbsorbMax(), originalDamage);
             event.setAmount(originalDamage - shieldAbsorb);
             DRAGON_SCALE_SHIELD_COOLDOWN.put(playerUUID, currentTick);
 
@@ -66,8 +67,9 @@ public class DragonSetEffectHandler implements SetEffectHandler {
     public void onPlayerAttack(Player player, LivingIncomingDamageEvent event, LivingEntity target, int pieceCount) {
         if (pieceCount < 6) return;
 
-        if (player.getRandom().nextFloat() < 0.25f) {
-            double range = 5.0;
+        SetBalanceConfig.DragonConfig cfg = SetBalanceConfig.dragon();
+        if (player.getRandom().nextFloat() < cfg.sixPieceBreathChance()) {
+            double range = cfg.sixPieceBreathRange();
             double playerYaw = Math.toRadians(player.getYRot());
             double forwardX = -Math.sin(playerYaw);
             double forwardZ = Math.cos(playerYaw);
@@ -85,8 +87,8 @@ public class DragonSetEffectHandler implements SetEffectHandler {
                 if (dist > range) continue;
                 double dot = (dx * forwardX + dz * forwardZ) / dist;
                 if (dot < 0.5) continue;
-                entity.hurt(player.damageSources().onFire(), 10.0f);
-                entity.setRemainingFireTicks(100);
+                entity.hurt(player.damageSources().onFire(), cfg.sixPieceBreathDamage());
+                entity.setRemainingFireTicks(cfg.sixPieceBurnTicks());
                 player.level().addParticle(ParticleTypes.FLAME,
                         entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(), 0, 0.1, 0);
             }

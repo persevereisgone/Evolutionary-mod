@@ -1,25 +1,229 @@
+# Evolutionary Mod
 
-Installation information
-=======
+模组名称：**Evolutionary Mod**（暂定）
+游戏版本：**Minecraft 1.21.1 + NeoForge**
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+---
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## 模组简介
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+Evolutionary Mod 是一个以**饰品系统**为核心的生存向模组，为玩家提供丰富的装备搭配选择和战斗策略深度。模组包含完整的饰品收集、套装效果、元素属性和负重限制等系统，旨在让玩家在原版基础上获得更丰富的RPG体验。
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+---
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+## 核心系统
+
+### 1. 饰品系统（Accessory System）
+
+饰品系统是模组的核心系统，提供9种不同类型的饰品栏位：
+
+| 栏位类型 | 说明 | 饰品示例 |
+|----------|------|----------|
+| **Earring（耳环）** | 左右各一 | 力量耳环、魔法耳环 |
+| **Necklace（项链）** | 颈部 | 生命项链、元素项链 |
+| **Ring（戒指）** | 双手各一 | 敏捷戒指、暴击戒指 |
+| **Bracelet（手镯）** | 双手各一 | 防御手镯、护盾手镯 |
+| **Belt（腰带）** | 腰部 | 负重腰带、速度腰带 |
+| **Shoulder（护肩）** | 双肩各一 | 护甲护肩、抗性护肩 |
+| **Glove（手套）** | 双手各一 | 破坏手套、采集手套 |
+| **Headwear（头饰）** | 头部 | 智慧头饰、感知头饰 |
+| **Anklet（脚饰）** | 双脚各一 | 跳跃脚饰、速度脚饰 |
+
+**功能特性：**
+- 多种稀有度（普通、稀有、史诗、传说）
+- 随机属性词条系统
+- 套装效果加成
+- 元素属性附着（火、水、雷、冰、土、风、暗、光）
+
+### 2. 套装系统（Set Bonus）
+
+同套装饰品达到指定数量可激活套装效果：
+
+| 套装名称 | 2件套效果 | 4件套效果 |
+|----------|-----------|-----------|
+| 龙息套装 | +10%火焰伤害 | +25%火焰伤害 + 火抗 |
+| ... | ... | ... |
+
+### 3. 元素系统（Element System）
+
+饰品可附带元素属性，影响战斗中的元素互动：
+
+| 元素类型 | 效果说明 |
+|----------|----------|
+| **火（Fire）** | 持续灼烧伤害 |
+| **水（Water）** | 减速敌人 |
+| **雷（Thunder）** | 高爆发伤害 |
+| **冰（Ice）** | 冻结效果 |
+| **土（Earth）** | 高防御加成 |
+| **风（Wind）** | 移速加成 |
+| **暗（Shadow）** | 暴击加成 |
+| **光（Light）** | 治疗加成 |
+
+### 4. 战斗系统
+
+| 系统 | 说明 |
+|------|------|
+| **暴击系统（Crit System）** | 基于饰品和属性的暴击率/暴击伤害计算 |
+| **护甲穿透（Armor Penetration）** | 忽略目标部分护甲 |
+| **伤害减免（Damage Reduction）** | 百分比减伤计算 |
+
+### 5. 负重系统（Weight System）
+
+为游戏添加负重限制机制，增加策略深度：
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| **基础负重** | 120 | 初始负重上限 |
+| **等级加成** | +2/级 | 每级增加2点负重上限 |
+| **安全阈值** | 60% | 超过开始减速 |
+| **警戒阈值** | 85% | 超过加速饱食消耗 |
+| **速度惩罚** | 最高50% | 超重时速度下降 |
+| **饱食惩罚** | 最高2x | 超载时饱食加速消耗 |
+
+**物品重量示例：**
+
+| 物品类型 | 重量 | 示例 |
+|----------|------|------|
+| 工具（铁） | 2.5 | 铁镐、铁剑 |
+| 护甲（铁/件） | 4.0 | 铁头盔 |
+| 矿石 | 0.5 | 铁矿、煤矿 |
+| 建筑材料 | 0.3 | 石头、木板 |
+| 食物 | 0.2-0.4 | 面包、肉类 |
+
+---
+
+## 已实装功能
+
+| 功能 | 状态 | 说明 |
+|------|------|------|
+| 饰品栏位系统 | ✅ 已实装 | 9种饰品类型 |
+| 饰品容器UI | ✅ 已实装 | 背包集成界面 |
+| 饰品属性系统 | ✅ 已实装 | 随机词条、属性计算 |
+| 套装效果 | ✅ 已实装 | 2件套/4件套效果 |
+| 元素系统 | ✅ 已实装 | 8种元素属性 |
+| 负重系统 | ✅ 已实装 | V4版本：120基础+等级加成 |
+| 自定义怪物 | ✅ 已实装 | 多种精英怪物 |
+| 战斗系统 | ✅ 已实装 | 暴击、护甲穿透、伤害减免 |
+
+---
+
+## 待开发功能
+
+| 功能 | 状态 | 策划案位置 |
+|------|------|------------|
+| 游玩指南系统 | ⚠️ 搁置 | `docs/planning/system/GUIDE_SYSTEM.md` |
+| 负重系统扩展 | 📋 规划中 | 背包装备、成就加成 |
+| 饰品制作系统 | 📋 规划中 | - |
+| 更多套装 | 📋 规划中 | - |
+| 更多怪物 | 📋 规划中 | - |
+
+---
+
+## 技术架构
+
+### 主要包结构
+
+```
+com.muyun.evolutionary_mod/
+├── block/                    # 方块注册
+├── capability/              # 饰品能力系统
+├── client/                   # 客户端处理
+│   ├── AccessoryScreen.java  # 饰品界面
+│   └── ClientHandlers.java   # 客户端事件
+├── command/                  # 命令
+├── core/                     # 核心（饰品栏位、规则）
+├── entity/                   # 实体系统
+│   └── monster/             # 怪物实体
+├── item/                     # 物品系统
+│   ├── base/                 # 饰品基类
+│   ├── sets/                 # 套装定义
+│   └── types/                # 饰品类型定义
+├── loot/                     # 战利品系统
+├── menu/                     # 菜单
+├── network/                  # 网络同步
+├── system/                   # 游戏系统
+│   ├── combat/               # 战斗系统
+│   ├── effects/              # 饰品效果处理
+│   ├── elements/             # 元素系统
+│   ├── mage/                # 法师属性
+│   ├── sets/                 # 套装系统
+│   └── weight/               # 负重系统
+└── tools/                    # 工具类
+```
+
+### 关键类说明
+
+| 类名 | 职责 |
+|------|------|
+| `AccessoryItem.java` | 饰品物品基类 |
+| `PlayerAccessories.java` | 玩家饰品数据管理 |
+| `AccessoryRegistry.java` | 饰品注册系统 |
+| `SetSystem.java` | 套装效果计算 |
+| `ElementSystem.java` | 元素属性系统 |
+| `WeightSystem.java` | 负重计算核心 |
+| `WeightConfig.java` | 负重系统配置 |
+
+---
+
+## 开发环境
+
+### 环境要求
+
+- **JDK**: 21+
+- **Gradle**: 8.x
+- **IDE**: IntelliJ IDEA 或 Eclipse
+- **Minecraft**: 1.21.1
+- **NeoForge**: 最新版
+
+### 常用命令
+
+```bash
+# 刷新依赖
+gradlew --refresh-dependencies
+
+# 清理构建
+gradlew clean
+
+# 构建模组
+gradlew build
+
+# 运行客户端
+gradlew runClient
+```
+
+### 配置文件位置
+
+| 文件 | 位置 | 说明 |
+|------|------|------|
+| 模组配置 | `.minecraft/config/evolutionary_mod-common.toml` | 通用配置 |
+| 负重配置 | `.minecraft/config/evolutionary_mod-weight.toml` | 负重系统配置 |
+
+---
+
+## 策划案文档
+
+所有策划案文档统一存放在 `docs/planning/` 目录：
+
+```
+docs/planning/
+├── system/          # 系统策划
+│   ├── WEIGHT_SYSTEM_V4.md       # 负重系统（已实装）
+│   └── GUIDE_SYSTEM.md           # 游玩指南（搁置）
+├── balance/         # 平衡性数据
+│   └── ITEM_WEIGHTS.md           # 物品重量参考
+└── config/          # 配置示例
+    └── WEIGHT_CONFIG_EXAMPLE.toml
+```
+
+---
+
+## License
+
+本模组基于 **NeoForged** 和 **Minecraft** 开发。
+
+---
+
+## 致谢
+
+- [NeoForged](https://discord.neoforged.net/) - 模组加载器开发团队
+- [Minecraft Wiki](https://minecraft.wiki/) - 游戏参考资料

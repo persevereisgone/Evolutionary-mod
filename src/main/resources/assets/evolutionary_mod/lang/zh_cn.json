@@ -198,5 +198,11 @@
   "entity.evolutionary_mod.time_warper": "时间扭曲者",
   "entity.evolutionary_mod.soul_necromancer": "亡魂法师",
   "entity.evolutionary_mod.earth_guardian": "大地守卫",
-  "entity.evolutionary_mod.wind_blade_hunter": "风刃猎手"
+  "entity.evolutionary_mod.wind_blade_hunter": "风刃猎手",
+
+  "message.evolutionary_mod.weight.heavy": "§e[负重警告] §6背包已达负重上限的70%，移动速度开始降低！",
+  "message.evolutionary_mod.weight.overweight": "§c[超载警告] §6背包已达负重上限的90%，饱食度消耗将加快！",
+  "message.evolutionary_mod.weight.overloaded": "§4[超载] §6背包已超载！",
+  "message.evolutionary_mod.weight.cannot_pickup": "§c无法拾取物品：背包已超载！",
+  "message.evolutionary_mod.weight.would_overload": "§c无法拾取物品：拾取后将超载！"
 }
