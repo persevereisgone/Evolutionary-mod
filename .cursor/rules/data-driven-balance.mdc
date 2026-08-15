@@ -8,6 +8,8 @@ alwaysApply: false
 
 改掉落、词条、套装数值时：**先改 JSON，再必要时补 Java 回退常量**。
 
+> 本表是「某系统数值改哪里」的操作参考，按系统维护；数值的**完整联动关系**以 `docs/dev/修改同步索引表.md` 对应章节为准，新增系统时两处都要补。总览大纲（`project-overview.mdc`）不逐系统罗列。
+
 ## 对照表
 
 | 系统 | 主数据 | Java 回退 |
@@ -15,6 +17,8 @@ alwaysApply: false
 | 掉落 | `data/evolutionary_mod/loot/drop_table.json` | `loot/AccessoryDropTable.java` |
 | 词条 | `data/evolutionary_mod/attributes/ranges.json` | `loot/AttributeRollRanges.java` |
 | 套装 | `data/evolutionary_mod/sets/{key}_set.json` | `system/sets/SetBalanceConfig.java` |
+| 铸币/徽章掉落 | `data/.../currency/coin_drops.json`、`badge_drops.json`（新） | GLM 独立判定，无饰品回退；要吃幸运与 Looting 规则（见 `CURRENCY_TRADE_SYSTEM_V1.md`） |
+| 密封匣/材料包 | `data/.../currency/pouch_rolls.json`、`material_pouch.json`（新） | roll-on-open 复用标准滚动（`AccessoryDropTable`），保底参数在 JSON |
 
 维护掉落时同步更新 `drop_table.template.json`。
 

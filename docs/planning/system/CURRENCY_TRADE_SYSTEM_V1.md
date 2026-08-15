@@ -3,7 +3,7 @@
 > 状态：📋 定稿 V1（待 Phase 1 实装）  
 > 适用版本：Minecraft 1.21.1 + NeoForge（Evolutionary Mod）  
 > 关联系统：锻造系统 `FORGE_SYSTEM_V1.md`、掉落体系 `drop_table.json`、负重系统  
-> 修订记录：V1.4 完成全量评审拍板（见 §13 完结项）；本版为整理后的定稿文本
+> 修订记录：V1.4 完成全量评审拍板（见 §13 完结项）；V1.5 确认实现细节——沿用原版 Villager 模板 + 品阶独立字段 + 禁用交易升级；商人无需工作方块（转职纯代码、刷新走全局时钟）；升级碎片仅掉落获得（刻意难度）；交互判定优先级（徽章→铸币转职→兜底开交易）；保底计数仅单存档一致；删除货币兑换台方块；V1.6 补全「项目规范检查与同步索引」（见 §14，含项目规范检查表 + 联动表；对应 `docs/dev/修改同步索引表.md` §13，实装时按表核对）
 
 ---
 
@@ -19,10 +19,11 @@
 7. [出售回收](#七出售回收)
 8. [与现有系统的边界](#八与现有系统的边界)
 9. [扩展预留：特殊券](#九扩展预留特殊券)
-10. [数据与代码落点](#十数据与代码落点)
+10. [数据与代码落点](#十数据与代码落点)（含 10.1 新物品总览）
 11. [平衡锚点（初值）](#十一平衡锚点初值)
 12. [分期实装清单](#十二分期实装清单)
 13. [待定项与开放问题](#十三待定项与开放问题)
+14. [项目规范检查与同步索引（策划案收尾必查）](#十四项目规范检查与同步索引策划案收尾必查)
 
 ---
 
@@ -168,6 +169,13 @@
 - 升级单向、不可回退（沉没成本）。
 - 升级动作**不重置**该商人轮换商品（保留至下一次全局刷新，避免"升级=白嫖刷新"）。
 - 转职/升级反馈：**成功 = 金色粒子 + 音效；失败 = 无任何反馈**。
+- **交互判定优先级**（右键村民时按序判定）：① 手持对应**徽章** → 执行升级/直变；② 手持**铸币** + 目标为**未就业**村民 → 执行转职；③ 其余情况 → 兜底打开原版交易界面。
+
+**商人死亡（D2.4）：**
+
+- 不自动补偿；死亡后重新转职/使用刷怪蛋补充，需重新升级。
+- **仅终极商人**出售「村民刷怪蛋」：**每次刷新窗口限购 1 个**，**兑换物 = 1× 终极徽章**（非铸币）。
+- **刷怪蛋定位（价值说明）**：一键重获一个可转职的村民位——玩家拿到第 2 个终极徽章后，换 1 个普通村民（1 铸币转职）即拥有第二个终极商人，可兑换更多其它商品；对已有高级商人池的玩家有明确价值。
 
 ### 4.4 徽章合成配方
 
@@ -178,6 +186,7 @@
 
 - 中级/高级徽章 = **配方合成 + 掉落**双通道（碎片合成，无额外关键材料）。
 - **配方无额外进度门槛**：始终可见、始终可合成，材料本身即天然门槛。
+- **升级所需碎片（优秀/史诗/传说）只能通过精英/Boss 掉落获取**——商人不出售本档碎片之外的升级材料，这是刻意的难度设计（V1.5 确认：非缺陷，升级链路 = 打怪攒碎片 → 合成徽章）。
 - **终极徽章不设合成配方**——仅 Boss 掉落。
 
 ### 4.5 徽章掉落表
@@ -206,22 +215,25 @@
 
 | 项 | 设计 |
 |----|------|
-| 职业 | `evolution_trader`；**四级品阶 = 同职业 + 等级伪装**：`novice`=普通 / `apprentice`=中级 / `journeyman`=高级 / `expert`=终极 |
-| 等级 UI | 复用原版村民职业等级星星（新手/学徒/熟练/专家） |
-| **悬浮名字与颜色** | 见下表 |
-| 工作方块（POI） | `coin_exchange_table`（货币兑换台，可合成、可放置）——restock 与职业认领 |
+| 职业 | `evolution_trader`（进化商人）；**沿用原版村民 Villager 模板**（不对原版职业做改造，减少工作量） |
+| **品阶实现** | **品阶存独立字段，并禁用原版交易升级**（拦截交易经验 / 覆盖 `increaseMerchantCareer`，避免交易后自动升档 → 免费白嫖升级） |
+| **禁用升级技术手段** | 候选：① 覆写 `Villager#increaseMerchantCareer`（protected，可继承）；② 交易后强制 `setVillagerData` 回写品阶对应等级。**实装前需 spike 验证**（详见 §12.2） |
+| 品阶展示 | 借原版职业等级星星 + 悬浮名字颜色（见下表）：普通 `novice` / 中级 `apprentice` / 高级 `journeyman` / 终极 `expert` |
+| 工作方块 | **不需要 POI 工作方块**——转职/升级纯代码改职业数据（右键判定实现）；原版 restock 不依赖（见 §6.2） |
+| 转职/升级交互 | `PlayerInteractEvent.EntityInteract` 拦截 + `setCanceled` 阻断原版"打开交易界面"行为（V1.5 优先级：徽章→铸币转职→兜底开交易） |
 | 交易 UI | **复用原版村民交易界面（MerchantMenu）**，不自绘 GUI |
 | 交易数据 | `data/evolutionary_mod/villager_trades/evolution_trader_*.json`（数据包格式） |
-| restock | 全局刷新时钟统一补货（§6.2） |
+| 回收交易实现 | 同样走 villager_trades JSON——**"回收" = buy=玩家出售物、sell=铸币**，无需反向逻辑代码 |
+| restock | 全局刷新时钟统一补货（§6.2），与原版 restock 完全解耦 |
 
 **四级商人显示名与颜色：**
 
-| 商人品阶 | 等级伪装 | 悬浮显示名 | 名字颜色 |
+| 商人品阶 | 品阶展示 | 悬浮显示名 | 名字颜色 |
 |----------|----------|-----------|:---:|
-| 普通商人 | `novice` | 进化商人·普通 | **青铜** `#B08D57` |
-| 中级商人 | `apprentice` | 进化商人·中级 | **紫罗兰** `#9B59B6` |
-| 高级商人 | `journeyman` | 进化商人·高级 | **鎏金** `#FFD97B` |
-| 终极商人 | `expert` | 进化商人·终极 | **白金** `#F0EAD6` |
+| 普通商人 | 无星 | 进化商人·普通 | **青铜** `#B08D57` |
+| 中级商人 | 学徒星 | 进化商人·中级 | **紫罗兰** `#9B59B6` |
+| 高级商人 | 熟练星 | 进化商人·高级 | **鎏金** `#FFD97B` |
+| 终极商人 | 专家星 | 进化商人·终极 | **白金** `#F0EAD6` |
 
 ---
 
@@ -324,10 +336,12 @@
 - 服务端 `SavedData` 记录下次刷新时间戳，跨重启持久。
 - `ServerTickEvent` 检测时间点 → 对所有进化商人重掷轮换商品 + 补满限购库存。
 - 交易界面顶部叠加倒计时渲染（复用原版 MerchantMenu 覆写绘制）。
+- **刷新不依赖工作方块/原版 restock**：商人无 POI 也能正常补货——本系统全部库存与轮换由全局刷新时钟驱动，与原版 restock 完全解耦（V1.5 确认：无工作方块不影响刷新）。
+- **轮换商品重写技术路径（实装注意）**：服务端遍历商人 `merchant.getOffers()` 清空重填/只替换轮换条目 + `setOffers`；**需处理客户端同步**（打开交易界面的客户端看到的是缓存 offers）——实装时验证是否需要包一层同步信号或复用 `MerchantTradesUpdatedS2C` 通道。该点需 spike（详见 §12.2）。
 
 ### 6.3 购买上限：原版商人库存
 
-- 上限完全依赖**原版商人库存 `max_uses` + restock**（无玩家每日配额）。
+- 上限完全依赖**原版商人库存 `max_uses` 字段**（数值上限），每次**全局刷新时钟重置库存**（无玩家每日配额；不使用原版 restock 机制）。
 - **每次全局刷新补满所有轮换商品库存**。
 - 权威数值表：
 
@@ -345,7 +359,8 @@
 
 ### 6.4 保底
 
-- **密封匣 90 次保底**：每档匣子按玩家累计"未出本档最高品阶"的连续开启次数 `n`；`n ≤ 80` 正常权重滚动；**`n ≥ 81` 起本档最高品阶概率 = `n + 10%`（81→91% … 90→100%）**；出货后 `n` 归零。本档最高品阶 = 该匣品阶池内最高档（普通匣=普通、优秀匣=优秀、史诗匣=史诗、传说匣=传说）。计数走玩家 `DataComponent`，无需全局记账。
+- **密封匣 90 次保底**：每档匣子按玩家累计"未出本档最高品阶"的连续开启次数 `n`；`n ≤ 80` 正常权重滚动；**`n ≥ 81` 起本档最高品阶概率 = `n + 10%`（81→91% … 90→100%）**；出货后 `n` 归零。本档最高品阶 = 该匣品阶池内最高档（普通匣=普通、优秀匣=优秀、史诗匣=史诗、传说匣=传说）。
+- **计数载体（V1.5 定稿）**：走**玩家实体附件（NeoForge `AttachmentType`）**，**仅保证同一个存档内一致**（存读档/重进世界时保留），**不做跨存档世界间传递**（每个存档独立计数，避免跨档累积作弊）。
 - 惊喜盒货币返利 ≤ 盒价 × 50%，总期望 < 盒价。
 - 远期"保底券"走 §9 券通道。
 
@@ -355,7 +370,7 @@
 
 ### 7.1 品阶档位回收价格表
 
-**规则：每种品阶的物品回收价按「商人档位」列出，相邻商人档位之间价格构成等差数列（每跨一档按固定步长递减）；同级商人给最高价，越级价格越低。**
+**规则：每种品阶的物品回收价按「商人档位」列出；物价以"同级商人"为最高点，向两侧跨档等差递减（每跨一档减固定步长），最低不低于 1 铸币。**
 
 | 物品品阶 | 普通商人 | 中级商人 | 高级商人 | 终极商人 | 步长 |
 |----------|:---:|:---:|:---:|:---:|:---:|
@@ -376,7 +391,7 @@
 
 1. 强化过的饰品禁止出售——防止把锻造投入换算成货币。
 2. 跨级回收天然压价，"卖废品攒钱"转化率低于刷怪。
-3. 回收条目走原版 `max_uses` + restock 限制批量出货。
+3. 回收条目走原版 `max_uses` 字段 + 全局刷新重置限制批量出货。
 
 ---
 
@@ -422,14 +437,43 @@ GLM → 饰品成品       强化/重锻/粉碎     币掉落（独立判定）
 
 ## 十、数据与代码落点
 
-### 10.1 建议新增
+### 10.1 新物品总览
+
+> 本表为全部新增物品清单，实装时逐项核对（状态列 ⏳=未实装）；同时供 UI/图标设计对应。
+
+| 物品 ID | 中文名 | 英文名 | 类别 | 用途 | 获取/来源 | UI 图标要点 | 状态 |
+|---------|--------|--------|------|------|-----------|-------------|:---:|
+| `evolution_coin` | 进化铸币 | Evolution Coin | 货币 | 交易支付 / 转职消耗 | 精英/Boss/宝箱掉落 + 出售回收 | 金色圆币 + 微光粒子，紫金风格 | ⏳ |
+| `badge_intermediate` | 中级升级徽章 | Intermediate Upgrade Badge | 徽章 | 普通商人→中级商人 | 配方合成（1 铸币 + 8 优秀碎片）+ 精英掉落 | 青铜/古铜徽章，朴实 | ⏳ |
+| `badge_advanced` | 高级升级徽章 | Advanced Upgrade Badge | 徽章 | 中级商人→高级商人 | 配方合成（1 中级徽章 + 4 史诗碎片 + 4 传说碎片）+ 精英掉落 | 鎏金徽章，华丽 | ⏳ |
+| `badge_ultimate` | 终极徽章 | Ultimate Badge | 徽章 | 高级商人→终极 / 右键未转职村民直变 / 兑换村民刷怪蛋 | **仅 Boss 掉落**（凋灵/末影龙 25%、坚守者 5%） | 白金色徽章，最高档 | ⏳ |
+| `pouch_common` | 普通饰品匣 | Common Accessory Pouch | 随机箱 | 开出残破/普通随机饰品（5 币） | 普通商人 | 灰青铜封印匣，朴素 | ⏳ |
+| `pouch_excellent` | 优秀饰品匣 | Excellent Accessory Pouch | 随机箱 | 开出普通/优秀随机饰品（15 币） | 中级商人 | 紫罗兰封印匣 | ⏳ |
+| `pouch_epic` | 史诗饰品匣 | Epic Accessory Pouch | 随机箱 | 开出优秀/史诗随机饰品（40 币） | 高级商人 | 紫金封印匣，饰纹丰富 | ⏳ |
+| `pouch_legendary` | 传说饰品匣 | Legendary Accessory Pouch | 随机箱 | 开出史诗/传说随机饰品（120 币） | 终极商人 | 白金色传说匣，流光 | ⏳ |
+| `material_pouch` | 随机材料包 | Random Material Pouch | 随机箱 | 随机 1～3 件锻造材料（8 币） | 四级商人均售 | 布袋/麻袋 + 材料微光 | ⏳ |
+| `surprise_box` | 惊喜盒 | Surprise Box | 随机箱 | 材料/饰品/铸币返利混合池（25 币） | 中级及以上商人 | 神秘礼盒，问号/星芒 | ⏳ |
+| `villager_spawn_egg` | 村民刷怪蛋 | Villager Spawn Egg | 交易商品 | 弥补商人死亡（重新获得可转职村民） | 终极商人以 1× 终极徽章兑换（1 个/刷新） | 原版刷怪蛋配色即可 | ⏳ |
+
+### 10.2 交易涉及已有物品（非新增，供 UI 对照）
+
+> 以下为商人交易中出售/回收的**已有物品**，图标与名称沿用现有资源，不新增。
+
+| 物品 | 交易角色 |
+|------|----------|
+| 饰品精华 / 武器精华 / 护甲精华 | 出售（通用商品） |
+| 品阶碎片 ×6（残破~至臻） | 出售（按商人档；至臻不售） |
+| 属性精华 ×10 | 出售（通用商品，轮换） |
+| 普通/高级重锻石、锁定重锻石 | 出售（按商人档，轮换） |
+| 引导书 | 出售（通用商品） |
+
+### 10.3 建议新增
 
 | 路径 | 职责 |
 |------|------|
 | `item/currency/CurrencyItems.java` | `evolution_coin`、升级徽章×3、密封匣×4、材料包、惊喜盒、村民刷怪蛋 |
-| `block/CoinExchangeTableBlock`（含 BlockEntity 若有需要） | 商人工作方块（POI，restock 用） |
-| 新职业注册（`ModVillagers` 或并入现有 Registry） | `evolution_trader` + POI 绑定 |
-| `data/.../villager_trades/evolution_trader_*.json` | 四级商人常驻/轮换商品（按等级伪装 novice~expert 分流） |
+| 新职业注册（`ModVillagers` 或并入现有 Registry） | `evolution_trader`（沿用原版 Villager 模板，品阶独立字段 + 禁用交易升级） |
+| `data/.../villager_trades/evolution_trader_*.json` | 四级商人常驻/轮换商品（品阶与交易等级对应） |
 | `data/.../currency/coin_drops.json` | 铸币掉率与数量（GLM 读取用） |
 | `data/.../currency/badge_drops.json` | 徽章掉率（§4.5 表） |
 | `data/.../currency/pouch_rolls.json` | 密封匣品阶池/部位/套装权重 + 保底参数 |
@@ -440,15 +484,37 @@ GLM → 饰品成品       强化/重锻/粉碎     币掉落（独立判定）
 | Patchouli 引导书新增页（`patchouli.json` / lang 双语） | 徽章/商人/铸币说明（见下） |
 
 > ⚠️ 引导书 / lang 中关于徽章掉率的文案**禁止写具体百分比**（如"25%"），只做定性描述（"由 Boss 掉落、坚守者显著低于其余"）——数值唯一事实来源是 `currency/badge_drops.json`。
+>
+> ⚠️ **同步维护规范 → §10.5**（强制）：本系统开发完成后，把联动关系写入 `docs/dev/修改同步索引表.md` 与 `docs/dev/开发者指南-精简版.md`，并在末尾按 §14「项目规范检查」表核对整个项目规范后再交付。
 
-### 10.2 复用
+### 10.4 复用
 
 | 现有 | 用法 |
 |------|------|
 | `AccessoryRegistry` / `AccessoryDropTable` | 密封匣开盒标准滚动 |
 | FORGE 掉落通道结构（§8.2/§8.2.1） | 铸币/徽章掉落通道同构 |
 | `ForgeMaterials` / 锻造材料 | 特殊资源兑换对象 |
-| 原版村民转职机制 | 手持铸币右键未就业村民 → `evolution_trader` |
+| 原版 Villager 实体 | `evolution_trader` 沿用模板（品阶独立字段 + 禁用交易升级） |
+
+### 10.5 同步维护规范（强制）
+
+> 目标：后续任何人只改一个源文件时，都能在同一处看到还要联动哪些文件。
+
+**本系统开发完成后，必须把下列内容写入项目规范：**
+
+1. 把本策划案的联动关系写入 `docs/dev/修改同步索引表.md`，作为收尾检查清单。
+2. 把 `docs/dev/开发者指南-精简版.md` 的“改哪里”入口补全到货币交易系统。
+3. 若新增物品、交易条目、掉落表、刷新规则或引导书页，必须同步 `zh_cn.json`、`en_us.json`、`villager_trades/*.json`、`currency/*.json`、`patchouli_books/guide/**`。
+4. 若新增注册、网络交互或命令入口，必须把对应 Java 入口与数据文件一并写进本节，避免只改单点。
+5. 任何货币 / 商人 / 随机资源的数值修改，默认视为“数据驱动修改”，先查同步索引，再改主数据，再检查回退与文案。
+
+**货币交易系统当前强制联动链路：**
+
+| 源文件 | 需同步检查 |
+|------|------|
+| `docs/planning/system/CURRENCY_TRADE_SYSTEM_V1.md` | `docs/dev/修改同步索引表.md`、`docs/dev/开发者指南-精简版.md`、`src/main/resources/assets/evolutionary_mod/lang/zh_cn.json`、`src/main/resources/assets/evolutionary_mod/lang/en_us.json`、`src/main/resources/data/evolutionary_mod/villager_trades/*.json`、`src/main/resources/data/evolutionary_mod/currency/*.json`、`src/main/resources/data/evolutionary_mod/loot_tables/entities/*.json`、`src/main/resources/data/evolutionary_mod/loot_modifiers/*.json`、`src/main/resources/data/neoforge/loot_modifiers/global_loot_modifiers.json`、`src/main/resources/data/evolutionary_mod/recipe/guide_book.json`、`src/main/resources/assets/evolutionary_mod/patchouli_books/guide/**`、`src/main/java/com/muyun/evolutionary_mod/item/registry/ModItems.java`、`src/main/java/com/muyun/evolutionary_mod/item/forge/ForgeMaterials.java`、`src/main/java/com/muyun/evolutionary_mod/network/*.java`（若新增交互同步） |
+| `src/main/resources/data/evolutionary_mod/currency/*.json` | 对应物品注册、掉落/交易/刷新逻辑、双语 lang、引导书 |
+| `src/main/resources/data/evolutionary_mod/villager_trades/*.json` | 村民注册、货币物品、刷新逻辑、lang、引导书 |
 
 ---
 
@@ -473,8 +539,8 @@ GLM → 饰品成品       强化/重锻/粉碎     币掉落（独立判定）
 | 随机材料包 | 8 币；库存 2/4/6/10；期望 ≈ 8 币 |
 | 惊喜盒 | 25 币；库存 5；返利 ≤ 12.5，期望 < 25；中级及以上 |
 | 出售回收 | §7.1 档位表；下限 1；至臻不收 |
-| 商人等级 | `novice`~`expert` 等级伪装 |
-| 全局刷新 | 每现实 1 小时；每商人轮换上架 1～3 条；刷新补满限购库存 |
+| 商人等级 | 品阶独立字段 + 禁止原版交易升级；展示借原版等级星星 |
+| 全局刷新 | 每现实 1 小时；每商人轮换上架 1～3 条；刷新补满限购库存；不依赖工作方块 |
 | 村民刷怪蛋 | 1 个/刷新窗口；兑换物 = 1× 终极徽章 |
 
 ---
@@ -484,15 +550,15 @@ GLM → 饰品成品       强化/重锻/粉碎     币掉落（独立判定）
 ### Phase 1 — 货币与商人骨架
 - [ ] 注册 `evolution_coin` + 双语 lang
 - [ ] 铸币掉落：`coin_drops.json` + GLM + 精英/Boss 实体 loot（吃幸运，不吃 Looting）
-- [ ] `coin_exchange_table` 方块 + `evolution_trader` 职业（等级伪装 novice~expert）
-- [ ] 普通商人转职：手持 1 铸币右键未就业村民（成功音效粒子）
+- [ ] `evolution_trader` 职业（沿用原版 Villager 模板；品阶独立字段；禁用交易升级）
+- [ ] 普通商人转职：手持 1 铸币右键未就业村民（成功音效粒子；无工作方块）
 - [ ] `villager_trades` 数据：四级商人常驻/轮换商品 + 通用商品
 - [ ] 徽章：掉落池 + 合成配方 + 升级/直变逻辑
 - [ ] 出售回收：未强化饰品（至臻不收）+ 溢出材料（档位价格表）
-- [ ] 同步：`docs/dev/修改同步索引表.md`、`docs/dev/开发者指南-精简版.md`、双语 lang
+- [ ] **同步收尾**：见 §14——① 向 `docs/dev/修改同步索引表.md` 补「§13 货币交易体系」小节；② 更新 `docs/dev/开发者指南-精简版.md`（新增货币/商人模块小节省览）；③ 双语 lang（新物品 `item.evolutionary_mod.*` ×11、商人 `entity.*`、Patchouli `patchouli.*`）
 
 ### Phase 2 — 随机与深度
-- [ ] 密封匣 4 档 + `pouch_rolls.json`（开匣掷骰，含套装部件权重，禁至臻；库存 5/10/15/25；90 次保底走玩家 DataComponent）
+- [ ] 密封匣 4 档 + `pouch_rolls.json`（开匣掷骰，含套装部件权重，禁至臻；库存 5/10/15/25；90 次保底计数走玩家附件、仅单存档一致）
 - [ ] 随机材料包（产出权重表，库存 2/4/6/10）+ 惊喜盒（库存 5）
 - [ ] 全局刷新时钟 + 轮换商品（`merchant_refresh.json`；倒计时仅界面显示、无广播）
 - [ ] 终极商人「村民刷怪蛋」（兑换物 = 1× 终极徽章）
@@ -518,11 +584,57 @@ GLM → 饰品成品       强化/重锻/粉碎     币掉落（独立判定）
 - 随机材料包 / 惊喜盒库存（2/4/6/10 / 5）✅
 - 村民刷怪蛋兑换物（1× 终极徽章）✅
 - 全局刷新与密封匣并存（刷新补满库存）✅
-- 四级商人实现（等级伪装 + 悬浮名字颜色）✅
+- 商人实现（沿用原版 Villager 模板 + 品阶独立字段 + 禁用交易升级）✅
 - 密封匣 90 次保底 ✅
-- 低阶碎片断供（不改，1 铸币再转职）✅
+- 低阶/升级碎片断供（不改，1 铸币再转职；升级碎片只能靠掉落——刻意难度）✅
 - 凋灵终极徽章 25%（不改，骷髅头成本已节流）✅
 - 货币沉没出口（暂不处理，随新消耗渠道自然解决）✅
+- 商人无需工作方块（转职纯代码；刷新走全局时钟，不依赖原版 restock）✅
+- 密封匣保底计数（玩家附件，仅单存档一致，跨存档不传递）✅
+
+---
+
+## 十四、项目规范检查与同步索引（策划案收尾必查）
+
+> 本系统是**体量最大的一次新增**（11 物品 + 1 职业 + 5+ JSON + GLM + 实体 loot）。按项目规范（规则 `config-lang-docs.mdc`）：策划案末尾必须附「项目规范检查」表，逐行核对是否有项目规范需要变动；实装时应同步把本节关系写入 `docs/dev/修改同步索引表.md`（§13），后续**改任一文件按 14.2 表核对联动**。
+
+### 14.1 项目规范检查（本策划案是否引起项目规范变动）
+
+| 项目规范 | 核对要点 | 状态 |
+|----------|----------|------|
+| `docs/dev/修改同步索引表.md` | 新增「§13 货币交易体系」联动表 | ✅ 需改（已占位 §13，实装后逐条核对） |
+| `docs/dev/开发者指南-精简版.md` | 新增「货币与商人」模块入口 | ✅ 需改（实装后补齐 §9） |
+| `.cursor/rules/*.mdc` | 包结构 `item/currency/`、`ModVillagers` 注册链路、数据驱动对照表 | ✅ 需改（已按本策划案补：`config-lang-docs` / `data-driven-balance` / `neoforge-121` / `project-overview`） |
+| 双语 lang（`zh_cn.json` / `en_us.json`） | 新物品 11 个 + 商人职业 `entity.*` + Patchouli 新分类/条目 | ✅ 需改（实装时加 key） |
+| Patchouli 引导书（`patchouli_books/guide/**`） | 商人/铸币/徽章/密封匣新条目 | ✅ 需改（实装时建 JSON + lang；掉率只写定性，禁百分比） |
+| `docs/progress/`（进度文档） | 新增「货币交易体系」模块进度 | ✅ 需改（已占位 README 总览/待办） |
+| `docs/README.md`（文档目录） | 登记 `CURRENCY_TRADE_SYSTEM_V1.md` | ✅ 需改（已登记） |
+| `docs/player/`（玩家指南） | 货币/商人可感知玩法说明 | ✅ 需改（实装后补剧情向文案） |
+| 配置文件示例（`docs/planning/config/`） | 是否新增 TOML 配置示例 | ✅ 不变（货币数值走数据包 JSON，不走 TOML） |
+
+### 14.2 源文件 → 联动文件
+
+| 源文件 | 需同步检查 |
+|--------|-----------|
+| `data/.../currency/coin_drops.json` | ① GLM（`coin_drops`）+ `loot_modifiers/*.json` + `global_loot_modifiers.json` ② 精英/Boss 实体 loot `loot_tables/entities/*.json` ③ Java 回退 ④ 引导书 lang |
+| `data/.../currency/badge_drops.json` | ① 徽章 GLM + 实体 loot ② 徽章物品 ID ③ 合成配方 `recipe/*.json` ④ 升级/直变右键逻辑 ⑤ 引导书 lang（禁百分比） |
+| `data/.../villager_trades/evolution_trader_*.json` | ① `ModVillagers`（职业） ② 商品/回收物品 ID ③ `merchant_refresh.json`（库存/轮换） ④ 引导书「商人」 ⑤ lang |
+| `data/.../currency/pouch_rolls.json` | ① 密封匣物品 ×4 ② roll-on-open 逻辑（`AccessoryRegistry`/`AccessoryDropTable`） ③ 保底 Attachment ④ lang/引导书 |
+| `data/.../currency/material_pouch.json` | ① `material_pouch` 物品 ② 产出 ID（`ForgeMaterials` 等） ③ lang/引导书 |
+| `data/.../currency/merchant_refresh.json` | ① SavedData 刷新时钟 ② `ServerTickEvent` → `setOffers` ③ MerchantMenu 倒计时 ④ 与 villager_trades 库存一致 |
+| `item/currency/CurrencyItems.java` | ① 物品四件套（模型/纹理/lang/tab） ② `ModItems` 接入 ③ 各 JSON 引用的 ID 一致 ④ 引导书 |
+| `ModVillagers`（`evolution_trader`） | ① villager_trades JSON ② 品阶独立字段 + 禁用交易升级 ③ 右键交互判定 ④ lang `entity.*` + 品阶后缀 ⑤ 刷怪蛋 |
+| 保底计数 Attachment | ① `AttachmentType` 注册 ② `pouch_rolls.json` 保底参数 ③ 仅单存档一致 |
+| Patchouli 引导书新增页 | ① 分类/条目 JSON ② lang 双语 `patchouli.evolutionary_mod.*` ③ `book.json` ④ 数值定性描述 |
+
+### 14.3 收尾动作（实装完成后执行）
+
+- [ ] 在 `docs/dev/修改同步索引表.md` 新增「§13 货币交易体系」小节（按 14.2 表）
+- [ ] `docs/dev/开发者指南-精简版.md` 新增「货币与商人」模块小节省览
+- [ ] 双语 lang：新物品 11 个 `item.evolutionary_mod.*`、商人 `entity.evolutionary_mod.evolution_trader` + 品阶、Patchouli 新分类/条目
+- [ ] 引导书涉及掉率只写定性描述（徽章/铸币不写百分比）
+- [ ] 校验内置命令：`/acc validate`、`/acc drop|attr|set query`（货币沿用既有验证通道）
+- [ ] 反查 14.1 项目规范检查表：勾掉实际完成的「需改」项，确认项目规范无遗漏
 
 ---
 

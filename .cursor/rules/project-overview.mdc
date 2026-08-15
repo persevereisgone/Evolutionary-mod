@@ -14,8 +14,11 @@ Minecraft **1.21.1 + NeoForge** 饰品向 RPG 模组。MODID：`evolutionary_mod
 3. **client 包 + Dist.CLIENT** 隔离客户端；玩法逻辑服务端执行
 4. **一份事实一处维护**：改玩法同步 `docs/dev/开发者指南-精简版.md` 与双语 lang
 5. **任务收尾必查同步索引表**：每次完成涉及配置/数据/物品/实体的修改后，对照 `docs/dev/修改同步索引表.md` 逐项检查联动文件是否已同步（JSON↔Java 回退、物品四件套、lang 双语、实体 ID 五处、套装四处、槽位四处、引导书 lang 等）
+6. **新系统的改动入口不进总览**：具体到某个系统的改法（如某系统 JSON 落在哪、联动哪些文件）只维护在 `docs/dev/修改同步索引表.md` 对应章节 + 对应策划案中；总览大纲不逐系统罗列
 
 ## 改东西先看哪里
+
+> 本表只列**跨系统通用入口**；具体系统的改动入口先查 `docs/dev/修改同步索引表.md` 对应章节或对应策划案，不要往本表追加业务行。
 
 | 目标 | 优先修改 |
 |------|----------|
@@ -33,3 +36,4 @@ Minecraft **1.21.1 + NeoForge** 饰品向 RPG 模组。MODID：`evolutionary_mod
 - 不要写 Forge 1.20 式 Capability / SimpleChannel / `ItemStack.getTag()`
 - 不要扩大无关重构；沿现有 Registry / Handler 扩展点追加
 - **任务收尾不查 `docs/dev/修改同步索引表.md` 就交差**（改配置/数据文件必须按表核对联动文件）
+- **策划案末尾不附「项目规范检查」小节就交差**（新建/大改策划案必须先检查是否有项目规范需要变动，见规则 `config-lang-docs.mdc`）

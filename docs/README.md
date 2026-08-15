@@ -11,13 +11,14 @@
 ```
 planning/
 ├── system/          # 系统策划
-│   ├── WEIGHT_SYSTEM_V4.md       # 负重系统策划案（已实装）
-│   ├── FORGE_SYSTEM_V1.md        # 锻造台：强化 / 重锻 / 粉碎 / 特例升阶（待实装）
-│   └── GUIDE_SYSTEM.md           # 自研指南 UI（搁置；游戏内改用 Patchouli）
+│   ├── WEIGHT_SYSTEM_V4.md             # 负重系统策划案（已实装）
+│   ├── FORGE_SYSTEM_V1.md              # 锻造台：强化 / 重锻 / 粉碎 / 特例升阶（待实装）
+│   ├── CURRENCY_TRADE_SYSTEM_V1.md     # 货币交易：铸币 / 村民 / 密封匣 / 回收（待实装）
+│   └── GUIDE_SYSTEM.md                 # 自研指南 UI（搁置；游戏内改用 Patchouli）
 ├── balance/         # 平衡性策划
-│   └── ITEM_WEIGHTS.md           # 物品重量参考
+│   └── ITEM_WEIGHTS.md                 # 物品重量参考
 └── config/          # 配置示例
-    └── WEIGHT_CONFIG_EXAMPLE.toml # 负重系统配置示例
+    └── WEIGHT_CONFIG_EXAMPLE.toml      # 负重系统配置示例
 ```
 
 ### 策划案状态说明
@@ -34,6 +35,11 @@ planning/
 - 示例：`WEIGHT_SYSTEM_V4.md`
 - 版本号从V1开始，每次重大修订递增
 
+### 策划案必备小节
+
+- **末尾必须附「项目规范检查」表**：新建/大改策划案时，在结尾核对文档/规则/lang/引导书/进度等是否有需要变动的地方（表格式见 `.cursor/rules/config-lang-docs.mdc`）
+- 末尾可附「同步索引与联动检查」表：列出源文件 → 需同步检查的联动文件
+
 ---
 
 ## 玩家文档 (player/)
@@ -45,6 +51,7 @@ planning/
 ## 开发者文档 (dev/)
 
 - `dev/开发者指南-精简版.md`：给作者/维护者看的维护手册（新增内容要改哪些文件、如何验证、常见坑）
+- `dev/修改同步索引表.md`：**强制收尾检查项**——改配置/数据/物品/实体相关文件后按表核对联动文件
 - `dev/Patchouli引导书开发指南.md`：游戏内《进化指南》的 JSON/lang 位置、修改与扩展步骤
 
 ---

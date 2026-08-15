@@ -24,6 +24,8 @@ alwaysApply: false
 
 **新套装：** `item/sets/` → SetType/SetBonus/Handler → `sets/{key}_set.json` → SetBalanceConfig 回退 → lang
 
+**货币/商人（`CURRENCY_TRADE_SYSTEM_V1.md`）：** `item/currency/` 物品注册 → `ModVillagers`（`evolution_trader`，沿用原版 Villager 模板）→ `villager_trades/*.json` → `currency/*.json` → GLM（铸币/徽章掉落）→ 保底计数 `AttachmentType`（玩家附件）→ lang/引导书
+
 ## 禁止
 
 ```text

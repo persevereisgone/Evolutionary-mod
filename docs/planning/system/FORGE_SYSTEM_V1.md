@@ -971,6 +971,24 @@ data/
 
 ---
 
+## 项目规范检查（策划案收尾必查）
+
+> 按项目规范（规则 `config-lang-docs.mdc`）：本策划案是否引起下列项目规范变动。
+
+| 项目规范 | 核对要点 | 状态 |
+|----------|----------|------|
+| `docs/dev/修改同步索引表.md` | 新增「§12 策划案↔代码」关联 + 各数据文件联动（forge JSON ↔ Java 回退） | ✅ 已占位（§12 行 + 高频遗漏清单已列） |
+| `docs/dev/开发者指南-精简版.md` | 新增「锻造系统」模块入口（§3 套装/材料/锻造） | ✅ 已占位（§3 套装系统 + 快速对照） |
+| `.cursor/rules/*.mdc` | 数据驱动对照表、`system/forge/` 包结构、DataComponent 约定 | ✅ 已补（`data-driven-balance` / `package-and-naming` / `neoforge-121`） |
+| 双语 lang（`zh_cn.json` / `en_us.json`） | 新增物品 22 个 `item.*` + 锻造台 `forge.*` 消息 key | ✅ 需改（实装时加 key；部分已有） |
+| Patchouli 引导书（`patchouli_books/guide/**`） | 锻造台/材料总览新增条目 | ✅ 需改（实装时建 JSON + lang） |
+| `docs/progress/`（进度文档） | 新增「锻造系统」模块进度 | ✅ 已占位（`forge-system.md`） |
+| `docs/README.md`（文档目录） | 登记 `FORGE_SYSTEM_V1.md` | ✅ 已登记 |
+| `docs/player/`（玩家指南） | 锻造/材料可感知玩法说明 | ✅ 需改（实装后补） |
+| 配置文件示例（`docs/planning/config/`） | 是否新增 TOML 配置示例 | ✅ 不变（数值走数据包 JSON） |
+
+---
+
 ## 策划案总结
 
 | 模块 | 一句话 |
