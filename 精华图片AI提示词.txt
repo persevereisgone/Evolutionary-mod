@@ -1,0 +1,171 @@
+====================================================
+ 精华图片 AI 提示词（锻造系统 v1.2）
+ 覆盖 3 类型精华 + 10 属性精华，共 13 件
+====================================================
+
+【系列设计思路 · v1.2 重做】
+- 13 件精华 = 13 种「属性实体结晶」，每件独立设计，造型互不雷同，
+  避免 AI 批量生成时长得一模一样。
+- 统一语言只保留三点（保证整体还算一个系列）：
+  ① 全部是发光晶体/结晶材质，通透且有内发光；
+  ② 全部居中构图、透明背景、体素方块像素风格；
+  ③ 全部无文字、无边框。
+- 其余全部拉开差异化：颜色铺满整个色环（金/银/铜/红/橙/蓝/青/绿/粉/紫/黄/黑/天蓝），
+  形态覆盖圆/剑/块/心/锥/盾/翼/叶/十字/箭头/星/碎裂/蜂窝。
+- 成图规格：512x512 即可，之后缩到 Minecraft 16x16；
+  背景必须完全透明（游戏贴图不能有底色/底板）、物品居中、无文字。
+
+
+====================================================
+ 一、3 类型精华（各自独立造型）
+====================================================
+
+【1】accessory_essence 饰品精华 —— round faceted gem · GOLD
+A perfect round multi-faceted golden gemstone, cut like fine jewelry with sparkling facets,
+clear crystal. Warm golden inner glow, a small ring-with-diamond emblem hovering at the center,
+soft golden halo around the edge. Clean circular silhouette.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【2】weapon_essence 武器精华 —— sword-blade shard · SILVER-WHITE
+An upright silver-white sword-blade crystal, pointed tip facing up, like a sheathed sword.
+Sharp vertical facets, cold metallic silver-white gleam, tiny silver glints falling off the edge.
+Two small crossed swords embedded as an emblem at the middle.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【3】armor_essence 护甲精华 —— hex-armor ore block · BRONZE
+A rough bronze-copper cubical ore block, surface covered with hexagonal honeycomb armor-plate
+texture like a forged armor ingot, slightly worn edges, dark reddish-copper inner glow,
+a raised chestplate relief embossed on the front.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【通用负向（三条类型精华共用）】
+No bottle, no glass flask, no potion, no pouch, no cloth bag.
+
+
+====================================================
+ 二、10 属性精华（各自独立造型）
+====================================================
+
+【4】attribute_essence_life 生命精华 —— heart crystal · CRIMSON RED
+A crimson red heart-shaped crystal gem, full heart silhouette, sparkling facets,
+a soft beating red light pulsing slowly inside like a heartbeat.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【5】attribute_essence_attack 攻击精华 —— flame pyramid · LAVA ORANGE
+A lava-orange triangular pyramid crystal, tip pointing downward like a lowered spearhead,
+fiery orange streaks flowing on the surface, small ember-like orange sparks near the tip.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【6】attribute_essence_armor 护甲精华 —— hex shield thick-crystal · ROYAL BLUE
+A royal-blue hexagonal thick shield-shaped crystal standing like a flat shield,
+obvious thickness, beveled angled facets on the sides, a raised boss bump at the center.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【7】attribute_essence_speed 移速精华 —— streamline twin-wing crystal · MINT GREEN
+A pair of mint-green streamline wing crystals spread left and right like bird wings,
+smooth curved facets, thin cyan light trails streaming off the wingtips.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【8】attribute_essence_luck 幸运精华 —— four-leaf clover crystal · EMERALD GREEN
+An emerald-green four-leaf clover crystal wafer, four rounded leaves spread flat,
+glowing vein patterns on the leaves, a bright tiny light at the center.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【9】attribute_essence_regen 生命恢复精华 —— blooming lotus crystal · MAGENTA PINK
+A magenta-pink lotus-shaped crystal, layers of petals opening outward one by one
+like a blooming lotus flower, each petal a polished crystal facet, translucent,
+the seed-lotus center glowing extra bright, radiating a soft aura of rebirth.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【10】attribute_essence_penetration 护甲穿透精华 —— arrowhead shard · DEEP PURPLE
+A deep-purple diamond arrowhead-shaped shard, like an arrow tip with sharp points
+top and bottom, sharp vertical facets, a symbol of an arrow piercing a shield floating
+on the face.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【11】attribute_essence_crit_chance 暴击精华 —— eight-point star crystal · LEMON YELLOW
+A lemon-yellow eight-point star crystal, eight sharp rays bursting outward in all directions,
+like a frozen explosion, each ray a faceted prism, blindingly bright core.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【12】attribute_essence_crit_damage 暴击伤害精华 —— ruptured crystal cluster · OBSIDIAN BLACK
+A cluster of obsidian-black ruptured crystals shattering outward from the center,
+jagged uneven tips, dark crimson heat glowing through the cracks, tiny debris around edges.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+【13】attribute_essence_reduction 减伤精华 —— honeycomb dome crystal · SKY BLUE
+A sky-blue domed crystal, gently arched like a turtle shell or honeycomb,
+uniform hexagonal honeycomb grid on the surface, glowing grid lines, thick and sturdy look.
+Blocky voxel pixel-art, Minecraft item texture style, crisp 16x16 grid feel scaled up,
+high contrast, bold simple shapes, centered composition, fully TRANSPARENT background
+(no base color, no plate). No text, no watermark.
+
+
+====================================================
+ 三、参考速查表（颜色 + 形态一栏清）
+====================================================
+
+Item                           | Color            | Shape                      | Core detail
+accessory_essence 饰品精华     | gold             | round faceted gem          | ring-with-diamond emblem
+weapon_essence 武器精华        | silver-white     | sword-blade shard          | crossed swords emblem
+armor_essence 护甲精华         | bronze           | hex-armor ore block        | chestplate relief
+attribute_essence_life 生命精华 | crimson red      | heart crystal              | pulsing red light
+attribute_essence_attack 攻击精华 | lava orange   | flame pyramid              | ember sparks
+attribute_essence_armor 护甲精华 | royal blue     | hex shield thick-crystal   | center boss bump
+attribute_essence_speed 移速精华 | mint green     | streamline twin wings      | cyan light trails
+attribute_essence_luck 幸运精华 | emerald green   | four-leaf clover           | glowing veins
+attribute_essence_regen 生命恢复精华 | magenta pink | blooming lotus crystal | glowing lotus core
+attribute_essence_penetration 护甲穿透精华 | deep purple | arrowhead shard        | arrow-piercing-shield
+attribute_essence_crit_chance 暴击精华 | lemon yellow | eight-point star          | blazing core
+attribute_essence_crit_damage 暴击伤害精华 | obsidian black | ruptured cluster      | crimson crack glow
+attribute_essence_reduction 减伤精华 | sky blue       | honeycomb dome             | glowing hex grid
+
+
+====================================================
+ 四、通用负向提示词（每条都可附带）
+====================================================
+
+No text, no letters, no numbers, no watermark, no signature, no logo, no border,
+no background of any kind (no base color, no plate, no texture, no shadow),
+no bottle, no flask, no potion, no pouch, no cloth bag,
+no realistic texture, no 3D render, no photo.
+
+
+====================================================
+ 五、使用建议
+====================================================
+1. 所有图标统一使用「完全透明背景」生成，严禁出现任何底色/底板，
+   否则进游戏后物品框会被黑底遮挡，拿在手上也是黑色方块。
+   若生图工具不支持透明 PNG，请生成后在图片处理软件中一键抠掉纯色背景。
+2. 缩到 16x16 后若轮廓看不清，优先保持「颜色 + 剪影」，不要强塞细节，
+   靠不同的外形剪影区分（这正是本版每件独立造型的意义）。
+3. 生成文件命名直接对齐注册名（model JSON 引用）：
+   accessory_essence.png / weapon_essence.png / armor_essence.png
+   attribute_essence_life.png / attribute_essence_attack.png / ... 共 10 个
+   存放路径：src/main/resources/assets/evolutionary_mod/textures/item/
+4. 建议一次只生成一张，逐张微调；批量生成时若出现两个造型混同，
+   给重复的那张单独加一句 "make the outline clearly different from a heart/star/...".

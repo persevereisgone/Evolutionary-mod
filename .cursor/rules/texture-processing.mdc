@@ -1,0 +1,69 @@
+---
+description: AI 原图 → 16×16 游戏贴图的统一处理流程（修图/贴图处理必须遵守）
+alwaysApply: true
+---
+
+# 贴图处理规范：AI 原图 → 16×16 游戏贴图
+
+## 触发场景
+
+只要出现以下任一情况，就按本文流程执行：
+
+- 用户说「修图 / 处理贴图 / 把图做一下 / 新图放进来了」等
+- `src/main/resources/assets/evolutionary_mod/textures/**` 下新出现或替换了尺寸 >16px 的 PNG（一般来自即梦/可灵等 AI 工具，2048×2048）
+- 用户要求批量处理一批贴图
+
+## 输入 / 输出约束
+
+- 输入：任意尺寸的 AI 生成 PNG（常见问题：**100% 不透明**——白底/黑底/浅灰底，进游戏会显示成黑/白方块）
+- 输出：`src/main/resources/assets/evolutionary_mod/textures/item/<注册名>.png`
+  - 16×16，32bpp ARGB，四周透明（四角 alpha=0）
+  - 注册名必须与 `models/item/*.json` 中 `layer0` 引用名一致
+- 原图备份：`docs/texture-sources/<name>.src.png`（**先备份，再覆盖**）
+- 若某张处理结果为内容为空（`FAILED`）：**不覆盖原文件**，上报名称
+
+## 处理步骤（按序执行）
+
+1. **体检**：读 PNG 头（宽/高/ColorType）和四角像素 alpha，判定是否不透明。
+2. **备份**：原图复制到 `docs/texture-sources/<name>.src.png`。
+3. **降采样**：HighQualityBicubic 缩到 512×512（抠图和裁剪在此分辨率进行）。
+4. **背景建模（禁止硬编码底色）**：
+   - 四边每隔 6px 采样一次；
+   - 每通道取**中位数**作为背景色；
+   - 计算各像素逐通道绝对偏差，排序后丢弃最大 3% 离群点；
+   - `tol = maxDevR + maxDevG + maxDevB + 45`。
+5. **边界泛洪抠图**：从四条边像素出发 BFS，邻接像素与背景色 Manhattan RGB 距离 < `tol` 则视为背景，置 alpha=0。
+6. **内容包围盒**：alpha>40 的像素求 min/max；包围盒为空 → FAILED，跳过保存。
+7. **裁切补方缩放**：裁剪包围盒 → 居中补成方形（`CompositingMode=SourceCopy`，防止黑边）→ HighQualityBicubic 缩到 16×16。
+8. **保存与校验**：保存 32bpp ARGB PNG。核对：
+   - 尺寸 = 16×16、cornerA=0；
+   - 平均色相符合设计预期（如生命=红、攻击=橙、幸运=绿）；
+   - ASCII 剪影无残留噪点/异常空洞。
+
+## 特殊说明
+
+- **已透明图**（ColorType=6 且边角 alpha=0）：跳过抠图，只做「裁包围盒 → 补方 → 16×16」。
+- **纯手绘像素图需求**（如品阶碎片、重锻石这类没有 AI 原图的材料）：画出 16×16 像素图标，风格与已存在材料统一，四角透明。
+- 已处理为 16×16 的文件默认跳过；需重做时加 `-Force`。
+- 处理完在回复中列结果表：文件名 / 尺寸 / 平均色相 / 文件大小 / 校验结论。
+
+## 可复用脚本
+
+处理逻辑已固化在 `tools/ai-texture-to-16x16.ps1`（ASCII 编码，可直接运行）：
+
+```powershell
+# 处理 textures/item 下所有 >16px 的 PNG
+powershell -ExecutionPolicy Bypass -File tools/ai-texture-to-16x16.ps1
+
+# 只处理指定名称（名称 = 无 .png 后缀的注册名）
+powershell -ExecutionPolicy Bypass -File tools/ai-texture-to-16x16.ps1 attribute_essence_life rank_shard_normal
+```
+
+脚本自动完成：备份 → 背景建模 → 泛洪抠图 → 裁补 → 16×16 → 校验输出。
+
+## 禁止
+
+- 未备份原图就覆盖
+- 不检测底色就硬编码抠图容差
+- 把全尺寸图直接放进 textures 不缩 16×16（体积大且游戏里糊）
+- 不看剪影/色相/边角透明就交付
