@@ -201,6 +201,11 @@ public class WeightConfig {
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
+        // 本模组有多份 COMMON 配置，只处理自己的 Spec
+        if (event.getConfig().getSpec() != SPEC) {
+            return;
+        }
+
         // 基础设置
         baseMaxWeight = BASE_MAX_WEIGHT.get();
         safeThreshold = SAFE_THRESHOLD.get();

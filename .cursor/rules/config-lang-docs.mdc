@@ -1,0 +1,41 @@
+---
+description: 配置、双语 lang 与 docs 维护约定
+globs: "**/Config.java,**/WeightConfig.java,**/assets/evolutionary_mod/lang/*.json,docs/**/*.md"
+alwaysApply: false
+---
+
+# Config / Lang / Docs
+
+## Config
+
+- 用 `ModConfigSpec.Builder` + `comment` + `defineInRange` / `defineListAllowEmpty`
+- `ModConfigEvent` 时拷到运行时字段；非法条目丢弃并打日志
+- 主类 `registerConfig(COMMON, *.SPEC)`：根 `Config` + 子系统配置（如 `WeightConfig`）
+- 子系统专用配置放子系统包，不要全塞进根 `Config`
+- 数据驱动严格模式：`strictDataDriven`（`Config.java`）
+
+## Lang
+
+- 同步维护 `zh_cn.json` 与 `en_us.json`
+- 键：`item.evolutionary_mod.{id}` + `.description`；tooltip/slot/set/key 用现有前缀
+- 新物品必须双语各加一对键
+
+## Docs（`docs/README.md`）
+
+| 目录 | 用途 |
+|------|------|
+| `docs/planning/` | 策划案：`{FEATURE}_SYSTEM_V{n}.md` |
+| `docs/player/` | 玩家指南 |
+| `docs/dev/` | 开发者「改哪里」对照 |
+
+- 一份事实一处维护（快捷键、槽位数、指令）
+- 列表优先表格，便于追加
+- 大改玩法后更新 `docs/dev/开发者指南-精简版.md`
+- **`docs/dev/修改同步索引表.md` 是强制收尾检查项**：改任何配置/数据/物品/实体相关文件后，按表核对联动文件；表本身在依赖关系变化时同步更新（新增系统/文件后补一行）
+- 新增锻造台/材料系统时，优先补齐 `docs/dev/修改同步索引表.md` 对应条目，再改代码
+
+## 禁止
+
+- 只改中文 lang 或只改代码不更新开发者对照表
+- 在多处文档复制会漂移的关键数字（应引用单一来源）
+- 收尾时不查 `docs/dev/修改同步索引表.md` 就提交任务

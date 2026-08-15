@@ -1,5 +1,15 @@
 {
   "type": "minecraft:entity",
-  "pools": []
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "evolutionary_mod:forge/elite_materials_t2",
+          "weight": 1
+        }
+      ]
+    }
+  ]
 }
-

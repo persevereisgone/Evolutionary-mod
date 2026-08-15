@@ -1,0 +1,24 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.forge_table",
+  "icon": "evolutionary_mod:accessories_table",
+  "category": "evolutionary_mod:systems",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.forge_table.1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.forge_table.2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.forge_table.3"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.forge_table.4"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.weight",
+  "icon": "minecraft:iron_chestplate",
+  "category": "evolutionary_mod:systems",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.weight.1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.weight.2"
+    }
+  ]
+}

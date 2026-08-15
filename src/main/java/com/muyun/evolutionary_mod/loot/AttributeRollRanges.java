@@ -350,6 +350,24 @@ public final class AttributeRollRanges {
         return DATA_DRIVEN_RANGES.containsKey(itemPath);
     }
 
+    /**
+     * 查询某物品在 ranges.json 中某属性的基础区间 [min, max]，返回**存储单位**（每 tick）。
+     * 用于锻造强化增量计算（§4.3.1：增量区间 = 基础区间 × 品阶系数）。
+     * per_second 属性（health_regen）会换算为每 tick（÷20），与 AccessoryAttributes 存储一致。
+     *
+     * @return 基础区间（存储单位），或 null（该物品/属性无数据驱动配置）
+     */
+    public static double[] baseRange(String itemPath, String attrName) {
+        Map<String, RangeSpec> specs = DATA_DRIVEN_RANGES.get(itemPath);
+        if (specs == null) return null;
+        RangeSpec spec = specs.get(attrName);
+        if (spec == null) return null;
+        if (spec.perSecond()) {
+            return new double[]{spec.min() / 20.0, spec.max() / 20.0};
+        }
+        return new double[]{spec.min(), spec.max()};
+    }
+
     private record RangeSpec(double min, double max, double step, boolean perSecond) {}
 }
 

@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.rarity",
+  "icon": "evolutionary_mod:legendary_life_essence_ring",
+  "category": "evolutionary_mod:accessories",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.rarity.1"
+    }
+  ]
+}

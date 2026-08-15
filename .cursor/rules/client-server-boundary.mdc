@@ -1,0 +1,24 @@
+---
+description: 客户端与服务端边界
+globs: "**/src/main/java/**/client/**/*.java,**/src/main/java/**/network/**/*.java,**/src/main/java/**/system/**/*.java"
+alwaysApply: false
+---
+
+# 客户端 / 服务端边界
+
+## 必须
+
+- 客户端入口：`@Mod(..., dist = Dist.CLIENT)`（如 `EvolutionaryModClient`）
+- Screen / 按键 / 渲染只放 `client/`，订阅者加 `value = Dist.CLIENT`
+- 效果与套装逻辑开头：`if (player.level().isClientSide) return;`
+- 改装备 / Attachment：客户端发 C2S，由服务端改数据再 S2C 同步
+- 纯展示 UI（如属性面板）可本地 `setScreen`；改容器状态必须走服务端
+
+## 禁止
+
+```text
+❌ common 代码调用 Minecraft.getInstance() / Screen
+❌ 客户端直接改 PlayerAccessories Attachment
+❌ 渲染器注册放进服务端路径（用 EntityRenderersEvent + Dist.CLIENT）
+❌ 漏 isClientSide 守卫导致双端重复加 AttributeModifier
+```

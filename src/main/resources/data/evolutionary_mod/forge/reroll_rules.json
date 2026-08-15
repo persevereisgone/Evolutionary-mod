@@ -1,0 +1,11 @@
+{
+  "_comment": "重锻规则（策划案 §5）。normal_stone_cost 为普通石消耗；epic_min_rarity_cost 为 EPIC 及以上品阶普通石消耗；advanced_bias_shift 为高级重锻有效区间下沿上移比例；max_lock_stones 为锁定石一次上限；smash 为粉碎返还率。",
+  "normal_stone_cost": 1,
+  "epic_stone_cost": 2,
+  "epic_min_rarity": "EPIC",
+  "advanced_bias_shift": 0.3,
+  "max_lock_stones": 2,
+  "lock_per_stat": 1,
+  "smash_shard_rate": 0.5,
+  "smash_essence_rate": 0.25
+}

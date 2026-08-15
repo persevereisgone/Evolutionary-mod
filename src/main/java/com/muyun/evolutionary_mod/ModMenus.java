@@ -1,7 +1,7 @@
 package com.muyun.evolutionary_mod;
 
 import com.muyun.evolutionary_mod.menu.AccessoryMenu;
-import net.minecraft.client.Minecraft;
+import com.muyun.evolutionary_mod.menu.ForgeTableMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.bus.api.IEventBus;
@@ -26,6 +26,13 @@ public class ModMenus {
                                 return new AccessoryMenu(containerId, inventory, data);
                             }
                     ));
+
+    /**
+     * 锻造台菜单。客户端由工厂创建（空容器渲染槽位），服务端由 BlockEntity 创建。
+     */
+    public static final DeferredHolder<MenuType<?>, MenuType<ForgeTableMenu>> FORGE_TABLE_MENU =
+            MENUS.register("forge_table_menu",
+                    () -> IMenuTypeExtension.create(ForgeTableMenu::new));
 
     public static void register(IEventBus bus) {
         MENUS.register(bus);

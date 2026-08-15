@@ -1,0 +1,16 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.quickstart",
+  "icon": "minecraft:compass",
+  "category": "evolutionary_mod:getting_started",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.quickstart.1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.quickstart.2"
+    }
+  ]
+}

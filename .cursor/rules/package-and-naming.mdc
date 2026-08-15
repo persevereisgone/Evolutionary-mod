@@ -1,0 +1,38 @@
+---
+description: 包结构与命名约定（物品/实体/Handler）
+globs: "**/src/main/java/com/muyun/evolutionary_mod/**/*.java"
+alwaysApply: false
+---
+
+# 包结构与命名
+
+## 包放哪里
+
+| 内容 | 包 |
+|------|-----|
+| 部位饰品 | `item/types/` |
+| 套装物品 | `item/sets/` |
+| 基类/词条模型 | `item/base/` |
+| 注册入口 | `item/registry/` |
+| 部位效果 | `system/effects/` |
+| 套装逻辑 | `system/sets/` + `handlers/` |
+| 玩法子系统 | `system/weight|combat|elements|mage/` |
+| 掉落/滚动 | `loot/` |
+| 实体 | `entity/` + `entity/monster/` |
+| UI/按键 | `client/` |
+| 网络包 | `network/` |
+
+根包只留 `EvolutionaryMod`、`Config` 等桥接，不堆业务类。
+
+## 命名
+
+- 物品 ID：`[rarity_]?{theme}_{slot}`（如 `excellent_life_essence_ring`；NORMAL 无前缀；套装 `dragon_ring`）
+- 品质前缀必须与 `AccessoryDropRarity.registryPrefix()` 一致
+- 实体：`{Name}Entity` + snake_case 注册名（`CinderSkeletonEntity` / `cinder_skeleton`）
+- Handler：`{Slot}EffectsHandler`、`{Set}SetBonus`、`{Set}SetEffectHandler`
+- 事件类：`*Events` / `*EventHandler`；日志前缀：`[ClassName]`
+
+## 禁止
+
+- 套装件不要放进 `item/types/`
+- 不要发明与品质前缀不一致的物品 ID（会破坏掉落筛选）

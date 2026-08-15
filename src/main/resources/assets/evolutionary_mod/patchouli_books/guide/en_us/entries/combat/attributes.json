@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.attributes",
+  "icon": "minecraft:nether_star",
+  "category": "evolutionary_mod:combat",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.attributes.1"
+    }
+  ]
+}

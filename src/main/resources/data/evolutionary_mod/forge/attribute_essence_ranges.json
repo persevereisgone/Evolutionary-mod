@@ -1,0 +1,43 @@
+{
+  "_comment": "品阶标准区间（策划案 §5.2.1，V1.14）：物品自身 ranges.json 无该属性时（属性精华添加/重锻回滚）使用的取值区间。数值随 ranges.json 调整时同步本表。",
+  "max_health": {
+    "BROKEN": [1, 3], "NORMAL": [4, 6], "EXCELLENT": [6, 10],
+    "EPIC": [10, 14], "LEGENDARY": [15, 20], "MYTHIC": [20, 30]
+  },
+  "attack_damage": {
+    "BROKEN": [0.1, 0.5], "NORMAL": [0.5, 1.5], "EXCELLENT": [1.5, 3],
+    "EPIC": [2.5, 4], "LEGENDARY": [4, 6], "MYTHIC": [6, 9]
+  },
+  "armor": {
+    "BROKEN": [0.1, 0.5], "NORMAL": [0.5, 1], "EXCELLENT": [1.5, 2.5],
+    "EPIC": [2.5, 3.5], "LEGENDARY": [4, 6], "MYTHIC": [6, 8]
+  },
+  "movement_speed": {
+    "BROKEN": [0.01, 0.02], "NORMAL": [0.03, 0.05], "EXCELLENT": [0.08, 0.12],
+    "EPIC": [0.12, 0.18], "LEGENDARY": [0.18, 0.25], "MYTHIC": [0.25, 0.4]
+  },
+  "luck": {
+    "BROKEN": [0.05, 0.15], "NORMAL": [0.25, 0.5], "EXCELLENT": [0.6, 1],
+    "EPIC": [1, 1.8], "LEGENDARY": [2, 3.5], "MYTHIC": [3, 5]
+  },
+  "health_regen": {
+    "BROKEN": [0.05, 0.12], "NORMAL": [0.2, 0.3], "EXCELLENT": [0.3, 0.5],
+    "EPIC": [0.5, 0.8], "LEGENDARY": [0.8, 1], "MYTHIC": [1, 1.5]
+  },
+  "armor_penetration": {
+    "BROKEN": [0.1, 0.3], "NORMAL": [0.3, 0.7], "EXCELLENT": [0.7, 1.2],
+    "EPIC": [1, 1.8], "LEGENDARY": [2, 2.5], "MYTHIC": [2.5, 4]
+  },
+  "crit_chance": {
+    "BROKEN": [0.005, 0.015], "NORMAL": [0.015, 0.035], "EXCELLENT": [0.03, 0.06],
+    "EPIC": [0.05, 0.1], "LEGENDARY": [0.08, 0.14], "MYTHIC": [0.12, 0.2]
+  },
+  "crit_damage": {
+    "BROKEN": [0.01, 0.05], "NORMAL": [0.05, 0.1], "EXCELLENT": [0.1, 0.18],
+    "EPIC": [0.18, 0.28], "LEGENDARY": [0.28, 0.4], "MYTHIC": [0.4, 0.55]
+  },
+  "damage_reduction": {
+    "BROKEN": [0.005, 0.01], "NORMAL": [0.01, 0.02], "EXCELLENT": [0.02, 0.04],
+    "EPIC": [0.04, 0.06], "LEGENDARY": [0.06, 0.09], "MYTHIC": [0.1, 0.15]
+  }
+}

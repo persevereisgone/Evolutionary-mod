@@ -1,0 +1,33 @@
+---
+description: NeoForge 1.21.1 注册与 API 约定
+globs: "**/src/main/java/com/muyun/evolutionary_mod/**/*.java"
+alwaysApply: false
+---
+
+# NeoForge 1.21.1 注册
+
+## 必须用
+
+- `DeferredRegister`，在主类构造里 `register(modEventBus)`
+- 玩家饰品数据：`AttachmentType` + `player.getData(EvolutionaryMod.PLAYER_ACCESSORIES)`
+- 词条持久化：`DataComponentType` + Codec/StreamCodec（`ACCESSORY_ATTRIBUTES`）
+- 网络：`CustomPacketPayload` + `RegisterPayloadHandlersEvent`；命名 `*C2SPayload` / `*S2CPayload`
+- 游戏事件：`@EventBusSubscriber(modid = EvolutionaryMod.MODID)` 或 `NeoForge.EVENT_BUS`
+- 全局掉落：GLM serializer + `data/.../loot_modifiers/` + `neoforge/.../global_loot_modifiers.json`
+- 属性 modifier ID：`ResourceLocation.fromNamespaceAndPath(MODID, "{slot}_{attr}")`
+
+## 扩展清单（按现有模式追加）
+
+**新部位饰品：** types 注册 → EffectsHandler 单例 → AccessoryRegistry → `commonSetup` 初始化 → lang/model
+
+**新精英怪：** ModEntities → `entity/monster/*` → biome_modifier → entity loot_table →（可选）drop_table → 客户端 renderer
+
+**新套装：** `item/sets/` → SetType/SetBonus/Handler → `sets/{key}_set.json` → SetBalanceConfig 回退 → lang
+
+## 禁止
+
+```text
+❌ Capability / SimpleChannel / ItemStack.getTag()/hasTag()
+❌ 在 commonSetup 漏掉新 EffectsHandler 的 getInstance() 初始化
+❌ 静默吞掉注册失败；用 EvolutionaryMod.LOGGER 记录
+```

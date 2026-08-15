@@ -1,0 +1,35 @@
+---
+description: Evolutionary Mod 项目总览与开发心智模型
+alwaysApply: true
+---
+
+# Evolutionary Mod 总览
+
+Minecraft **1.21.1 + NeoForge** 饰品向 RPG 模组。MODID：`evolutionary_mod`，根包：`com.muyun.evolutionary_mod`。
+
+## 核心心智模型
+
+1. **JSON 管数值，Java 管逻辑与回退**（掉落 / 词条 / 套装平衡）
+2. **Attachment + DataComponent** 替代旧 Capability / ItemStack NBT
+3. **client 包 + Dist.CLIENT** 隔离客户端；玩法逻辑服务端执行
+4. **一份事实一处维护**：改玩法同步 `docs/dev/开发者指南-精简版.md` 与双语 lang
+5. **任务收尾必查同步索引表**：每次完成涉及配置/数据/物品/实体的修改后，对照 `docs/dev/修改同步索引表.md` 逐项检查联动文件是否已同步（JSON↔Java 回退、物品四件套、lang 双语、实体 ID 五处、套装四处、槽位四处、引导书 lang 等）
+
+## 改东西先看哪里
+
+| 目标 | 优先修改 |
+|------|----------|
+| 词条区间 | `data/.../attributes/ranges.json` |
+| 掉率/品阶 | `data/.../loot/drop_table.json` |
+| 龙套数值 | `data/.../sets/dragon_set.json` |
+| 负重 | `system/weight/` + WeightConfig |
+| 效果逻辑 | `system/effects/`、`system/sets/` |
+| 引导书文案 | lang `patchouli.evolutionary_mod.*` + patchouli_books |
+| 验证 | `/acc validate`、`/acc stats detail` |
+
+## 禁止
+
+- 不要为调数值去改滚动/应用逻辑（数值与逻辑解耦）
+- 不要写 Forge 1.20 式 Capability / SimpleChannel / `ItemStack.getTag()`
+- 不要扩大无关重构；沿现有 Registry / Handler 扩展点追加
+- **任务收尾不查 `docs/dev/修改同步索引表.md` 就交差**（改配置/数据文件必须按表核对联动文件）

@@ -1,0 +1,26 @@
+{
+  "_comment": "强化方向池与增量系数（策划案 §4.3 / §4.3.1）。direction_weights 与 AccessoryAttributes 字段对应；rarity_factor 为每级增量系数；增量区间 = ranges.json 基础区间 × 系数。",
+  "max_level": 10,
+  "roll_one_chance": 0.75,
+  "roll_two_chance": 0.25,
+  "direction_weights": {
+    "max_health": 20,
+    "attack_damage": 18,
+    "armor": 15,
+    "crit_chance": 12,
+    "crit_damage": 10,
+    "damage_reduction": 10,
+    "armor_penetration": 9,
+    "movement_speed": 8,
+    "health_regen": 7,
+    "luck": 6
+  },
+  "rarity_factor": {
+    "BROKEN": 0.07,
+    "NORMAL": 0.06,
+    "EXCELLENT": 0.055,
+    "EPIC": 0.05,
+    "LEGENDARY": 0.045,
+    "MYTHIC": 0.04
+  }
+}

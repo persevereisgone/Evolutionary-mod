@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "_comment": "锻造材料掉率配置（策划案 §8.2 / §8.2.1，V1.16 定稿）。本表仅覆盖「GLM 追加」来源：原版普通怪 / 原版精英向 / Boss / 高难宝箱。自定义精英（14 只）的材料池走 loot_tables/forge/elite_materials_t{1,2,3}.json（§8.1 双通道：精英走实体战利品表）。类型精华:品阶碎片:属性精华 = 6:2:1，独立判定。重锻石独立判定。reload 时由 ForgeMaterialLootModifier 读取。",
+  "categories": {
+    "vanilla_normal": {
+      "_comment": "原版普通怪 19 只（饰品掉率 0.01~0.03）",
+      "loot_tables": [
+        "minecraft:entities/zombie",
+        "minecraft:entities/zombie_villager",
+        "minecraft:entities/skeleton",
+        "minecraft:entities/creeper",
+        "minecraft:entities/spider",
+        "minecraft:entities/cave_spider",
+        "minecraft:entities/drowned",
+        "minecraft:entities/husk",
+        "minecraft:entities/stray",
+        "minecraft:entities/phantom",
+        "minecraft:entities/slime",
+        "minecraft:entities/magma_cube",
+        "minecraft:entities/ghast",
+        "minecraft:entities/zombified_piglin",
+        "minecraft:entities/hoglin",
+        "minecraft:entities/zoglin",
+        "minecraft:entities/silverfish",
+        "minecraft:entities/endermite",
+        "minecraft:entities/vex"
+      ],
+      "essence_chance": 0.20,
+      "essence_count_min": 1,
+      "essence_count_max": 2,
+      "shard_chance": 0.067,
+      "shard_count_min": 1,
+      "shard_count_max": 1,
+      "attribute_chance": 0.033,
+      "attribute_count_min": 1,
+      "attribute_count_max": 1,
+      "reroll_normal": { "chance": 0.03, "count_min": 1, "count_max": 1, "fixed": true, "lucky": false },
+      "reroll_advanced": { "chance": 0.0, "count_min": 0, "count_max": 0, "fixed": true, "lucky": false },
+      "reroll_lock": { "chance": 0.0, "count_min": 0, "count_max": 0, "fixed": true, "lucky": false }
+    },
+    "vanilla_elite": {
+      "_comment": "原版精英向 15 只（饰品掉率 0.04~0.08）",
+      "loot_tables": [
+        "minecraft:entities/witch",
+        "minecraft:entities/vindicator",
+        "minecraft:entities/pillager",
+        "minecraft:entities/ravager",
+        "minecraft:entities/evoker",
+        "minecraft:entities/blaze",
+        "minecraft:entities/wither_skeleton",
+        "minecraft:entities/piglin_brute",
+        "minecraft:entities/piglin",
+        "minecraft:entities/enderman",
+        "minecraft:entities/guardian",
+        "minecraft:entities/shulker",
+        "minecraft:entities/bogged",
+        "minecraft:entities/breeze",
+        "minecraft:entities/iron_golem"
+      ],
+      "essence_chance": 0.35,
+      "essence_count_min": 1,
+      "essence_count_max": 2,
+      "shard_chance": 0.117,
+      "shard_count_min": 1,
+      "shard_count_max": 1,
+      "attribute_chance": 0.058,
+      "attribute_count_min": 1,
+      "attribute_count_max": 1,
+      "reroll_normal": { "chance": 0.05, "count_min": 1, "count_max": 1, "fixed": true, "lucky": false },
+      "reroll_advanced": { "chance": 0.0, "count_min": 0, "count_max": 0, "fixed": true, "lucky": false },
+      "reroll_lock": { "chance": 0.0, "count_min": 0, "count_max": 0, "fixed": true, "lucky": false }
+    },
+    "boss": {
+      "_comment": "Boss 3 只；重锻石期望：普通 1.26/次、高级 0.60/次、锁定 0.30/次（每次 2~4 个，期望 3）",
+      "loot_tables": [
+        "minecraft:entities/elder_guardian",
+        "minecraft:entities/wither",
+        "minecraft:entities/ender_dragon"
+      ],
+      "essence_chance": 1.0,
+      "essence_count_min": 1,
+      "essence_count_max": 3,
+      "shard_chance": 0.50,
+      "shard_count_min": 1,
+      "shard_count_max": 2,
+      "attribute_chance": 0.25,
+      "attribute_count_min": 1,
+      "attribute_count_max": 1,
+      "reroll_normal": { "chance": 0.42, "count_min": 2, "count_max": 4, "fixed": false, "lucky": true },
+      "reroll_advanced": { "chance": 0.20, "count_min": 2, "count_max": 4, "fixed": false, "lucky": true },
+      "reroll_lock": { "chance": 0.10, "count_min": 2, "count_max": 4, "fixed": false, "lucky": true }
+    },
+    "chest_advanced": {
+      "_comment": "高级宝箱 8 个（饰品 0.3~0.5 且品阶池 ≤ EPIC）",
+      "loot_tables": [
+        "minecraft:chests/desert_pyramid",
+        "minecraft:chests/jungle_temple",
+        "minecraft:chests/buried_treasure",
+        "minecraft:chests/pillager_outpost",
+        "minecraft:chests/trial_chambers/reward",
+        "minecraft:chests/stronghold_corridor",
+        "minecraft:chests/stronghold_library",
+        "minecraft:chests/nether_bridge"
+      ],
+      "essence_chance": 0.30,
+      "essence_count_min": 1,
+      "essence_count_max": 2,
+      "shard_chance": 0.10,
+      "shard_count_min": 1,
+      "shard_count_max": 1,
+      "attribute_chance": 0.05,
+      "attribute_count_min": 1,
+      "attribute_count_max": 1,
+      "reroll_normal": { "chance": 0.04, "count_min": 1, "count_max": 1, "fixed": false, "lucky": true },
+      "reroll_advanced": { "chance": 0.012, "count_min": 1, "count_max": 1, "fixed": false, "lucky": true },
+      "reroll_lock": { "chance": 0.01, "count_min": 1, "count_max": 1, "fixed": false, "lucky": true }
+    },
+    "chest_rare": {
+      "_comment": "稀世宝箱 4 个（饰品 0.5~0.6 或品阶池含 LEGENDARY）",
+      "loot_tables": [
+        "minecraft:chests/bastion_treasure",
+        "minecraft:chests/woodland_mansion",
+        "minecraft:chests/end_city_treasure",
+        "minecraft:chests/ancient_city"
+      ],
+      "essence_chance": 0.30,
+      "essence_count_min": 1,
+      "essence_count_max": 2,
+      "shard_chance": 0.10,
+      "shard_count_min": 1,
+      "shard_count_max": 1,
+      "attribute_chance": 0.05,
+      "attribute_count_min": 1,
+      "attribute_count_max": 1,
+      "reroll_normal": { "chance": 0.06, "count_min": 1, "count_max": 1, "fixed": false, "lucky": true },
+      "reroll_advanced": { "chance": 0.024, "count_min": 1, "count_max": 1, "fixed": false, "lucky": true },
+      "reroll_lock": { "chance": 0.02, "count_min": 1, "count_max": 1, "fixed": false, "lucky": true }
+    }
+  },
+  "subtype_weights": {
+    "_comment": "子类权重：类型精华 1:1:1；品阶碎片 6/5/4/3/2/1；属性精华按 §4.3 方向权重",
+    "essence": {
+      "evolutionary_mod:accessory_essence": 1,
+      "evolutionary_mod:weapon_essence": 1,
+      "evolutionary_mod:armor_essence": 1
+    },
+    "shard": {
+      "evolutionary_mod:rank_shard_broken": 6,
+      "evolutionary_mod:rank_shard_normal": 5,
+      "evolutionary_mod:rank_shard_excellent": 4,
+      "evolutionary_mod:rank_shard_epic": 3,
+      "evolutionary_mod:rank_shard_legendary": 2,
+      "evolutionary_mod:rank_shard_mythic": 1
+    },
+    "attribute": {
+      "evolutionary_mod:attribute_essence_life": 20,
+      "evolutionary_mod:attribute_essence_attack": 18,
+      "evolutionary_mod:attribute_essence_armor": 15,
+      "evolutionary_mod:attribute_essence_crit_chance": 12,
+      "evolutionary_mod:attribute_essence_crit_damage": 10,
+      "evolutionary_mod:attribute_essence_reduction": 10,
+      "evolutionary_mod:attribute_essence_penetration": 9,
+      "evolutionary_mod:attribute_essence_speed": 8,
+      "evolutionary_mod:attribute_essence_regen": 7,
+      "evolutionary_mod:attribute_essence_luck": 6
+    }
+  }
+}

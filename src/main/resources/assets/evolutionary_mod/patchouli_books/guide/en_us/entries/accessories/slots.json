@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.slots",
+  "icon": "evolutionary_mod:strength_bracelet",
+  "category": "evolutionary_mod:accessories",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.slots.1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.controls",
+  "icon": "minecraft:lever",
+  "category": "evolutionary_mod:faq",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.controls.1"
+    }
+  ]
+}

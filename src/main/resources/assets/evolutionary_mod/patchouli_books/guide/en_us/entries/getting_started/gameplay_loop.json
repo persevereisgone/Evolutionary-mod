@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.gameplay_loop",
+  "icon": "minecraft:emerald",
+  "category": "evolutionary_mod:getting_started",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.gameplay_loop.1"
+    }
+  ]
+}

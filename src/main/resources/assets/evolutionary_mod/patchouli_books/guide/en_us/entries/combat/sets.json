@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.sets",
+  "icon": "evolutionary_mod:dragon_necklace",
+  "category": "evolutionary_mod:combat",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.sets.1"
+    }
+  ]
+}

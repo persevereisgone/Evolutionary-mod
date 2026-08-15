@@ -94,7 +94,6 @@ public class AccessoryDropTable {
         registerFallback("evolutionary_mod:entities/soul_necromancer", 0.18f, rarity(AccessoryDropRarity.EXCELLENT, AccessoryDropRarity.EPIC));
         registerFallback("evolutionary_mod:entities/earth_guardian",   0.15f, rarity(AccessoryDropRarity.EXCELLENT, AccessoryDropRarity.EPIC));
         registerFallback("evolutionary_mod:entities/wind_blade_hunter",0.12f, rarity(AccessoryDropRarity.NORMAL, AccessoryDropRarity.EXCELLENT, AccessoryDropRarity.EPIC));
-        registerFallback("evolutionary_mod:entities/life_leecher",     0.15f, rarity(AccessoryDropRarity.EXCELLENT, AccessoryDropRarity.EPIC));
 
         // Boss
         registerFallback("minecraft:entities/elder_guardian",  0.80f, rarity(AccessoryDropRarity.EXCELLENT, AccessoryDropRarity.EPIC));

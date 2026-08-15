@@ -241,11 +241,6 @@
       "allowed_rarities": ["NORMAL", "EXCELLENT", "EPIC"]
     },
     {
-      "loot_table_id": "evolutionary_mod:entities/life_leecher",
-      "drop_chance": 0.15,
-      "allowed_rarities": ["EXCELLENT", "EPIC"]
-    },
-    {
       "loot_table_id": "minecraft:entities/elder_guardian",
       "drop_chance": 0.8,
       "allowed_rarities": ["EXCELLENT", "EPIC"]

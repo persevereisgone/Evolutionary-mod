@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import com.muyun.evolutionary_mod.EvolutionaryMod;
 import com.muyun.evolutionary_mod.block.ModBlocks;
+import com.muyun.evolutionary_mod.item.forge.ForgeMaterials;
 import com.muyun.evolutionary_mod.item.sets.DragonItems;
 import com.muyun.evolutionary_mod.item.types.Anklets;
 import com.muyun.evolutionary_mod.item.types.Belts;
@@ -197,6 +198,42 @@ public class ModCreativeModelTabs {
                         // 未来可以在这里添加更多套装
                         // Future sets can be added here
                     }).withTabsBefore(RINGS_TAB.getKey()).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MATERIALS_TAB =
+            CREATIVE_MODE_TAB.register("materials_tab", () -> CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(ForgeMaterials.ACCESSORY_ESSENCE.get()))
+                    .title(Component.translatable("itemGroup.materials_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        // 类型精华
+                        pOutput.accept(ForgeMaterials.ACCESSORY_ESSENCE.get());
+                        pOutput.accept(ForgeMaterials.WEAPON_ESSENCE.get());
+                        pOutput.accept(ForgeMaterials.ARMOR_ESSENCE.get());
+
+                        // 品阶碎片（残破→至臻）
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_BROKEN.get());
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_NORMAL.get());
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_EXCELLENT.get());
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_EPIC.get());
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_LEGENDARY.get());
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_MYTHIC.get());
+
+                        // 重锻石
+                        pOutput.accept(ForgeMaterials.REROLL_STONE.get());
+                        pOutput.accept(ForgeMaterials.REROLL_STONE_ADVANCED.get());
+                        pOutput.accept(ForgeMaterials.REROLL_STONE_LOCK.get());
+
+                        // 属性精华（生命→减伤）
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_LIFE.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_ATTACK.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_ARMOR.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_SPEED.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_LUCK.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_REGEN.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_PENETRATION.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_CRIT_CHANCE.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_CRIT_DAMAGE.get());
+                        pOutput.accept(ForgeMaterials.ATTRIBUTE_ESSENCE_REDUCTION.get());
+                    }).withTabsBefore(SETS_TAB.getKey()).build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TAB.register(eventBus);

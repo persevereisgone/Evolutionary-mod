@@ -1,0 +1,242 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:accessory_essence",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:weapon_essence",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:armor_essence",
+          "weight": 1
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count": {
+            "min": 1,
+            "max": 3
+          }
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 1.0
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_broken",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_normal",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_excellent",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_epic",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_legendary",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_mythic",
+          "weight": 1
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count": {
+            "min": 1,
+            "max": 2
+          }
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.5
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_life",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_attack",
+          "weight": 18
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_armor",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_crit_chance",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_crit_damage",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_reduction",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_penetration",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_speed",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_regen",
+          "weight": 7
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:attribute_essence_luck",
+          "weight": 6
+        }
+      ],
+      "functions": [],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.25
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:reroll_stone",
+          "weight": 90
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:reroll_stone",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.105
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:reroll_stone_advanced",
+          "weight": 90
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:reroll_stone_advanced",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.029
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:reroll_stone_lock",
+          "weight": 90
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:reroll_stone_lock",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.02
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "mod_id": "evolutionary_mod",
+  "mod_name": "Evolutionary Mod",
+  "minecraft_version": "1.21.1",
+  "forge_version": "NeoForge",
+  
+  "project_structure": {
+    "main_package": "com.muyun.evolutionary_mod",
+    "java_source": "src/main/java",
+    "resources": "src/main/resources",
+    "test_reports": "docs/testing"
+  },
+  
+  "test_targets": {
+    "systems": [
+      {
+        "name": "Core System",
+        "enabled": true,
+        "package": "core",
+        "files": [
+          "AccessoryRules.java",
+          "AccessorySlot.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Item System",
+        "enabled": true,
+        "package": "item",
+        "files": [
+          "base/AccessoryItem.java",
+          "base/AccessoryAttributes.java",
+          "base/GeneralAccessoryItem.java",
+          "registry/ModItems.java",
+          "registry/AccessoryRegistry.java",
+          "types/Anklets.java",
+          "types/Belts.java",
+          "types/Bracelets.java",
+          "types/Earrings.java",
+          "types/Gloves.java",
+          "types/Headwear.java",
+          "types/Necklaces.java",
+          "types/Rings.java",
+          "types/Shoulders.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Capability System",
+        "enabled": true,
+        "package": "capability",
+        "files": [
+          "PlayerAccessories.java",
+          "PlayerAccessoriesItemHandler.java",
+          "AccessoryCapabilityProvider.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Client Handler",
+        "enabled": true,
+        "package": "client",
+        "files": [
+          "ClientHandlers.java",
+          "ClientInputEvents.java",
+          "LayoutConfig.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Menu System",
+        "enabled": true,
+        "package": "menu",
+        "files": [
+          "AccessoryMenu.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Effect System",
+        "enabled": true,
+        "package": "system/effects",
+        "files": [
+          "AccessoryEffectCalculator.java",
+          "AnkletEffectsHandler.java",
+          "BeltEffectsHandler.java",
+          "BraceletEffectsHandler.java",
+          "EarringEffectsHandler.java",
+          "GloveEffectsHandler.java",
+          "HeadwearEffectsHandler.java",
+          "NecklaceEffectsHandler.java",
+          "RingEffectsHandler.java",
+          "ShoulderEffectsHandler.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Combat System",
+        "enabled": true,
+        "package": "system/combat",
+        "files": [
+          "ArmorPenetrationSystem.java",
+          "CritSystem.java",
+          "DamageReductionSystem.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Entity System",
+        "enabled": true,
+        "package": "entity",
+        "files": [
+          "ModEntities.java",
+          "EliteEntityEvents.java"
+        ],
+        "test_methods": []
+      },
+      {
+        "name": "Network System",
+        "enabled": true,
+        "package": "network",
+        "files": [
+          "NetworkHandler.java",
+          "AccessorySyncS2CPayload.java",
+          "AccessoryOpenMenuC2SPayload.java",
+          "AccessoryEquipFromInvC2SPayload.java"
+        ],
+        "test_methods": []
+      }
+    ],
+    
+    "ui_elements": [
+      {
+        "name": "Accessory Screen",
+        "enabled": true,
+        "package": "client",
+        "screen_class": "AccessoryScreen.java",
+        "menu_class": "AccessoryMenu.java",
+        "open_key": "K",
+        "test_checklist": ["Layout", "Slot Display", "Attribute Values", "Button Interaction"]
+      },
+      {
+        "name": "Accessory Container Screen",
+        "enabled": true,
+        "package": "client",
+        "screen_class": "AccessoryContainerScreen.java",
+        "menu_class": "AccessoryMenu.java",
+        "open_key": "NONE",
+        "test_checklist": ["Container Layout", "Item Drag", "Equip Preview"]
+      },
+      {
+        "name": "Player Attributes Screen",
+        "enabled": true,
+        "package": "client",
+        "screen_class": "PlayerAttributesScreen.java",
+        "menu_class": "",
+        "open_key": "NONE",
+        "test_checklist": ["Attribute Display", "Value Calculation", "Effect Stacking"]
+      }
+    ],
+    
+    "entities": [
+      {
+        "name": "Abyss Lurker",
+        "enabled": true,
+        "package": "entity/monster",
+        "class": "AbyssLurkerEntity.java",
+        "test_methods": ["Spawn Test", "AI Behavior", "Drop Test"]
+      },
+      {
+        "name": "Shadow Stalker",
+        "enabled": true,
+        "package": "entity/monster",
+        "class": "ShadowStalkerEntity.java",
+        "test_methods": ["Spawn Test", "AI Behavior", "Drop Test"]
+      },
+      {
+        "name": "Storm Mage",
+        "enabled": true,
+        "package": "entity/monster",
+        "class": "StormMageEntity.java",
+        "test_methods": ["Spawn Test", "Skill Cast", "Drop Test"]
+      }
+    ]
+  },
+  
+  "test_config": {
+    "build_command": "./gradlew build --no-daemon -x test",
+    "run_command": "./gradlew runClient --no-daemon",
+    "refresh_deps_command": "./gradlew --refresh-dependencies",
+    "clean_command": "./gradlew clean",
+    
+    "windows_build_command": ".\\gradlew.bat build --no-daemon -x test",
+    "windows_run_command": ".\\gradlew.bat runClient --no-daemon",
+    
+    "skip_tests": ["test"],
+    "timeout_seconds": 300
+  },
+  
+  "api_checks": {
+    "deprecated_methods": [
+      "AttributeModifier.Operation.ADDITION",
+      "AttributeModifier.Operation.MULTIPLY_TOTAL",
+      "event.setCanceled(true)"
+    ],
+    "new_methods": [
+      "AttributeModifier.Operation.ADD_VALUE",
+      "AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL"
+    ]
+  },
+  
+  "version": "2.0.1",
+  "last_updated": "2026-05-28"
+}

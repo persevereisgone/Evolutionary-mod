@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.elites",
+  "icon": "minecraft:skeleton_skull",
+  "category": "evolutionary_mod:loot",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.elites.1"
+    }
+  ]
+}

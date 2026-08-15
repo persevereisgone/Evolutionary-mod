@@ -29,6 +29,7 @@ import com.muyun.evolutionary_mod.item.base.AccessoryAttributes;
 import com.muyun.evolutionary_mod.item.registry.ModItems;
 import com.muyun.evolutionary_mod.item.tabs.ModCreativeModelTabs;
 import com.muyun.evolutionary_mod.loot.AccessoryGlobalLootModifier;
+import com.muyun.evolutionary_mod.loot.ForgeMaterialLootModifier;
 import com.muyun.evolutionary_mod.network.NetworkHandler;
 import com.muyun.evolutionary_mod.system.effects.AnkletEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.BeltEffectsHandler;
@@ -39,9 +40,9 @@ import com.muyun.evolutionary_mod.system.effects.HeadwearEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.NecklaceEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.RingEffectsHandler;
 import com.muyun.evolutionary_mod.system.effects.ShoulderEffectsHandler;
+import com.muyun.evolutionary_mod.system.forge.ForgeEnhancement;
 import com.muyun.evolutionary_mod.system.sets.SetSystem;
 import com.muyun.evolutionary_mod.system.weight.WeightConfig;
-import com.muyun.evolutionary_mod.system.weight.WeightEventHandler;
 
 import java.util.function.Supplier;
 
@@ -82,6 +83,17 @@ public class EvolutionaryMod {
                             .networkSynchronized(AccessoryAttributes.STREAM_CODEC)
                             .build());
 
+    /**
+     * 锻造强化层 DataComponent。
+     * 存储强化阶、累计强化加成、历史消耗材料（供粉碎返还），持久化到 ItemStack DataComponents。
+     */
+    public static final Supplier<DataComponentType<ForgeEnhancement>> FORGE_ENHANCEMENT =
+            DATA_COMPONENTS.register("forge_enhancement",
+                    () -> DataComponentType.<ForgeEnhancement>builder()
+                            .persistent(ForgeEnhancement.CODEC)
+                            .networkSynchronized(ForgeEnhancement.STREAM_CODEC)
+                            .build());
+
     // -----------------------------------------------------------------------
     // GlobalLootModifierSerializer 注册
     // -----------------------------------------------------------------------
@@ -91,6 +103,10 @@ public class EvolutionaryMod {
     public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<AccessoryGlobalLootModifier>>
             ACCESSORY_DROPS_MODIFIER = LOOT_MODIFIER_SERIALIZERS.register(
                     "accessory_drops", () -> AccessoryGlobalLootModifier.CODEC);
+
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<ForgeMaterialLootModifier>>
+            FORGE_MATERIAL_DROPS_MODIFIER = LOOT_MODIFIER_SERIALIZERS.register(
+                    "forge_material_drops", () -> ForgeMaterialLootModifier.CODEC);
 
     // -----------------------------------------------------------------------
     // 其他 DeferredRegister
@@ -128,9 +144,9 @@ public class EvolutionaryMod {
         // 注册 NeoForge 游戏事件总线
         NeoForge.EVENT_BUS.register(this);
 
-        // 注册 Mod 配置
+        // 注册 Mod 配置（COMMON 默认文件名冲突，负重需单独文件名）
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        modContainer.registerConfig(ModConfig.Type.COMMON, WeightConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, WeightConfig.SPEC, "evolutionary_mod-weight.toml");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

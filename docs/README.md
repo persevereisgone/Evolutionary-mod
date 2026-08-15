@@ -11,8 +11,9 @@
 ```
 planning/
 ├── system/          # 系统策划
-│   ├── WEIGHT_SYSTEM_V4.md       # 负重系统策划案
-│   └── GUIDE_SYSTEM.md           # 游玩指南系统策划案
+│   ├── WEIGHT_SYSTEM_V4.md       # 负重系统策划案（已实装）
+│   ├── FORGE_SYSTEM_V1.md        # 锻造台：强化 / 重锻 / 粉碎 / 特例升阶（待实装）
+│   └── GUIDE_SYSTEM.md           # 自研指南 UI（搁置；游戏内改用 Patchouli）
 ├── balance/         # 平衡性策划
 │   └── ITEM_WEIGHTS.md           # 物品重量参考
 └── config/          # 配置示例
@@ -44,6 +45,7 @@ planning/
 ## 开发者文档 (dev/)
 
 - `dev/开发者指南-精简版.md`：给作者/维护者看的维护手册（新增内容要改哪些文件、如何验证、常见坑）
+- `dev/Patchouli引导书开发指南.md`：游戏内《进化指南》的 JSON/lang 位置、修改与扩展步骤
 
 ---
 

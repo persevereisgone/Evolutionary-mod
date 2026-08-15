@@ -51,6 +51,13 @@ public class NetworkHandler {
                 AccessoryEquipFromInvC2SPayload.STREAM_CODEC,
                 AccessoryEquipFromInvC2SPayload::handle
         );
+
+        // C2S: 锻造台操作（强化/属性精华/重锻/粉碎）
+        registrar.playToServer(
+                ForgeOperationC2SPayload.TYPE,
+                ForgeOperationC2SPayload.STREAM_CODEC,
+                ForgeOperationC2SPayload::handle
+        );
     }
 
     /**

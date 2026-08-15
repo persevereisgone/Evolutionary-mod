@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.chests",
+  "icon": "minecraft:chest",
+  "category": "evolutionary_mod:loot",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.chests.1"
+    }
+  ]
+}

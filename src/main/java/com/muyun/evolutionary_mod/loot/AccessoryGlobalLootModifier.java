@@ -61,11 +61,8 @@ public class AccessoryGlobalLootModifier extends LootModifier {
 
         // 2. 获取玩家幸运值，计算最终掉落概率
         //    每点幸运值提升 1% 掉落概率，可通过后续扩展调整系数
-        float luckBonus = 0f;
-        if (context.hasParam(LootContextParams.THIS_ENTITY)
-                && context.getParam(LootContextParams.THIS_ENTITY) instanceof Player player) {
-            luckBonus = (float) player.getAttributeValue(Attributes.LUCK) * 0.01f;
-        }
+        //    开箱取 THIS_ENTITY（玩家）；击杀取 KILLER_ENTITY（策划案 §8.2.1 规则 2）
+        float luckBonus = resolveLuck(context);
         float finalChance = Math.min(config.dropChance() + luckBonus, 1.0f);
 
         // 3. 概率判定
@@ -87,6 +84,23 @@ public class AccessoryGlobalLootModifier extends LootModifier {
         // 7. 加入掉落列表
         generatedLoot.add(accessory);
         return generatedLoot;
+    }
+
+    /**
+     * 幸运值解析：开箱场景 THIS_ENTITY 为玩家；击杀场景 THIS_ENTITY 为被击杀怪物，
+     * 需取 LAST_DAMAGE_PLAYER（1.21.1 中击杀幸运参数，对应策划案 §8.2.1 规则 2 的 KILLER_ENTITY 意图）。
+     */
+    private static float resolveLuck(LootContext context) {
+        Player player = null;
+        if (context.hasParam(LootContextParams.THIS_ENTITY)
+                && context.getParam(LootContextParams.THIS_ENTITY) instanceof Player p) {
+            player = p;
+        }
+        if (player == null && context.hasParam(LootContextParams.LAST_DAMAGE_PLAYER)) {
+            player = context.getParam(LootContextParams.LAST_DAMAGE_PLAYER);
+        }
+        if (player == null) return 0f;
+        return (float) player.getAttributeValue(Attributes.LUCK) * 0.01f;
     }
 
     /**

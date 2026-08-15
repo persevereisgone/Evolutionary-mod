@@ -4,6 +4,7 @@ import com.muyun.evolutionary_mod.EvolutionaryMod;
 import com.muyun.evolutionary_mod.ModMenus;
 import com.muyun.evolutionary_mod.item.base.AccessoryItem;
 import com.muyun.evolutionary_mod.item.base.AccessoryTooltipHelper;
+import com.muyun.evolutionary_mod.menu.ForgeTableMenu;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -64,6 +65,7 @@ public class ClientHandlers {
         @SubscribeEvent
         public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenus.ACCESSORY_MENU.get(), AccessoryContainerScreen::new);
+            event.register(ModMenus.FORGE_TABLE_MENU.get(), ForgeTableScreen::new);
         }
     }
 

@@ -1,0 +1,12 @@
+{
+  "name": "patchouli.evolutionary_mod.entry.troubleshooting",
+  "icon": "minecraft:barrier",
+  "category": "evolutionary_mod:faq",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.evolutionary_mod.page.troubleshooting.1"
+    }
+  ]
+}
