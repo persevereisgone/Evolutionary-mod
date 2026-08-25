@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "core",
+      "from": [-2, -2, 0],
+      "to": [2, 2, 4]
+    }
+  ],
+  "group": "core",
+  "texture": "magma_rock",
+  "faces": true
+}

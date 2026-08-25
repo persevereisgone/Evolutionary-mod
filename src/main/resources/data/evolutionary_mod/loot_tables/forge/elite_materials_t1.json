@@ -51,18 +51,23 @@
         },
         {
           "type": "minecraft:item",
-          "name": "evolutionary_mod:rank_shard_excellent",
+          "name": "evolutionary_mod:rank_shard_fine",
           "weight": 4
         },
         {
           "type": "minecraft:item",
-          "name": "evolutionary_mod:rank_shard_epic",
+          "name": "evolutionary_mod:rank_shard_excellent",
           "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "evolutionary_mod:rank_shard_legendary",
+          "name": "evolutionary_mod:rank_shard_epic",
           "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "evolutionary_mod:rank_shard_legendary",
+          "weight": 1
         },
         {
           "type": "minecraft:item",

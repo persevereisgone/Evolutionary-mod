@@ -116,7 +116,7 @@ public class AccessoryGlobalLootModifier extends LootModifier {
         List<Item> candidates = new ArrayList<>();
 
         // 其他品质的前缀，用于排除 NORMAL 品质时过滤掉有前缀的物品
-        String[] otherPrefixes = {"broken_", "excellent_", "epic_", "legendary_", "mythic_"};
+        String[] otherPrefixes = {"broken_", "fine_", "excellent_", "epic_", "legendary_", "mythic_"};
 
         for (Item item : BuiltInRegistries.ITEM) {
             if (!(item instanceof AccessoryItem)) continue;

@@ -90,8 +90,9 @@ public class ForgeConfig {
             weights.put("health_regen", 7); weights.put("luck", 6);
         }
         if (factors.isEmpty()) {
-            factors.put("BROKEN", 0.07); factors.put("NORMAL", 0.06); factors.put("EXCELLENT", 0.055);
-            factors.put("EPIC", 0.05); factors.put("LEGENDARY", 0.045); factors.put("MYTHIC", 0.04);
+            factors.put("BROKEN", 0.07); factors.put("NORMAL", 0.065); factors.put("FINE", 0.06);
+            factors.put("EXCELLENT", 0.055); factors.put("EPIC", 0.05); factors.put("LEGENDARY", 0.045);
+            factors.put("MYTHIC", 0.04);
         }
         return new EnhanceRolls(maxLevel, rollOne, rollTwo, weights, factors);
     }
@@ -121,9 +122,10 @@ public class ForgeConfig {
             EvolutionaryMod.LOGGER.error("[ForgeConfig] 加载 enhance_costs.json 失败，使用回退常量。", e);
         }
         if (bonus.isEmpty()) {
-            bonus.put(-5, 0.70); bonus.put(-4, 0.65); bonus.put(-3, 0.60); bonus.put(-2, 0.55);
-            bonus.put(-1, 0.45); bonus.put(0, 0.25); bonus.put(1, 0.08); bonus.put(2, 0.04);
-            bonus.put(3, 0.03); bonus.put(4, 0.02); bonus.put(5, 0.01);
+            bonus.put(-6, 0.75); bonus.put(-5, 0.70); bonus.put(-4, 0.65); bonus.put(-3, 0.60);
+            bonus.put(-2, 0.55); bonus.put(-1, 0.45); bonus.put(0, 0.25); bonus.put(1, 0.08);
+            bonus.put(2, 0.04); bonus.put(3, 0.03); bonus.put(4, 0.02); bonus.put(5, 0.01);
+            bonus.put(6, 0.005);
         }
         return new EnhanceCosts(maxLevel, maxShards, essence, bonus);
     }
@@ -189,16 +191,16 @@ public class ForgeConfig {
 
     private static void loadFallbackEssenceRanges() {
         ESSENCE_RANGES.clear();
-        putRange("max_health", new double[][]{{1,3},{4,6},{6,10},{10,14},{15,20},{20,30}});
-        putRange("attack_damage", new double[][]{{0.1,0.5},{0.5,1.5},{1.5,3},{2.5,4},{4,6},{6,9}});
-        putRange("armor", new double[][]{{0.1,0.5},{0.5,1},{1.5,2.5},{2.5,3.5},{4,6},{6,8}});
-        putRange("movement_speed", new double[][]{{0.01,0.02},{0.03,0.05},{0.08,0.12},{0.12,0.18},{0.18,0.25},{0.25,0.4}});
-        putRange("luck", new double[][]{{0.05,0.15},{0.25,0.5},{0.6,1},{1,1.8},{2,3.5},{3,5}});
-        putRange("health_regen", new double[][]{{0.05,0.12},{0.2,0.3},{0.3,0.5},{0.5,0.8},{0.8,1},{1,1.5}});
-        putRange("armor_penetration", new double[][]{{0.1,0.3},{0.3,0.7},{0.7,1.2},{1,1.8},{2,2.5},{2.5,4}});
-        putRange("crit_chance", new double[][]{{0.005,0.015},{0.015,0.035},{0.03,0.06},{0.05,0.1},{0.08,0.14},{0.12,0.2}});
-        putRange("crit_damage", new double[][]{{0.01,0.05},{0.05,0.1},{0.1,0.18},{0.18,0.28},{0.28,0.4},{0.4,0.55}});
-        putRange("damage_reduction", new double[][]{{0.005,0.01},{0.01,0.02},{0.02,0.04},{0.04,0.06},{0.06,0.09},{0.1,0.15}});
+        putRange("max_health", new double[][]{{1,3},{3,5},{5,7},{7,10},{10,13},{13,17},{17,30}});
+        putRange("attack_damage", new double[][]{{0.1,0.5},{0.5,1},{1,1.5},{1.5,2.2},{2.2,3.2},{3.2,4.5},{4.5,9}});
+        putRange("armor", new double[][]{{0.1,0.5},{0.5,0.9},{0.9,1.4},{1.4,2},{2,2.8},{2.8,4},{4,8}});
+        putRange("movement_speed", new double[][]{{0.01,0.02},{0.02,0.04},{0.04,0.06},{0.06,0.09},{0.09,0.13},{0.13,0.18},{0.18,0.4}});
+        putRange("luck", new double[][]{{0.05,0.15},{0.15,0.3},{0.3,0.5},{0.5,0.8},{0.8,1.2},{1.2,2},{2,5}});
+        putRange("health_regen", new double[][]{{0.05,0.12},{0.12,0.2},{0.2,0.3},{0.3,0.4},{0.4,0.6},{0.6,0.8},{0.8,1.5}});
+        putRange("armor_penetration", new double[][]{{0.1,0.3},{0.3,0.5},{0.5,0.8},{0.8,1.2},{1.2,1.8},{1.8,2.5},{2.5,4}});
+        putRange("crit_chance", new double[][]{{0.005,0.015},{0.015,0.025},{0.025,0.04},{0.04,0.06},{0.06,0.08},{0.08,0.12},{0.12,0.2}});
+        putRange("crit_damage", new double[][]{{0.01,0.05},{0.05,0.08},{0.08,0.12},{0.12,0.18},{0.18,0.28},{0.28,0.4},{0.4,0.55}});
+        putRange("damage_reduction", new double[][]{{0.005,0.01},{0.01,0.015},{0.015,0.025},{0.025,0.04},{0.04,0.06},{0.06,0.09},{0.09,0.15}});
     }
 
     private static void putRange(String attr, double[][] ranges) {

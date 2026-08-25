@@ -1,0 +1,6 @@
+{
+  "name": "spine_2",
+  "origin": [0, 21, -2],
+  "rotation": [0, 0, 0],
+  "parent": "body"
+}

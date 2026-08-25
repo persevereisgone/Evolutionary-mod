@@ -11,6 +11,7 @@ import java.util.Random;
  * 品质对应物品注册名前缀：
  *   BROKEN    -> broken_
  *   NORMAL    -> (无前缀，如 life_essence_ring)
+ *   FINE      -> fine_
  *   EXCELLENT -> excellent_
  *   EPIC      -> epic_
  *   LEGENDARY -> legendary_
@@ -21,6 +22,7 @@ public enum AccessoryDropRarity {
     //              权重（相对值，越大越常见）
     BROKEN    (50),
     NORMAL    (30),
+    FINE      (20),
     EXCELLENT (12),
     EPIC      ( 5),
     LEGENDARY ( 2),
@@ -37,6 +39,7 @@ public enum AccessoryDropRarity {
         return switch (this) {
             case BROKEN    -> "broken_";
             case NORMAL    -> "";
+            case FINE      -> "fine_";
             case EXCELLENT -> "excellent_";
             case EPIC      -> "epic_";
             case LEGENDARY -> "legendary_";

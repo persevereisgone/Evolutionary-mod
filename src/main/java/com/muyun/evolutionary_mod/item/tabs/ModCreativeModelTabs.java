@@ -46,6 +46,7 @@ public class ModCreativeModelTabs {
                         // 生命精华 Life Essence
                         pOutput.accept(Rings.BROKEN_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.LIFE_ESSENCE_RING.get());
+                        pOutput.accept(Rings.FINE_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.EPIC_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_LIFE_ESSENCE_RING.get());
@@ -54,6 +55,7 @@ public class ModCreativeModelTabs {
                         // 战斗力 Battle Power
                         pOutput.accept(Rings.BROKEN_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.BATTLE_POWER_RING.get());
+                        pOutput.accept(Rings.FINE_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.EXCELLENT_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.EPIC_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.LEGENDARY_BATTLE_POWER_RING.get());
@@ -62,6 +64,7 @@ public class ModCreativeModelTabs {
                         // 铁壁 Iron Shield
                         pOutput.accept(Rings.BROKEN_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.IRON_SHIELD_RING.get());
+                        pOutput.accept(Rings.FINE_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.EXCELLENT_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.EPIC_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.LEGENDARY_IRON_SHIELD_RING.get());
@@ -70,6 +73,7 @@ public class ModCreativeModelTabs {
                         // 疾风 Gale
                         pOutput.accept(Rings.BROKEN_GALE_RING.get());
                         pOutput.accept(Rings.GALE_RING.get());
+                        pOutput.accept(Rings.FINE_GALE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_GALE_RING.get());
                         pOutput.accept(Rings.EPIC_GALE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_GALE_RING.get());
@@ -78,6 +82,7 @@ public class ModCreativeModelTabs {
                         // 好运 Good Fortune
                         pOutput.accept(Rings.BROKEN_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.GOOD_FORTUNE_RING.get());
+                        pOutput.accept(Rings.FINE_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.EPIC_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_GOOD_FORTUNE_RING.get());
@@ -85,14 +90,16 @@ public class ModCreativeModelTabs {
 
                         // 治疗 Healing（没有残破品质）
                         pOutput.accept(Rings.HEALING_RING.get());
+                        pOutput.accept(Rings.FINE_HEALING_RING.get());
                         pOutput.accept(Rings.EXCELLENT_HEALING_RING.get());
                         pOutput.accept(Rings.EPIC_HEALING_RING.get());
                         pOutput.accept(Rings.LEGENDARY_HEALING_RING.get());
                         pOutput.accept(Rings.MYTHIC_HEALING_RING.get());
 
-                        // 利刃 Sharp Edge（普通品质是 NORMAL_SHARP_EDGE_RING）
+                        // 利刃 Sharp Edge（普通品质是 SHARP_EDGE_RING）
                         pOutput.accept(Rings.BROKEN_SHARP_EDGE_RING.get());
-                        pOutput.accept(Rings.NORMAL_SHARP_EDGE_RING.get());
+                        pOutput.accept(Rings.SHARP_EDGE_RING.get());
+                        pOutput.accept(Rings.FINE_SHARP_EDGE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_SHARP_EDGE_RING.get());
                         pOutput.accept(Rings.EPIC_SHARP_EDGE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_SHARP_EDGE_RING.get());
@@ -100,6 +107,7 @@ public class ModCreativeModelTabs {
 
                         // 破甲 Armor Breaker（没有残破品质）
                         pOutput.accept(Rings.ARMOR_BREAKER_RING.get());
+                        pOutput.accept(Rings.FINE_ARMOR_BREAKER_RING.get());
                         pOutput.accept(Rings.EXCELLENT_ARMOR_BREAKER_RING.get());
                         pOutput.accept(Rings.EPIC_ARMOR_BREAKER_RING.get());
                         pOutput.accept(Rings.LEGENDARY_ARMOR_BREAKER_RING.get());
@@ -119,6 +127,7 @@ public class ModCreativeModelTabs {
                         // 生命精华 Life Essence
                         pOutput.accept(Rings.BROKEN_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.LIFE_ESSENCE_RING.get());
+                        pOutput.accept(Rings.FINE_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.EPIC_LIFE_ESSENCE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_LIFE_ESSENCE_RING.get());
@@ -127,6 +136,7 @@ public class ModCreativeModelTabs {
                         // 战斗力 Battle Power
                         pOutput.accept(Rings.BROKEN_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.BATTLE_POWER_RING.get());
+                        pOutput.accept(Rings.FINE_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.EXCELLENT_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.EPIC_BATTLE_POWER_RING.get());
                         pOutput.accept(Rings.LEGENDARY_BATTLE_POWER_RING.get());
@@ -135,6 +145,7 @@ public class ModCreativeModelTabs {
                         // 铁壁 Iron Shield
                         pOutput.accept(Rings.BROKEN_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.IRON_SHIELD_RING.get());
+                        pOutput.accept(Rings.FINE_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.EXCELLENT_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.EPIC_IRON_SHIELD_RING.get());
                         pOutput.accept(Rings.LEGENDARY_IRON_SHIELD_RING.get());
@@ -143,6 +154,7 @@ public class ModCreativeModelTabs {
                         // 疾风 Gale
                         pOutput.accept(Rings.BROKEN_GALE_RING.get());
                         pOutput.accept(Rings.GALE_RING.get());
+                        pOutput.accept(Rings.FINE_GALE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_GALE_RING.get());
                         pOutput.accept(Rings.EPIC_GALE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_GALE_RING.get());
@@ -151,6 +163,7 @@ public class ModCreativeModelTabs {
                         // 好运 Good Fortune
                         pOutput.accept(Rings.BROKEN_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.GOOD_FORTUNE_RING.get());
+                        pOutput.accept(Rings.FINE_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.EPIC_GOOD_FORTUNE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_GOOD_FORTUNE_RING.get());
@@ -158,6 +171,7 @@ public class ModCreativeModelTabs {
 
                         // 治疗 Healing
                         pOutput.accept(Rings.HEALING_RING.get());
+                        pOutput.accept(Rings.FINE_HEALING_RING.get());
                         pOutput.accept(Rings.EXCELLENT_HEALING_RING.get());
                         pOutput.accept(Rings.EPIC_HEALING_RING.get());
                         pOutput.accept(Rings.LEGENDARY_HEALING_RING.get());
@@ -165,7 +179,8 @@ public class ModCreativeModelTabs {
 
                         // 利刃 Sharp Edge
                         pOutput.accept(Rings.BROKEN_SHARP_EDGE_RING.get());
-                        pOutput.accept(Rings.NORMAL_SHARP_EDGE_RING.get());
+                        pOutput.accept(Rings.SHARP_EDGE_RING.get());
+                        pOutput.accept(Rings.FINE_SHARP_EDGE_RING.get());
                         pOutput.accept(Rings.EXCELLENT_SHARP_EDGE_RING.get());
                         pOutput.accept(Rings.EPIC_SHARP_EDGE_RING.get());
                         pOutput.accept(Rings.LEGENDARY_SHARP_EDGE_RING.get());
@@ -173,6 +188,7 @@ public class ModCreativeModelTabs {
 
                         // 破甲 Armor Breaker
                         pOutput.accept(Rings.ARMOR_BREAKER_RING.get());
+                        pOutput.accept(Rings.FINE_ARMOR_BREAKER_RING.get());
                         pOutput.accept(Rings.EXCELLENT_ARMOR_BREAKER_RING.get());
                         pOutput.accept(Rings.EPIC_ARMOR_BREAKER_RING.get());
                         pOutput.accept(Rings.LEGENDARY_ARMOR_BREAKER_RING.get());
@@ -212,6 +228,7 @@ public class ModCreativeModelTabs {
                         // 品阶碎片（残破→至臻）
                         pOutput.accept(ForgeMaterials.RANK_SHARD_BROKEN.get());
                         pOutput.accept(ForgeMaterials.RANK_SHARD_NORMAL.get());
+                        pOutput.accept(ForgeMaterials.RANK_SHARD_FINE.get());
                         pOutput.accept(ForgeMaterials.RANK_SHARD_EXCELLENT.get());
                         pOutput.accept(ForgeMaterials.RANK_SHARD_EPIC.get());
                         pOutput.accept(ForgeMaterials.RANK_SHARD_LEGENDARY.get());

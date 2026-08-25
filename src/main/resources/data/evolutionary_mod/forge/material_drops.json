@@ -138,7 +138,7 @@
     }
   },
   "subtype_weights": {
-    "_comment": "子类权重：类型精华 1:1:1；品阶碎片 6/5/4/3/2/1；属性精华按 §4.3 方向权重",
+    "_comment": "子类权重：类型精华 1:1:1；品阶碎片 6/5/4/3/2/1/1（残破→至臻，7 档）；属性精华按 §4.3 方向权重",
     "essence": {
       "evolutionary_mod:accessory_essence": 1,
       "evolutionary_mod:weapon_essence": 1,
@@ -147,9 +147,10 @@
     "shard": {
       "evolutionary_mod:rank_shard_broken": 6,
       "evolutionary_mod:rank_shard_normal": 5,
-      "evolutionary_mod:rank_shard_excellent": 4,
-      "evolutionary_mod:rank_shard_epic": 3,
-      "evolutionary_mod:rank_shard_legendary": 2,
+      "evolutionary_mod:rank_shard_fine": 4,
+      "evolutionary_mod:rank_shard_excellent": 3,
+      "evolutionary_mod:rank_shard_epic": 2,
+      "evolutionary_mod:rank_shard_legendary": 1,
       "evolutionary_mod:rank_shard_mythic": 1
     },
     "attribute": {

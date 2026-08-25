@@ -13,6 +13,7 @@ planning/
 ├── system/          # 系统策划
 │   ├── WEIGHT_SYSTEM_V4.md             # 负重系统策划案（已实装）
 │   ├── FORGE_SYSTEM_V1.md              # 锻造台：强化 / 重锻 / 粉碎 / 特例升阶（待实装）
+│   ├── FINE_QUALITY_TIER_PLAN_V1.md    # 新增「优秀 FINE」品阶修改方案 V1.1（待实施）
 │   ├── CURRENCY_TRADE_SYSTEM_V1.md     # 货币交易：铸币 / 村民 / 密封匣 / 回收（待实装）
 │   └── GUIDE_SYSTEM.md                 # 自研指南 UI（搁置；游戏内改用 Patchouli）
 ├── balance/         # 平衡性策划

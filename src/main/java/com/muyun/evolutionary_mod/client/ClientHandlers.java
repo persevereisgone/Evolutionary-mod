@@ -4,7 +4,6 @@ import com.muyun.evolutionary_mod.EvolutionaryMod;
 import com.muyun.evolutionary_mod.ModMenus;
 import com.muyun.evolutionary_mod.item.base.AccessoryItem;
 import com.muyun.evolutionary_mod.item.base.AccessoryTooltipHelper;
-import com.muyun.evolutionary_mod.menu.ForgeTableMenu;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -38,6 +37,7 @@ public class ClientHandlers {
 
     public static KeyMapping OPEN_ACCESSORIES;
     public static KeyMapping OPEN_PLAYER_ATTRIBUTES;
+    public static KeyMapping OPEN_TASK_SCREEN;
 
     // -----------------------------------------------------------------------
     // MOD 总线：按键注册、菜单屏幕注册
@@ -60,6 +60,14 @@ public class ClientHandlers {
                     "key.categories.evolutionary_mod"
             );
             event.register(OPEN_PLAYER_ATTRIBUTES);
+
+            // 正式任务系统界面
+            OPEN_TASK_SCREEN = new KeyMapping(
+                    "key.task.open",
+                    GLFW.GLFW_KEY_U,
+                    "key.categories.evolutionary_mod"
+            );
+            event.register(OPEN_TASK_SCREEN);
         }
 
         @SubscribeEvent
@@ -87,6 +95,7 @@ public class ClientHandlers {
             int borderColor = switch (rarity) {
                 case BROKEN    -> 0xFFAAAAAA;
                 case NORMAL    -> 0xFFFFFFFF;
+                case FINE      -> 0xFF00AA00;
                 case EXCELLENT -> 0xFF5555FF;
                 case EPIC      -> 0xFFAA00AA;
                 case LEGENDARY -> 0xFFFFAA00;

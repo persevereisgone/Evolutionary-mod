@@ -13,11 +13,13 @@ import com.muyun.evolutionary_mod.item.base.AccessoryItem;
 /**
  * 戒指饰品物品 - Ring Accessories Items
  *
- * 包含所有品质等级的戒指饰品，从残破到至臻共6个品质等级。
- * 每个戒指提供不同的属性加成和暴击效果。
+ * 包含所有品质等级的戒指饰品。品阶共 7 档（残破 / 普通 / 优秀 / 精良 / 史诗 / 传说 / 至臻），
+ * 其中残破档仅 6 个系列（愈合 healing、破甲 armor_breaker 无残破档），
+ * 普通及以后各档均为 8 个系列。
  *
- * Contains ring accessories of all quality tiers, from broken to mythic quality (6 tiers total).
- * Each ring provides different attribute bonuses and critical hit effects.
+ * Contains ring accessories of all quality tiers, from broken to mythic (7 tiers total).
+ * Broken tier only covers 6 series (healing & armor breaker have no broken tier);
+ * from Normal up, all 8 series are present.
  */
 public class Rings {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, EvolutionaryMod.MODID);
@@ -37,8 +39,18 @@ public class Rings {
     public static final DeferredHolder<Item, Item> GALE_RING = ITEMS.register("gale_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, Item> GOOD_FORTUNE_RING = ITEMS.register("good_fortune_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, Item> HEALING_RING = ITEMS.register("healing_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredHolder<Item, Item> NORMAL_SHARP_EDGE_RING = ITEMS.register("normal_sharp_edge_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> SHARP_EDGE_RING = ITEMS.register("sharp_edge_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, Item> ARMOR_BREAKER_RING = ITEMS.register("armor_breaker_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+
+    // Fine quality rings
+    public static final DeferredHolder<Item, Item> FINE_LIFE_ESSENCE_RING = ITEMS.register("fine_life_essence_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_BATTLE_POWER_RING = ITEMS.register("fine_battle_power_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_IRON_SHIELD_RING = ITEMS.register("fine_iron_shield_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_GALE_RING = ITEMS.register("fine_gale_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_GOOD_FORTUNE_RING = ITEMS.register("fine_good_fortune_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_HEALING_RING = ITEMS.register("fine_healing_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_SHARP_EDGE_RING = ITEMS.register("fine_sharp_edge_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> FINE_ARMOR_BREAKER_RING = ITEMS.register("fine_armor_breaker_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));
 
     // Excellent quality rings
     public static final DeferredHolder<Item, Item> EXCELLENT_LIFE_ESSENCE_RING = ITEMS.register("excellent_life_essence_ring", () -> new AccessoryItem(new Item.Properties().stacksTo(1)));

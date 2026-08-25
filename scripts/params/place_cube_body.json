@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "body",
+      "from": [-8, -4, -6],
+      "to": [8, 12, 8]
+    }
+  ],
+  "group": "body",
+  "texture": "magma_rock",
+  "faces": true
+}

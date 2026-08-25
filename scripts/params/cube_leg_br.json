@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "leg_br",
+      "from": [-1, -8, -2],
+      "to": [2, 2, 1]
+    }
+  ],
+  "group": "leg_br",
+  "texture": "magma_rock",
+  "faces": true
+}

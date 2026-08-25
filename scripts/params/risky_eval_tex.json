@@ -1,0 +1,3 @@
+{
+  "code": "let t = Texture.all.find(x => x.name === 'magma_rock'); if (t) { t.select(); t.openEditor && t.openEditor(); } JSON.stringify({count: Texture.all.length, names: Texture.all.map(x => x.name)})"
+}

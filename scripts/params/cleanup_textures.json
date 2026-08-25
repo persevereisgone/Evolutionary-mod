@@ -1,0 +1,3 @@
+{
+  "code": "let ms = Texture.all.filter(t => t.name === 'magma_rock'); ms.forEach(t => { if (t.width !== 64 || t.height !== 64) t.remove(); }); let tt = Texture.all.find(t => t.name === 'test_tex'); if (tt) tt.remove(); JSON.stringify(Texture.all.map(t => ({name: t.name, w: t.width, h: t.height, uuid: t.uuid})), null, 0)"
+}

@@ -17,7 +17,8 @@
   },
   "rarity_factor": {
     "BROKEN": 0.07,
-    "NORMAL": 0.06,
+    "NORMAL": 0.065,
+    "FINE": 0.06,
     "EXCELLENT": 0.055,
     "EPIC": 0.05,
     "LEGENDARY": 0.045,

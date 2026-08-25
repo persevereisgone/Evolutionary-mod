@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "spine_3",
+      "from": [-2, 2, -2],
+      "to": [2, 6, 1]
+    }
+  ],
+  "group": "spine_3",
+  "texture": "magma_rock",
+  "faces": true
+}

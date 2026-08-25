@@ -1,0 +1,3 @@
+{
+  "code": "let b = Cube.all.find(c => c.name === 'body'); let grp = b ? b.parent : null; JSON.stringify({cube_from: b.from, cube_to: b.to, group_name: grp ? grp.name : null, group_origin: grp ? grp.origin : null, abs_from: grp ? [grp.origin[0]+b.from[0], grp.origin[1]+b.from[1], grp.origin[2]+b.from[2]] : null})"
+}

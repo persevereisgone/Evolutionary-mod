@@ -18,7 +18,7 @@
       "category": "common_mobs",
       "loot_table_id": "minecraft:entities/zombie",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "category": "elite_mobs",

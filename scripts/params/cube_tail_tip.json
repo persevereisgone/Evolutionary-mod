@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "tail_tip",
+      "from": [-1, -4, -6],
+      "to": [1, 0, -2]
+    }
+  ],
+  "group": "tail",
+  "texture": "magma_rock",
+  "faces": true
+}

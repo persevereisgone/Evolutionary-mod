@@ -1,0 +1,109 @@
+---
+description: Blockbench 建模开发与提示词生成规范（3D 建模/贴图/动画/PBR/MCP 驱动 Blockbench 必须遵守）
+alwaysApply: false
+globs: "**/block_bench_skills/**/*.md,**/textures/**/*.png,**/models/**/*.json,src/main/resources/assets/evolutionary_mod/models/**"
+---
+
+# Blockbench 建模与提示词规范
+
+## 触发场景
+
+只要出现以下任一情况，就按本规则执行：
+
+- 用户要求生成 / 改写 **Blockbench 建模提示词**（Boss、生物、物品、材料、装置等 3D 模型）
+- 用户要求用 **MCP 驱动 Blockbench** 建模 / 贴图 / 动画 / PBR / 导出
+- 用户提到 `block_bench_skills`、`blockbench-mcp-overview`、`blockbench-modeling` 等 skill
+- 需要把美术概念转成可执行的建模步骤
+- 设计带骨骼动画、材质分区、发光核心的实体模型
+
+## 先读 Skill（按序）
+
+1. **`blockbench-use`** —— 只要调用 `mcp__blockbench__*` 工具，必读（前置检查 / 技能路由 / checkpoint / 导出闭环）
+2. **`blockbench-mcp-overview`** —— 了解 MCP 工具能力全景时读
+3. 按需求加读：
+   - `blockbench-modeling`（几何 / 分组 / cube / mesh / 骨骼结构）
+   - `blockbench-texturing`（贴图 / UV / 绘制 / 渐变）
+   - `blockbench-animation`（关键帧 / 骨骼运动 / 待机 / 攻击 / 死亡）
+   - `blockbench-pbr-materials`（normal / height / MER / texture_set.json）
+   - `blockbench-hytale`（Hytale 格式 / 附件 / 导出）
+   - `blockbench-development`（仅用于写 Blockbench 插件，不用于 MCP 建模）
+
+> 多域任务必须同时加载多个 skill。例如「会挥刀的 Boss」= use + overview + modeling + animation + texturing。
+
+## 提示词生成规范
+
+### 必须写清
+
+- 类型（物品 / 实体 / Boss / 装置 / 材料）
+- 风格：Minecraft / voxel / Blockbench / low-poly
+- 用途：图标 / 手持 / 掉落物 / Boss 实体 / 展示模型
+- 尺寸或比例感（小物件 / 人形 / 巨型 / 悬浮型）
+- 是否需要动画（待机 / 攻击 / 漂浮 / 开合）
+- 结构拆分（头 / 躯干 / 四肢 / 武器 / 背饰 / 核心）
+- 材质分区（金属 / 晶体 / 石头 / 布料 / 能量核心）
+- 颜色主轴（主色 / 辅色 / 高光色 / 发光色）
+- 轮廓要求（尖锐 / 圆润 / 厚重 / 轻盈 / 对称）
+- 16×16 可读性（材料类）
+
+### 禁止写的描述
+
+- 过多微鳞片 / 碎片 / 铆钉 / 细小纹路
+- 大面积不可分割的连续曲面
+- 写实毛发 / 布料褶皱 / 皮肤细节
+- 无法拆组的复杂装饰
+- 纯视觉形容词堆砌、结构信息缺失
+- 「像某某电影里的怪物」这类不可建模的描述
+
+### 推荐结构顺序
+
+1. 整体轮廓 → 2. 主体结构 → 3. 关键部件 → 4. 材质与颜色 → 5. 发光/能量部分 → 6. 动画友好点 → 7. 禁止项
+
+## 建模操作规范（MCP）
+
+- **前置检查**：`list_outline` + `list_textures` 确认项目与格式（物品用 `bedrock`/`java_block`，实体用 `modded_entity`）
+- **先建骨架子**：`add_group` 分层（root → 部件），origin 设在关节处便于动画
+- **3+ 次修改前**：`save_checkpoint` 命名，出错用 `undo: steps=N` 回退
+- **每步命名**：描述性名称便于 `find_elements_by_criteria` / `filter_by_material`
+- **对称件**：`duplicate_element` + 镜像偏移，不要手摆
+- **里程碑截图**：`capture_screenshot` 确认效果，不逐笔截图
+- **导出只在用户要交付物时**：先 `list_export_formats` 选 codec，再 `export_model`
+- **禁止** `trigger_action: action="undo"`，用专用 `undo`/`redo` 工具
+
+## 材料类物品额外约定（本模组）
+
+- 16×16 可读性优先；透明背景；单体居中
+- 系列内统一语言，但剪影 / 颜色两两拉开（不撞色）
+- 材质写清（宝石 / 残片 / 石头 / 金属 / 织物）
+- 发光区域明确标注（MER 的 G 通道）
+- 颜色铺满色环；跨家族靠「材质 + 剪影」区分
+
+## Boss / 实体额外约定
+
+- 轮廓优先：先强剪影，再局部造型
+- 头 / 躯干 / 四肢 / 背饰 / 武器 / 冠冕 / 核心分组清晰，适合骨骼动画
+- 发光核心 + 材质分区明确
+- 不做传统腿部 = 悬浮型时，下身必须做成独立悬浮部件
+- 禁止过碎细节（每件 Boss 只保留 1 个视觉焦点）
+
+## 输出提示词硬检查清单
+
+- [ ] 类型 / 用途是否写明
+- [ ] 是否需要拆分部件、是否需要动画
+- [ ] 轮廓是否足够清晰
+- [ ] 是否存在「好看但无法建模」的细节
+- [ ] 颜色是否与同系列明显区分
+- [ ] 材质是否写明
+- [ ] 尺寸 / 比例是否写明
+- [ ] 禁止项是否写明
+- [ ] 是否适合 Minecraft 方块 / 体素表达
+- [ ] 是否适合 16×16 或对应分辨率贴图
+
+## 禁止
+
+- 跳过 `blockbench-use` 直接调 `mcp__blockbench__*` 工具
+- 给纯 2D 图标 / 平面图套用 3D 结构规范
+- 生成「好看但无法建模」的概念描述而不给可执行结构
+- 不写分组 / 不写材质 / 不写发光点就交付 Boss 提示词
+- 复杂任务不建 checkpoint 就连续修改
+
+> 详细模板与示例见 `docs/dev/Blockbench建模与提示词规范.md`。

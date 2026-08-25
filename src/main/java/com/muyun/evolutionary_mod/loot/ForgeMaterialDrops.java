@@ -68,9 +68,10 @@ public class ForgeMaterialDrops {
         FALLBACK_ESSENCE_WEIGHTS.put("evolutionary_mod:armor_essence", 1);
         FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_broken", 6);
         FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_normal", 5);
-        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_excellent", 4);
-        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_epic", 3);
-        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_legendary", 2);
+        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_fine", 4);
+        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_excellent", 3);
+        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_epic", 2);
+        FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_legendary", 1);
         FALLBACK_SHARD_WEIGHTS.put("evolutionary_mod:rank_shard_mythic", 1);
         FALLBACK_ATTRIBUTE_WEIGHTS.put("evolutionary_mod:attribute_essence_life", 20);
         FALLBACK_ATTRIBUTE_WEIGHTS.put("evolutionary_mod:attribute_essence_attack", 18);

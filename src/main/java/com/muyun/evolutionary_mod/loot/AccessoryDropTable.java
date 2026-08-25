@@ -42,25 +42,25 @@ public class AccessoryDropTable {
 
     private static void loadFallbackDefaults() {
         // 普通怪物
-        registerFallback("minecraft:entities/zombie",          0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/zombie_villager", 0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/skeleton",        0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/creeper",         0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/spider",          0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/cave_spider",     0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/drowned",         0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/husk",            0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/stray",           0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/phantom",         0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/slime",           0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/magma_cube",      0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/ghast",           0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/zombified_piglin",0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/hoglin",          0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/zoglin",          0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/silverfish",      0.01f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/endermite",       0.01f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
-        registerFallback("minecraft:entities/vex",             0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL));
+        registerFallback("minecraft:entities/zombie",          0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/zombie_villager", 0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/skeleton",        0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/creeper",         0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/spider",          0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/cave_spider",     0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/drowned",         0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/husk",            0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/stray",           0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/phantom",         0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/slime",           0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/magma_cube",      0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/ghast",           0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/zombified_piglin",0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/hoglin",          0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/zoglin",          0.03f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/silverfish",      0.01f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/endermite",       0.01f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
+        registerFallback("minecraft:entities/vex",             0.02f, rarity(AccessoryDropRarity.BROKEN, AccessoryDropRarity.NORMAL, AccessoryDropRarity.FINE));
 
         // 精英怪物
         registerFallback("minecraft:entities/witch",           0.05f, rarity(AccessoryDropRarity.NORMAL, AccessoryDropRarity.EXCELLENT));

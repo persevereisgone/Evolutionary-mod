@@ -12,8 +12,8 @@ import com.muyun.evolutionary_mod.EvolutionaryMod;
 /**
  * 锻造材料物品注册 - Forge Materials Registry
  *
- * 对应策划案 §3 材料体系，共 22 种：
- * 3 类型精华 + 6 品阶碎片 + 3 重锻石 + 10 属性精华。
+ * 对应策划案 §3 材料体系，共 23 种：
+ * 3 类型精华 + 7 品阶碎片 + 3 重锻石 + 10 属性精华。
  *
  * 物品均为普通可堆叠材料，非 AccessoryItem，不参与饰品槽位/掉落池。
  */
@@ -32,12 +32,14 @@ public class ForgeMaterials {
             ITEMS.register("armor_essence", () -> new Item(new Item.Properties()));
 
     // =====================
-    // 6 品阶碎片（§3.2）
+    // 7 品阶碎片（§3.2）
     // =====================
     public static final DeferredHolder<Item, Item> RANK_SHARD_BROKEN =
             ITEMS.register("rank_shard_broken", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> RANK_SHARD_NORMAL =
             ITEMS.register("rank_shard_normal", () -> new Item(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RANK_SHARD_FINE =
+            ITEMS.register("rank_shard_fine", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> RANK_SHARD_EXCELLENT =
             ITEMS.register("rank_shard_excellent", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> RANK_SHARD_EPIC =

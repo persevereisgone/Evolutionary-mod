@@ -1,0 +1,3 @@
+{
+  "code": "let t = Texture.all.find(x => x.name === 'magma_rock_64.png'); if (t) { t.name = 'magma_rock'; t.selected = true; t.syncToProject = true; } JSON.stringify(Texture.all.map(x => ({name:x.name,w:x.width,h:x.height})), null, 0)"
+}

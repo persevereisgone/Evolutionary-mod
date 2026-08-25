@@ -1,0 +1,8 @@
+{
+  "name": "magma_rock",
+  "width": 64,
+  "height": 64,
+  "fill_color": "#2B2B2B",
+  "layer_name": "rock_base",
+  "pbr_channel": "color"
+}

@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "horn_r",
+      "from": [-1, 0, 0],
+      "to": [1, 6, 2]
+    }
+  ],
+  "group": "horn_r",
+  "texture": "magma_rock",
+  "faces": true
+}

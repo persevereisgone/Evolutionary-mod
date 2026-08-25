@@ -1,0 +1,12 @@
+{
+  "elements": [
+    {
+      "name": "jaw",
+      "from": [-4, -2, 0],
+      "to": [4, 0, 6]
+    }
+  ],
+  "group": "jaw",
+  "texture": "magma_rock",
+  "faces": true
+}

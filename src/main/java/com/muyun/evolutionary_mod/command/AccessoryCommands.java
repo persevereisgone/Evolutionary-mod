@@ -92,7 +92,7 @@ public class AccessoryCommands {
         source.sendSuccess(() -> Component.literal("=== 饰品模组统计信息 ==="), false);
         source.sendSuccess(() -> Component.literal("随机属性系统：已启用"), false);
         source.sendSuccess(() -> Component.literal("掉落池：普通怪物池、精英怪物池"), false);
-        source.sendSuccess(() -> Component.literal("支持品阶：破损、普通、优秀、史诗、传说、至臻"), false);
+        source.sendSuccess(() -> Component.literal("支持品阶：残破、普通、优秀、精良、史诗、传说、至臻"), false);
         source.sendSuccess(() -> Component.literal("数据严格模式： " + (Config.isStrictDataDriven() ? "开启" : "关闭")), false);
         source.sendSuccess(() -> Component.literal("使用 /acc export csv 生成CSV报告"), false);
         source.sendSuccess(() -> Component.literal("使用 /acc stats detail 查看详细统计"), false);
@@ -274,12 +274,20 @@ public class AccessoryCommands {
             pool.put("life_essence_ring", 6);  pool.put("battle_power_ring", 6);
             pool.put("iron_shield_ring", 6);   pool.put("gale_ring", 6);
             pool.put("good_fortune_ring", 6);  pool.put("healing_ring", 6);
-            pool.put("normal_sharp_edge_ring", 6); pool.put("armor_breaker_ring", 6);
+            pool.put("sharp_edge_ring", 6); pool.put("armor_breaker_ring", 6);
+            pool.put("fine_life_essence_ring", 6); pool.put("fine_battle_power_ring", 6);
+            pool.put("fine_iron_shield_ring", 6);  pool.put("fine_gale_ring", 6);
+            pool.put("fine_good_fortune_ring", 6); pool.put("fine_healing_ring", 6);
+            pool.put("fine_sharp_edge_ring", 6); pool.put("fine_armor_breaker_ring", 6);
         } else {
             pool.put("life_essence_ring", 20); pool.put("battle_power_ring", 20);
             pool.put("iron_shield_ring", 20);  pool.put("gale_ring", 20);
             pool.put("good_fortune_ring", 20); pool.put("healing_ring", 20);
-            pool.put("normal_sharp_edge_ring", 20); pool.put("armor_breaker_ring", 20);
+            pool.put("sharp_edge_ring", 20); pool.put("armor_breaker_ring", 20);
+            pool.put("fine_life_essence_ring", 20); pool.put("fine_battle_power_ring", 20);
+            pool.put("fine_iron_shield_ring", 20);  pool.put("fine_gale_ring", 20);
+            pool.put("fine_good_fortune_ring", 20); pool.put("fine_healing_ring", 20);
+            pool.put("fine_sharp_edge_ring", 20); pool.put("fine_armor_breaker_ring", 20);
             pool.put("excellent_life_essence_ring", 2); pool.put("excellent_sharp_edge_ring", 2);
             pool.put("excellent_iron_shield_ring", 2); pool.put("excellent_gale_ring", 2);
             pool.put("excellent_good_fortune_ring", 2); pool.put("excellent_healing_ring", 2);
@@ -306,8 +314,9 @@ public class AccessoryCommands {
     }
 
     private static String getRarityFromName(String name) {
-        if (name.startsWith("broken_"))    return "破损";
-        if (name.startsWith("excellent_")) return "优秀";
+        if (name.startsWith("broken_"))    return "残破";
+        if (name.startsWith("fine_"))      return "优秀";
+        if (name.startsWith("excellent_")) return "精良";
         if (name.startsWith("epic_"))      return "史诗";
         if (name.startsWith("legendary_")) return "传说";
         if (name.startsWith("mythic_"))    return "至臻";

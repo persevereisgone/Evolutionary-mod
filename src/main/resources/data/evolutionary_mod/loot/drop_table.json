@@ -3,97 +3,97 @@
     {
       "loot_table_id": "minecraft:entities/zombie",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/zombie_villager",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/skeleton",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/creeper",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/spider",
       "drop_chance": 0.02,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/cave_spider",
       "drop_chance": 0.02,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/drowned",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/husk",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/stray",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/phantom",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/slime",
       "drop_chance": 0.02,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/magma_cube",
       "drop_chance": 0.02,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/ghast",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/zombified_piglin",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/hoglin",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/zoglin",
       "drop_chance": 0.03,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/silverfish",
       "drop_chance": 0.01,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/endermite",
       "drop_chance": 0.01,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/vex",
       "drop_chance": 0.02,
-      "allowed_rarities": ["BROKEN", "NORMAL"]
+      "allowed_rarities": ["BROKEN", "NORMAL", "FINE"]
     },
     {
       "loot_table_id": "minecraft:entities/witch",

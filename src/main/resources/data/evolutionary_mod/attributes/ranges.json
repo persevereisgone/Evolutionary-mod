@@ -12,6 +12,13 @@
         "max_health": { "min": 4.0, "max": 6.0, "distribution": "uniform", "step": 0.5 }
       }
     },
+    "fine_life_essence_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "max_health": { "min": 5.0, "max": 8.0, "distribution": "uniform", "step": 0.5 },
+        "health_regen": { "min": 0.2, "max": 0.45, "distribution": "uniform", "per_second": true, "step": 0.05 }
+      }
+    },
     "excellent_life_essence_ring": {
       "rarity": "EXCELLENT",
       "attributes": {
@@ -51,6 +58,12 @@
       "rarity": "NORMAL",
       "attributes": {
         "attack_damage": { "min": 0.5, "max": 1.5, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "fine_battle_power_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "attack_damage": { "min": 1.0, "max": 2.2, "distribution": "uniform", "step": 0.1 }
       }
     },
     "excellent_battle_power_ring": {
@@ -100,6 +113,13 @@
         "damage_reduction": { "min": 0.01, "max": 0.02, "distribution": "uniform", "step": 0.001 }
       }
     },
+    "fine_iron_shield_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "armor": { "min": 1.0, "max": 2.2, "distribution": "uniform", "step": 0.1 },
+        "damage_reduction": { "min": 0.005, "max": 0.015, "distribution": "uniform", "step": 0.001 }
+      }
+    },
     "excellent_iron_shield_ring": {
       "rarity": "EXCELLENT",
       "attributes": {
@@ -141,6 +161,12 @@
         "movement_speed": { "min": 0.03, "max": 0.05, "distribution": "uniform", "step": 0.001 }
       }
     },
+    "fine_gale_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "movement_speed": { "min": 0.04, "max": 0.09, "distribution": "uniform", "step": 0.001 }
+      }
+    },
     "excellent_gale_ring": {
       "rarity": "EXCELLENT",
       "attributes": {
@@ -178,6 +204,12 @@
         "luck": { "min": 0.25, "max": 0.50, "distribution": "uniform", "step": 0.01 }
       }
     },
+    "fine_good_fortune_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "luck": { "min": 0.30, "max": 0.70, "distribution": "uniform", "step": 0.01 }
+      }
+    },
     "excellent_good_fortune_ring": {
       "rarity": "EXCELLENT",
       "attributes": {
@@ -203,16 +235,16 @@
       }
     },
 
-    "broken_healing_ring": {
-      "rarity": "BROKEN",
-      "attributes": {
-        "health_regen": { "min": 0.05, "max": 0.12, "distribution": "uniform", "per_second": true, "step": 0.01 }
-      }
-    },
     "healing_ring": {
       "rarity": "NORMAL",
       "attributes": {
         "health_regen": { "min": 0.2, "max": 0.3, "distribution": "uniform", "per_second": true, "step": 0.01 }
+      }
+    },
+    "fine_healing_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "health_regen": { "min": 0.25, "max": 0.5, "distribution": "uniform", "per_second": true, "step": 0.01 }
       }
     },
     "excellent_healing_ring": {
@@ -247,11 +279,18 @@
         "crit_damage": { "min": 0.01, "max": 0.05, "distribution": "uniform", "step": 0.01 }
       }
     },
-    "normal_sharp_edge_ring": {
+    "sharp_edge_ring": {
       "rarity": "NORMAL",
       "attributes": {
         "crit_chance": { "min": 0.015, "max": 0.035, "distribution": "uniform", "step": 0.001 },
         "crit_damage": { "min": 0.05, "max": 0.10, "distribution": "uniform", "step": 0.01 }
+      }
+    },
+    "fine_sharp_edge_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "crit_chance": { "min": 0.025, "max": 0.05, "distribution": "uniform", "step": 0.001 },
+        "crit_damage": { "min": 0.08, "max": 0.15, "distribution": "uniform", "step": 0.01 }
       }
     },
     "excellent_sharp_edge_ring": {
@@ -283,16 +322,16 @@
       }
     },
 
-    "broken_armor_breaker_ring": {
-      "rarity": "BROKEN",
-      "attributes": {
-        "armor_penetration": { "min": 0.1, "max": 0.3, "distribution": "uniform", "step": 0.1 }
-      }
-    },
     "armor_breaker_ring": {
       "rarity": "NORMAL",
       "attributes": {
         "armor_penetration": { "min": 0.3, "max": 0.7, "distribution": "uniform", "step": 0.1 }
+      }
+    },
+    "fine_armor_breaker_ring": {
+      "rarity": "FINE",
+      "attributes": {
+        "armor_penetration": { "min": 0.5, "max": 0.9, "distribution": "uniform", "step": 0.1 }
       }
     },
     "excellent_armor_breaker_ring": {

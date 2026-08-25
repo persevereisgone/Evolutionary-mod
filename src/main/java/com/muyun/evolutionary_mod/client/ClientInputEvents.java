@@ -35,5 +35,10 @@ public class ClientInputEvents {
         if (ClientHandlers.OPEN_PLAYER_ATTRIBUTES != null && ClientHandlers.OPEN_PLAYER_ATTRIBUTES.consumeClick()) {
             mc.setScreen(new PlayerAttributesScreen());
         }
+
+        // 打开任务系统界面（U 键）
+        if (ClientHandlers.OPEN_TASK_SCREEN != null && ClientHandlers.OPEN_TASK_SCREEN.consumeClick()) {
+            mc.setScreen(new TaskScreen());
+        }
     }
 }

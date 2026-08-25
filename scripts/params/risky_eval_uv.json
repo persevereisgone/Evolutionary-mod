@@ -1,0 +1,3 @@
+{
+  "code": "Project.texture_width = 64; Project.texture_height = 64; JSON.stringify({tw: Project.texture_width, th: Project.texture_height})"
+}

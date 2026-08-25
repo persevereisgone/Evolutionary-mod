@@ -29,6 +29,7 @@ public class AccessoryTooltipHelper {
     public enum AccessoryRarity {
         BROKEN(ChatFormatting.GRAY),
         NORMAL(ChatFormatting.WHITE),
+        FINE(ChatFormatting.GREEN),
         EXCELLENT(ChatFormatting.BLUE),
         EPIC(ChatFormatting.DARK_PURPLE),
         LEGENDARY(ChatFormatting.GOLD),
@@ -46,6 +47,7 @@ public class AccessoryTooltipHelper {
         if (n.startsWith("legendary_")) return AccessoryRarity.LEGENDARY;
         if (n.startsWith("epic_"))      return AccessoryRarity.EPIC;
         if (n.startsWith("excellent_")) return AccessoryRarity.EXCELLENT;
+        if (n.startsWith("fine_"))      return AccessoryRarity.FINE;
         if (n.startsWith("broken_"))   return AccessoryRarity.BROKEN;
         return AccessoryRarity.NORMAL;
     }

@@ -372,6 +372,7 @@ public class ForgeSystem {
     public static AccessoryDropRarity rarityOf(ItemStack stack) {
         String path = itemPath(stack).toLowerCase();
         if (path.startsWith("broken_")) return AccessoryDropRarity.BROKEN;
+        if (path.startsWith("fine_")) return AccessoryDropRarity.FINE;
         if (path.startsWith("excellent_")) return AccessoryDropRarity.EXCELLENT;
         if (path.startsWith("epic_")) return AccessoryDropRarity.EPIC;
         if (path.startsWith("legendary_")) return AccessoryDropRarity.LEGENDARY;
@@ -384,6 +385,7 @@ public class ForgeSystem {
         return switch (shardId) {
             case "evolutionary_mod:rank_shard_broken" -> AccessoryDropRarity.BROKEN;
             case "evolutionary_mod:rank_shard_normal" -> AccessoryDropRarity.NORMAL;
+            case "evolutionary_mod:rank_shard_fine" -> AccessoryDropRarity.FINE;
             case "evolutionary_mod:rank_shard_excellent" -> AccessoryDropRarity.EXCELLENT;
             case "evolutionary_mod:rank_shard_epic" -> AccessoryDropRarity.EPIC;
             case "evolutionary_mod:rank_shard_legendary" -> AccessoryDropRarity.LEGENDARY;

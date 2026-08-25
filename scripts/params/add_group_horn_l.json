@@ -1,0 +1,6 @@
+{
+  "name": "horn_l",
+  "origin": [4, 30, 4],
+  "rotation": [0, 0, 0],
+  "parent": "head"
+}
