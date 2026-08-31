@@ -24,3 +24,34 @@ runs
 run-data
 
 repo
+
+# ===== Minecraft 模组开发补充 =====
+
+# 反编译的 Minecraft/NeoForge 源码（误入库）
+net/
+
+# PCL（Plain Craft Launcher）本地启动器
+PCL/
+.minecraft/
+
+# 可执行文件 / 压缩包
+*.exe
+*.zip
+*.7z
+*.jar.tmp
+
+# IDE 个人配置
+.vscode/
+.trae/
+
+# Blockbench 根目录临时导出
+MagmaColossus.java
+magma_colossus.bbmodel
+
+# 生成的可视化检查产物
+docs/diagrams/*.visual-check.*
+
+# OS 系统文件
+Thumbs.db
+.DS_Store
+Desktop.ini
